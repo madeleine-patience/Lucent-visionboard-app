@@ -13,7 +13,7 @@ const ComfortZone = new mongoose.Schema({
   //   type: Date,
   //   required: true,
   // },
-  
+   
 
 });  
 
@@ -21,4 +21,3 @@ const ComfortZone = new mongoose.Schema({
 
 module.exports = mongoose.model("AskTheUniverse", AskTheUniverseSchema);
 
- 
