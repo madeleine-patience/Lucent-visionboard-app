@@ -15,7 +15,7 @@ const ComfortZone = new mongoose.Schema({
   // },
   
 
-}); 
+});  
 
   
 
