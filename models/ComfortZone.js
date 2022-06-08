@@ -22,3 +22,7 @@ const ComfortZone = new mongoose.Schema({
 module.exports = mongoose.model("AskTheUniverse", AskTheUniverseSchema);
 
  
+
+git add .
+git commit -m "update" --date "2022-06-07"
+git push
