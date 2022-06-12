@@ -23,6 +23,3 @@ module.exports = mongoose.model("AskTheUniverse", AskTheUniverseSchema);
 
  
 
-git add .
-git commit -m "update" --date "2022-06-09"
-git push
