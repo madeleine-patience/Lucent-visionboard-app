@@ -9,7 +9,7 @@ const ComfortZone = new mongoose.Schema({
     type: String,
     required: true
   },
-  // date: {
+  // date: { 
   //   type: Date,
   //   required: true, 
   // },
