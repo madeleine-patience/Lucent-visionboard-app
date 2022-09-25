@@ -19,26 +19,6 @@ module.exports = {
       console.log(err);
     }
   },
-
-  createGratitude: async (req, res)=>{
-    try{
-        await Post.create({
-          gratitudeItem: req.gratitudeItem})
-        console.log('Your gratitude for today has been logged!')
-        res.redirect('/gratitude')
-    }catch(err){
-        console.log(err)
-    }
-},
-  getGratitude: async (req, res) => {
-    try {
-      
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("gratitude.ejs", { posts: posts, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
@@ -66,7 +46,25 @@ module.exports = {
       console.log(err);
     }
   },
-
+  createGratitude: async (req, res)=>{
+    try{
+        await Gratitude.create({
+          gratitudeItem: req.body.gratitudeItem})
+        console.log('Your gratitude for today has been logged!')
+        res.redirect('/gratitude')
+    }catch(err){
+        console.log(err)
+    }
+},
+  getGratitude: async (req, res) => {
+    try {
+      
+      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      res.render("gratitude.ejs", { posts: posts, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
 getCreatePostPage: async (req,res) => {
   try {
       res.render('createPost.ejs', {user: req.user})

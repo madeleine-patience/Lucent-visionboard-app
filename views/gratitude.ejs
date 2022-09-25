@@ -24,15 +24,18 @@
             <h4>A regular act of expressing gratitude can put focus on those things in our life that we care about most. The more we focus and appreciate them; the more we will put energy into cultivating what makes us happy and feel good. </h4>
 
 
-            <form action="/createGratitude" method="POST">
-            <div>
-                  <label for="item" class="form-label">Submit Gratitude</label>
-                  <input type="text" class="form-control" id="item" name="item">
+            <form action="post/createGratitude" enctype="multipart/form-data" method="POST">
+                 <div class="mb-3">
+                 <label for="gratitudeItem" class="form-label">Submit Gratitude</label>
+                 <input type="text" class="form-control" id="item" name="item">
             </div>
- 
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" value="Upload" >Submit</button>
             </form>
+
+
+
+            
     
 
           <a class="btn btn-primary" href="/profile">Return Home</a>
@@ -42,3 +45,33 @@
   </div>
 </div>
 <%- include('partials/footer') -%>
+
+<!-- createPost: async (req, res) => {
+  try {
+    // Upload image to cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path);
+
+    await Post.create({
+      title: req.body.title,
+      image: result.secure_url,
+      cloudinaryId: result.public_id,
+      caption: req.body.caption,
+      likes: 0,
+      user: req.user.id,
+    });
+    console.log("Post has been added!");
+    res.redirect("/profile");
+  } catch (err) {
+    console.log(err);
+  }
+},
+createGratitude: async (req, res)=>{
+  try{
+      await Gratitude.create({
+        gratitudeItem: req.body.gratitudeItem})
+      console.log('Your gratitude for today has been logged!')
+      res.redirect('/gratitude')
+  }catch(err){
+      console.log(err)
+  }
+}, -->
