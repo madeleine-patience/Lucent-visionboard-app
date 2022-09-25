@@ -1,0 +1,44 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row mt-5">
+      <div class="col-6">
+          <div>
+              <h2>Welcome, <%= user.userName %></h2>
+              <!-- <p><strong>Email</strong>: <%= user.email %></p> -->
+              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+          </div>
+
+          <ul>
+            <a class="btn btn-primary" href="/gratitude">Gratitude</a>
+            <li><a> Gratitude</a></li>
+            <li><a> Gratitude</a></li>
+            <li><a> Gratitude</a></li>
+            <li><a> Gratitude</a></li>
+               </ul>
+    
+
+
+
+          <div class="mt-5">
+            <h2>Express Daily Gratitude</h2>
+            <h4>A regular act of expressing gratitude can put focus on those things in our life that we care about most. The more we focus and appreciate them; the more we will put energy into cultivating what makes us happy and feel good. </h4>
+
+
+            <form action="/createGratitude" method="POST">
+            <div>
+                  <label for="item" class="form-label">Submit Gratitude</label>
+                  <input type="text" class="form-control" id="item" name="item">
+            </div>
+ 
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+    
+
+          <a class="btn btn-primary" href="/profile">Return Home</a>
+        </div>  
+      </div>  
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') -%>
