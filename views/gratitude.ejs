@@ -46,32 +46,3 @@
 </div>
 <%- include('partials/footer') -%>
 
-<!-- createPost: async (req, res) => {
-  try {
-    // Upload image to cloudinary
-    const result = await cloudinary.uploader.upload(req.file.path);
-
-    await Post.create({
-      title: req.body.title,
-      image: result.secure_url,
-      cloudinaryId: result.public_id,
-      caption: req.body.caption,
-      likes: 0,
-      user: req.user.id,
-    });
-    console.log("Post has been added!");
-    res.redirect("/profile");
-  } catch (err) {
-    console.log(err);
-  }
-},
-createGratitude: async (req, res)=>{
-  try{
-      await Gratitude.create({
-        gratitudeItem: req.body.gratitudeItem})
-      console.log('Your gratitude for today has been logged!')
-      res.redirect('/gratitude')
-  }catch(err){
-      console.log(err)
-  }
-}, -->
