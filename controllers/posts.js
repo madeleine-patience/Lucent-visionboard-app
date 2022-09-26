@@ -49,7 +49,7 @@ module.exports = {
   createGratitude: async (req, res)=>{
     try{
         await Gratitude.create({
-          gratitudeItem: req.body.gratitudeItem})
+          gratitudeItem: req.body.item})
         console.log('Your gratitude for today has been logged!')
         res.redirect('/gratitude')
     }catch(err){
