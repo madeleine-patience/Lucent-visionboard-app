@@ -2,6 +2,8 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Gratitude= require("../models/Gratitude")
 const path = require("path")
+
+
 module.exports = {
   getProfile: async (req, res) => {
     try {
@@ -23,6 +25,17 @@ module.exports = {
     try {
       const post = await Post.findById(req.params.id);
       res.render("post.ejs", { post: post, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  getGratitude: async (req, res) => {
+    try {
+      const gratitudeLog = await Gratitude.find({ user: req.user.id });
+      res.render("gratitude.ejs", { gratitudeLog: gratitudeLog, user: req.user });
+
+
     } catch (err) {
       console.log(err);
     }
@@ -49,22 +62,20 @@ module.exports = {
   createGratitude: async (req, res)=>{
     try{
         await Gratitude.create({
-          gratitudeItem: req.body.item})
+          gratitudeItem1: req.body.item,
+          userId: req.user.id,
+          date: new Date(),
+
+        })
         console.log('Your gratitude for today has been logged!')
         res.redirect('/gratitude')
+        console.log(req.body.item)
+        console.log(req.user.id)
     }catch(err){
         console.log(err)
     }
 },
-  getGratitude: async (req, res) => {
-    try {
-      
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("gratitude.ejs", { posts: posts, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
+
 getCreatePostPage: async (req,res) => {
   try {
       res.render('createPost.ejs', {user: req.user})

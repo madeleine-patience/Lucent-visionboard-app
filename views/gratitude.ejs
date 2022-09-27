@@ -26,17 +26,43 @@
 
             <form action="/post/createGratitude" method="POST">
                  <div class="mb-3">
-                 <label for="gratitudeItem" class="form-label">Submit Gratitude</label>
+                 <label for="gratitudeItem1" class="form-label">Submit Gratitude</label>
                  <input type="text" class="form-control" id="item" name="item">
+
+                 <label for="gratitudeItem2" class="form-label"></label>
+                 <input type="text" class="form-control" id="item" name="item">
+
+                 <label for="gratitudeItem3" class="form-label"></label>
+                 <input type="text" class="form-control" id="item" name="item">
+                 
+                 <label for="gratitudeItem4" class="form-label"></label>
+                 <input type="text" class="form-control" id="item" name="item">
+                 
+                 <label for="gratitudeItem5" class="form-label"></label>
+                 <input type="text" class="form-control" id="item" name="item">
+              
             </div>
 
             <button type="submit" class="btn btn-primary" value="Upload" >Submit</button>
             </form>
 
+       
+
+            <ul>
+              <a href="/posts"><i id='backButton' class="fa fa-arrow-left"></i></a>
+  
+              <li class='postItem' data-id='<%=gratitudeLog._id%>'>
+                  <div class='title'> <h4><%= gratitudeLog.gratitudeItem1 %></h4>  </div> 
+                  <div class='date'> Posted on <%= new Date(gratitudeLog.date).toLocaleString('en-us') %>  </div>
+                  <div id="actionsContainer">
+                 
+                      
+                  </div>
+          </li>
+          </ul>
+        
 
 
-            
-    
 
           <a class="btn btn-primary" href="/profile">Return Home</a>
         </div>  
