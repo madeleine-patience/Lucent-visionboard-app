@@ -13,6 +13,7 @@ router.put("/likePost/:id", postsController.likePost);
 
 router.delete("/deletePost/:id", postsController.deletePost);
 
+
 router.get('/getGratitude', ensureAuth, postsController.getGratitude)
 router.post("/createGratitude", ensureAuth, postsController.createGratitude)
 

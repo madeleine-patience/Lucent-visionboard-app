@@ -2,7 +2,7 @@
 
 <div class="#">
   <div class="#">
-      <div class="#"">
+      <div class="#">
           <div>
               <h2>Welcome, <%= user.userName %></h2>
               <!-- <p><strong>Email</strong>: <%= user.email %></p> -->
@@ -19,7 +19,7 @@
 
 
 
-            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+            <form action="/post/createVisionBoard" enctype="multipart/form-data" method="POST">
               <!-- <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
                   <input type="text" class="form-control" id="title" name="title">
@@ -36,10 +36,10 @@
             </form>
       <div class="#">
         <ul class="flex flex-wrap justify-center ">
-        <% for(let i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="w-60 p-2" src="<%= posts[i].image%>">
+        <% for(let i=0; i<visionBoardItems.length; i++) {%>
+            <li class ='postItem' data-id="<%visionBoardItems[i]._id%>">
+            <a href="/post/<%= visionBoardItems[i]._id%>">
+              <img class="w-60 p-2" src="<%= visionBoardItems[i].image%>">
             </a>
           </li>
         <% } %>
