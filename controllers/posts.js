@@ -32,7 +32,7 @@ module.exports = {
 
   getGratitude: async (req, res) => {
     try {
-      const gratitudeLog = await Gratitude.find({ user: req.user.id });
+      const gratitudeLog = await Gratitude.find({ userId: req.user.id });
       res.render("gratitude.ejs", { gratitudeLog: gratitudeLog, user: req.user });
 
 

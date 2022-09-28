@@ -1,17 +1,17 @@
 <%- include('partials/header') -%>
 
-<main class="container">
-  <div class="row justify-content-center">
-    <section class="col-6 mt-5">
+<main class="#">
+  <div class="#">
+    <section class="#">
       <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-      <div class="alert alert-danger"><%= el.msg %></div>
+      <div class="#"><%= el.msg %></div>
       <% }) %> <% } %> <% if (locals.messages.info) { %> <%
       messages.info.forEach( el => { %>
-      <div class="alert alert-info"><%= el.msg %></div>
+      <div class="#"><%= el.msg %></div>
       <% }) %> <% } %>
       <form action="/login" method="POST">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
+        <div class="#">
+          <label for="exampleInputEmail1" class="#"
             >Email address</label
           >
           <input
@@ -31,7 +31,8 @@
             name="password"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        
+        <button class="inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900" type="submit" class="btn btn-primary">Submit</button>
       </form>
     </section>
   </div>

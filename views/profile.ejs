@@ -1,26 +1,22 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row mt-5">
-      <div class="col-6">
+
+<div class="#">
+  <div class="#">
+      <div class="#"">
           <div>
               <h2>Welcome, <%= user.userName %></h2>
               <!-- <p><strong>Email</strong>: <%= user.email %></p> -->
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
           </div>
-          <div class="mt-5">
+
+
+   
+
+
+
+          <div class="p-6 w-11/12	 mx-auto bg-white rounded-xl shadow-lg flex-col	 space-x-4">
             <h2>Create Your Vision Board</h2>
             <h4>A vision board is a visual representation of your goals. Everytime you login you will see a spread of images representing what you are working towards. A simple reminder can help motivate and encourage; helping you get there faster. </h4>
-
-           <ul>
-            <a class="btn btn-primary" href="/gratitude">Gratitude</a>
-            <li><a> Gratitude</a></li>
-          <li><a> Gratitude</a></li>
-          <li><a> Gratitude</a></li>
-          <li><a> Gratitude</a></li>
-
-
-           </ul>
-
 
 
 
@@ -35,20 +31,18 @@
                 <label for="caption" class="form-label">Caption</label>
                 <textarea class="form-control" id="caption" name="caption"></textarea>
               </div> -->
-              <div class="mb-3">
+              <div class="#">
                 <label for="imgUpload" class="form-label"></label>
                 <input type="file" class="form-control" id="imageUpload" name="file">
               </div>
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+              <button type="submit" class="" value="Upload">Submit</button>
             </form>
-          </div>
-      </div>
-      <div class="col-6">
-        <ul class="row list-unstyled">
+      <div class="#">
+        <ul class="flex flex-wrap justify-center ">
         <% for(let i=0; i<posts.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
             <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
+              <img class="w-60 p-2" src="<%= posts[i].image%>">
             </a>
           </li>
         <% } %>
@@ -60,4 +54,7 @@
     </div>
   </div>
 </div>
+</div>
+</div>
+
 <%- include('partials/footer') -%>

@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-<div class="container">
+<div class="primary ">
   <div class="row mt-5">
       <div class="col-6">
           <div>
@@ -49,18 +49,14 @@
        
 
             <ul>
-              <a href="/posts"><i id='backButton' class="fa fa-arrow-left"></i></a>
-  
-              <li class='postItem' data-id='<%=gratitudeLog._id%>'>
-                  <div class='title'> <h4><%= gratitudeLog.gratitudeItem1 %></h4>  </div> 
-                  <div class='date'> Posted on <%= new Date(gratitudeLog.date).toLocaleString('en-us') %>  </div>
-                  <div id="actionsContainer">
-                 
-                      
-                  </div>
-          </li>
-          </ul>
-        
+                <% for(let i=0; i< gratitudeLog.length; i++) { %>
+                  <li class ='postItem' data-id="<%gratitudeLog[i]._id%>">
+                  <div class="title"> <h4> <%= gratitudeLog[i].gratitudeItem1.join(', ') %> </h4> </div>
+                  <div class="date" Posted on <%= new Date(gratitudeLog[i].date).toLocaleDateString('en-us') %>
+                  <div id = "actionsContainer"></div>
+             </div>
+            </li>
+        <%} %>
 
 
 
