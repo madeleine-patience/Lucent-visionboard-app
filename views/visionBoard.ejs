@@ -1,25 +1,17 @@
 <%- include('partials/header') -%>
 
-<div class="#">
-  <div class="#">
-      <div class="#">
-          <div>
-              <h2>Welcome, <%= user.userName %></h2>
-              <!-- <p><strong>Email</strong>: <%= user.email %></p> -->
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-          </div>
+<div class="p-6 w-11/12	 mx-auto bg-white rounded-xl shadow-lg flex-col	 space-x-4">
 
+  <div class="flex flex-col	 p-6 flex justify-start">
+       <h4 class="text-4xl font-serif text-center ">Create Your Vision Board</h4>
+       <div class="p-6 w-8/12 mx-auto flex-col space-x-4	">
+            <h5 class="text-center">A vision board is a visual representation of your goals. Everytime you login you will see a spread of images representing what you are working towards. A simple reminder can help motivate and encourage; helping you get there faster. </h5>
+      </div>
+</div>
 
+<!-- Form! -->
 
-          <div class="p-6 w-11/12	 mx-auto bg-white rounded-xl shadow-lg flex-col	 space-x-4">
-            <h4>Create Your Vision Board</h4>
-            <h4>A vision board is a visual representation of your goals. Everytime you login you will see a spread of images representing what you are working towards. A simple reminder can help motivate and encourage; helping you get there faster. </h4>
-
-
-
-
-
-            <form action="/post/createVisionBoard" enctype="multipart/form-data" method="POST">
+            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
               <!-- <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
                   <input type="text" class="form-control" id="title" name="title">
@@ -28,28 +20,39 @@
                 <label for="caption" class="form-label">Caption</label>
                 <textarea class="form-control" id="caption" name="caption"></textarea>
               </div> -->
-              <div class="#">
-                <label for="imgUpload" class="form-label"></label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
-              </div>
-              <button type="submit" class="" value="Upload">Submit</button>
+              <div class="text-center	">
+                <label for="imgUpload" class="form-label bg-pink"></label>
+                <input type="file" class="form-control " id="imageUpload" name="file">
+            
+              <button type="submit" class="bg-[#1da1f2] text-white" value="Upload">Submit</button>
             </form>
+            </div>
+<!-- Form End -->
+
+
+<!-- Vision Board Display -->
+
       <div class="#">
         <ul class="flex flex-wrap justify-center ">
-        <% for(let i=0; i<visionBoardItems.length; i++) {%>
-            <li class ='postItem' data-id="<%visionBoardItems[i]._id%>">
-            <a href="/post/<%= visionBoardItems[i]._id%>">
-              <img class="w-60 p-2" src="<%= visionBoardItems[i].image%>">
+        <% for(let i=0; i<posts.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5">
+            <a href="/post/<%= posts[i]._id%>">
+              <img class="h-80 w-full object-cover p-1 rounded-2xl	" src="<%= posts[i].image%>">
             </a>
           </li>
         <% } %>
+
         </ul>
-        <div class="row justify-content-center mt-5">
-          <a class="btn btn-primary" href="/feed">Return to Feed</a>
-        </div>  
       </div>  
+
+
+<!-- Vision Board End -->
+
+
+    </div>
     </div>
   </div>
+</div>
 </div>
 </div>
 </div>
