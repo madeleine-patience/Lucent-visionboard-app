@@ -1,8 +1,8 @@
 <%- include('partials/header') -%>
 
-<main class="#">
+<main class="container mx-auto">
   <div class="#">
-    <section class="#">
+       <section class="p-6 mx-auto bg-white rounded-xl  flex-col	flex h-screen space-x-4 w-6/12	mt-12		">
       <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
       <div class="#"><%= el.msg %></div>
       <% }) %> <% } %> <% if (locals.messages.info) { %> <%
@@ -10,23 +10,23 @@
       <div class="#"><%= el.msg %></div>
       <% }) %> <% } %>
       <form action="/login" method="POST">
-        <div class="#">
-          <label for="exampleInputEmail1" class="#"
+        <div class="flex flex-col mb-4">
+          <label for="exampleInputEmail1" class="form-label"
             >Email address</label
           >
           <input
             type="email"
-            class="form-control"
+            class="form-control bg-gray-300 rounded-lg	"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             name="email"
           />
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+        <div class="flex flex-col mb-4">
+          <label for="exampleInputPassword1" class="#">Password</label>
           <input
             type="password"
-            class="form-control bg-gray-300 rounded-lg	mt-2.5	"
+            class="form-control bg-gray-300 rounded-lg	"
             id="exampleInputPassword1"
             name="password"
           />
