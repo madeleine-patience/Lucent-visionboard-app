@@ -7,6 +7,9 @@
       <% if(posts.length==0) {%>   <h2 class="text-5xl font-serif py-2	" >Welcome, <%= user.userName %></h2> <% } %>
 
 
+
+
+
 <!-- Vision Board Display --> 
     <% const randomNumber = Math.floor(Math.random()*posts.length) %>
     <% if(posts.length==0){ %>
@@ -41,14 +44,22 @@
 
 
 <!-- Graitutde Item Display -->
+
+
+
+
     <% if(gratitudeLog.length ==0  ){ %>
       <a href="#">
       </a>
-    <% } else{ %>  
+    <% } else{ %> 
+      <h5><% gratitudeLog.length  %></h5>
       <% const arrayNum= Math.floor(Math.random()*5) %>
       <% const gratitudeLogEntry= Math.floor(Math.random()* gratitudeLog.length) %>
       <h5 class="text-4xl font-serif text-center pt-3.5	"> I was once gratfeul for...</h5>
-      <h5 class="text-xl  text-center italic pt-3.5	"> <%= gratitudeLog[gratitudeLogEntry].gratitudeItem1[arrayNum] %> </h5>
+      <h5><% const sortedArr= gratitudeLog[gratitudeLogEntry].gratitudeItem1.filter(items=> items.length>1) %> </h5>
+      <h5><% const arrNum= Math.floor(Math.random() *sortedArr.length) %></h5>
+      <h5 class="text-xl  text-center italic pt-3.5	"> <%=sortedArr[arrNum] %> </h5>
+
     <% } %>
 
 
