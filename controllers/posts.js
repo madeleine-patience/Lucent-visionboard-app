@@ -16,7 +16,7 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id });
-      res.render("feed.ejs", { posts: posts });
+      res.render("visionBoard.ejs", { posts: posts });
     } catch (err) {
       console.log(err);
     }
@@ -54,7 +54,7 @@ module.exports = {
         user: req.user.id,
       });
       console.log("Post has been added!");
-      res.redirect("/profile");
+      res.redirect("/visionBoard");
     } catch (err) {
       console.log(err);
     }
