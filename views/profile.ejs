@@ -56,8 +56,8 @@
       <h5><% gratitudeLog.length  %></h5>
       <% const arrayNum= Math.floor(Math.random()*5) %>
       <% const gratitudeLogEntry= Math.floor(Math.random()* gratitudeLog.length) %>
-      <h5 class="text-3xl font-serif text-center pt-3.5	"> I was once gratfeul for...</h5>
-      <h5><% const sortedArr= gratitudeLog[gratitudeLogEntry].gratitudeItem1.filter(items=> items.length>0) %> </h5>
+      <h5 class="text-3xl font-serif text-center pt-3.5	"> I was once grateful for...</h5>
+      <h5><% const sortedArr= gratitudeLog[gratitudeLogEntry].gratitudeItem1.filter(items=> items.length>0)  %> </h5>
       <h5><% const arrNum= Math.floor(Math.random() *sortedArr.length) %></h5>
       <h5 class="text-xl  text-center italic pt-3.5	"> <%=sortedArr[arrNum] %> </h5>
 
