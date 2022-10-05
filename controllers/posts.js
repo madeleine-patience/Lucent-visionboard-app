@@ -8,7 +8,9 @@ module.exports = {
   getProfile: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      const gratitudeLog = await Gratitude.find({ userId: req.user.id });
+
+      res.render("profile.ejs", { posts: posts, user: req.user, gratitudeLog:gratitudeLog });
     } catch (err) {
       console.log(err);
     }
@@ -33,6 +35,7 @@ module.exports = {
   getGratitude: async (req, res) => {
     try {
       const gratitudeLog = await Gratitude.find({ userId: req.user.id });
+      console.log(gratitudeLog)
       res.render("gratitude.ejs", { gratitudeLog: gratitudeLog, user: req.user });
 
 
@@ -98,10 +101,14 @@ getCreatePostPage: async (req,res) => {
       console.log(err);
     }
   },
+
+
+
   deletePost: async (req, res) => {
     try {
       // Find post by id
       let post = await Post.findById({ _id: req.params.id });
+      
       // Delete image from cloudinary
       await cloudinary.uploader.destroy(post.cloudinaryId);
       // Delete post from db
@@ -112,4 +119,9 @@ getCreatePostPage: async (req,res) => {
       res.redirect("/profile");
     }
   },
+
+
+
+
+
 };

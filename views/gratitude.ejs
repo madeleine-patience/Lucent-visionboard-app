@@ -1,4 +1,5 @@
 <%- include('partials/header') -%>
+<<<<<<< HEAD
 <div class="primary ">
   <div class="row mt-5">
       <div class="col-6">
@@ -13,19 +14,37 @@
                  <div class="mb-3">
                  <label for="gratitudeItem1" class="form-label">Submit Gratitude</label>
                  <input type="text" class="form-control" id="item" name="item">
+=======
+<div class="">
+  <div class="">
+      <div class="">
+
+          <div class="p-6  mx-auto bg-white rounded-xl shadow-lg flex-col	 space-x-4">
+          <div class ="flex flex-col	 p-6 flex justify-start">
+          <h2 class="text-4xl font-serif text-center  ">Express Daily Gratitude</h2>
+          <div class="p-6 w-8/12 mx-auto flex-col space-x-4	">
+          <h4 class ="text-center" >A regular act of expressing gratitude can put focus on those things in our life that we care about most. The more we focus and appreciate them; the more we will put energy into cultivating what makes us happy and feel good. </h4>
+         
+      
+            <form  action="/post/createGratitude" method="POST">
+                 <div class="flex flex-col  w-8/12 mx-auto	">
+                 <label  for="gratitudeItem1" class="form-label text-center text-xl font-serif text-center my-6	  ">Log Gratitude</label>
+                 <input type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5	" id="item" name="item">
+>>>>>>> 4eab6f83f116f3b52811e4fa5d9e52d619ceb01a
 
                  <label for="gratitudeItem2" class="form-label"></label>
-                 <input type="text" class="form-control" id="item" name="item">
+                 <input type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5	" id="item" name="item">
 
                  <label for="gratitudeItem3" class="form-label"></label>
-                 <input type="text" class="form-control" id="item" name="item">
+                 <input type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5	" id="item" name="item">
                  
                  <label for="gratitudeItem4" class="form-label"></label>
-                 <input type="text" class="form-control" id="item" name="item">
+                 <input type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5	" id="item" name="item">
                  
                  <label for="gratitudeItem5" class="form-label"></label>
-                 <input type="text" class="form-control" id="item" name="item">
+                 <input type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5	" id="item" name="item">
               
+<<<<<<< HEAD
             </div>
           </div>
             <button type="submit" class="btn btn-primary" value="Upload" >Submit</button>
@@ -34,20 +53,44 @@
             </div>
           </div>
        
+=======
+     
+            <button type="submit" class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" value="Upload" >Submit</button>
+            </form>
+     </div>
+>>>>>>> 4eab6f83f116f3b52811e4fa5d9e52d619ceb01a
 
             <ul>
                 <% for(let i=0; i< gratitudeLog.length; i++) { %>
+
                   <li class ='postItem' data-id="<%gratitudeLog[i]._id%>">
-                  <div class="title"> <h4> <%= gratitudeLog[i].gratitudeItem1.join(', ') %> </h4> </div>
-                  <div class="date" Posted on <%= new Date(gratitudeLog[i].date).toLocaleDateString('en-us') %>
+                  <div class="title text-center  text-center text-xl font-serif text-center my-6	"> <h4> <%= gratitudeLog[i].date%> </h4> </div>
+                  <div class="title text-center"> <h4> <%= gratitudeLog[i].gratitudeItem1[0]%> </h4> </div>
+                  <div class="title text-center"> <h4> <%= gratitudeLog[i].gratitudeItem1[1]%> </h4> </div>
+                  <div class="title text-center"> <h4> <%= gratitudeLog[i].gratitudeItem1[2]%> </h4> </div>
+                  <div class="title text-center"> <h4> <%= gratitudeLog[i].gratitudeItem1[3]%> </h4> </div>
+                  <div class="title text-center"> <h4> <%= gratitudeLog[i].gratitudeItem1[4]%> </h4> </div>
+                  <!-- <div class="date" Posted on <%= new Date(gratitudeLog[i].date).toLocaleDateString('en-us') %> -->
                   <div id = "actionsContainer"></div>
-             </div>
             </li>
-        <%} %>
+        <%} %> 
 
-
-
-          <a class="btn btn-primary" href="/profile">Return Home</a>
+         </div>
+          </div>
+              <%if(gratitudeLog){ %>
+        <form
+          action="/post/deleteGratitude/<%= gratitudeLog.id %>?_method=DELETE"
+          method="POST"
+          class="#"
+        >
+      <!-- <div class="flex justify-center" >
+          <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" type="submit">Delete Vision Board Item</button>
+  </div> -->
+        </form>
+        <%}%>
+    </div>
+          </div>
+          <!-- <a class="btn btn-primary" href="/profile">Return Home</a> -->
         </div>  
       </div>  
     </div>

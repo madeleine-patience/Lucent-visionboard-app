@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>
-    <main class="container">
-        <div class="row justify-content-center">
-            <section class="col-6 mt-5">
+    <main class="container mx-auto">
+        <div class="#">
+            <section class="p-6 mx-auto bg-white rounded-xl  flex-col	flex h-screen space-x-4 w-9/12	mt-12		">
                 <% if (locals.messages.errors) { %>
                     <% messages.errors.forEach( el => { %>
                         <div class="alert alert-danger"><%= el.msg %></div>
@@ -12,28 +12,32 @@
                         <div class="alert alert-info"><%= el.msg %></div>
                     <% }) %>    
                 <% } %>
+                <div class ="flex justify-center	">
                 <form action="/signup" method="POST">
-                    <div class="mb-3">
-                        <label for="userName" class="form-label">User Name</label>
-                        <input type="text" class="form-control" id="userName" name="userName">
+                    <div class="flex flex-col mb-4">
+                        <label for="userName" class="mb-2 text-lg ">User Name</label>
+                        <input type="text" class="form-control bg-gray-300 rounded-lg	" id="userName" name="userName">
                       </div>
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                    <div class="flex flex-col mb-4">
+                      <label for="exampleInputEmail1" class="mb-2 text-lg ">Email address</label>
+                      <input type="email" class="form-control bg-gray-300 rounded-lg	" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
                       <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
-                    <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" name="password">
+                    <div class="flex flex-col mb-4">
+                      <label for="password" class="mb-2 text-lg ">Password</label>
+                      <input type="password" class="form-control bg-gray-300 rounded-lg		" id="password" name="password">
                     </div>
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+                    <div class="flex flex-col mb-4">
+                        <label for="confirmPassword" class="mb-2 text-lg ">Confirm Password</label>
+                        <input type="password" class="form-control bg-gray-300 rounded-lg" id="confirmPassword" name="confirmPassword">
                       </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mx-auto">Submit</button>
+                  </div> 
                   </form>
             </section>
         </div>
     </main>
+
+
 
 <%- include('partials/footer') -%>

@@ -1,25 +1,29 @@
+
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-6">
+<div class="p-6 w-11/12	 mx-auto bg-white rounded-xl shadow-lg flex-col	 space-x-4">  <div class="row justify-content-center mt-5">
+    <div class="row justify-content-between">
+
+
       <h2><%= post.title %></h2>
-      <img class="img-fluid" src="<%= post.image%>" />
-      <div class="row justify-content-between">
+      <img class="mx-auto" src="<%= post.image%>" />
+      <div class="">
         <form
           class="col-1"
           action="/post/likePost/<%= post.id %>?_method=PUT"
           method="POST"
         >
-          <button class="btn btn-primary fa fa-heart" type="submit"></button>
+          <button class="btn btn-primary fa fa-heart text-center" type="submit"></button>
         </form>
-        <h3 class="col-3">Likes: <%= post.likes %></h3>
+        <!-- <h3 class="col-3">Likes: <%= post.likes %></h3> -->
         <%if(post.user == user.id){ %>
         <form
           action="/post/deletePost/<%= post.id %>?_method=DELETE"
           method="POST"
-          class="col-3"
+          class="#"
         >
-          <button class="btn btn-primary fa fa-trash" type="submit"></button>
+      <div class="flex justify-center" >
+          <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" type="submit">Delete Vision Board Item</button>
+  </div>
         </form>
         <%}%>
       </div>
