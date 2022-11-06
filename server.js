@@ -36,6 +36,9 @@ app.use(logger("dev"));
 //Use forms for put / delete
 app.use(methodOverride("_method"));
 
+
+
+
 // Setup Sessions - stored in MongoDB
 app.use(
   session({
@@ -57,9 +60,14 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use("/post", postRoutes);
 
+
+
+
+
+
 //Server Running
 app.listen(process.env.PORT, () => {
   console.log("Server is running, you better catch it!");
 });
 
-
+// Affirmation API

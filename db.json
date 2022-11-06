@@ -1,0 +1,24 @@
+{
+  "affirmations": [
+    {
+      "text": "Lucy And Chelsea",
+      "day": "Lucy and Chelsea having fun. ",
+      "reminder": true,
+      "id": 1
+    },
+    {
+      "text": "asdfsa",
+      "day": "asdfasd",
+      "reminder": true,
+      "camera": "",
+      "id": 2
+    },
+    {
+      "text": "asdfsad",
+      "day": "asdfsadf",
+      "reminder": true,
+      "camera": "",
+      "id": 3
+    }
+  ]
+}

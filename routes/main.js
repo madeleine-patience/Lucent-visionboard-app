@@ -15,5 +15,7 @@ router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
 router.get("/gratitude", ensureAuth, postsController.getGratitude);
+router.get("/affirmations", ensureAuth, postsController.getAffirmationsPage);
+router.get("/api/", ensureAuth,postsController.getAffirmation);
 
 module.exports = router;

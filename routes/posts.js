@@ -16,7 +16,7 @@ router.delete("/deletePost/:id", postsController.deletePost);
 
 router.get('/getGratitude', ensureAuth, postsController.getGratitude)
 router.post("/createGratitude", ensureAuth, postsController.createGratitude)
-
+router.get("/api", ensureAuth,postsController.getAffirmation);
 
 
 module.exports = router;
