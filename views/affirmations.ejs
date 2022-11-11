@@ -1,4 +1,5 @@
 <%- include('partials/header') -%>
+
 <div class="p-6 w-11/12	 mx-auto bg-white rounded-xl shadow-lg flex-col	 space-x-4">
   <div class="flex flex-col	 p-6 flex justify-start">
 
@@ -7,14 +8,72 @@
 
     <div class="p-6 w-9/12 mx-auto flex-col space-x-4	">
 
-    <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id="btn" > Money </button>
-    <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id='love'>Love </button>
-    <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id='friendship'> Friendship </button>
-    <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id="success"> Success </button>
-    <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id="self love"> Self Love </button>
-    <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id="health">Health </button>
-    <script class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" src="main.js"></script>
+    <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id="money" onClick="getAffirmation(this.id)" > Money </button>
+    <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id='love' onClick="getAffirmation(this.id)" >Love </button>
+    <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id='friendship'  onClick="getAffirmation(this.id)"> Friendship </button>
+    <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id="success"  onClick="getAffirmation(this.id)"> Success </button>
+    <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id="self love"  onClick="getAffirmation(this.id)"> Self Love </button>
+    <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id="health"  onClick="getAffirmation(this.id)">Health </button>
+  
+
+    <h1 id="affirm"> Your Affirmation </h1>
+
     </div>
+
+
+
+<script>
+
+const affirmations ={
+    'money':{
+            1:"I attract money to me easily and effortlessly.",
+            2:"Money is energy, and it flows into my life constantly.",
+            3:"Money falls into my lap in miraculous ways."
+},
+    'love':{
+            "1":"I am a good human being and deserve love.",
+            "2":"The more I love myself, the more love I have to give others.",
+            "3":"My heart is open."
+},
+    'friendship':{
+            "1":"My friends make me laugh, and that gives me joy.",
+            "2":"I can make friends naturally and without effort.",
+            "3":"Loving myself lets me love my friends genuinely."
+},
+    'self love': {
+            "1":"I accept myself exactly as I am now.",
+            "2":"I am constantly growing, evolving and becoming my best self..",
+            "3":"My imperfections are what make me unique."
+            },
+    'health': {
+            "1":"I deserve to feel healthy and vibrant.",
+            "2":"It feels good to take care of myself.",
+            "3":"My body is sacred and I will take care of it."
+        },
+    'success':{
+            "1":"I am worthy enough to follow my dreams and manifest my desires.",
+            "2":"I believe in myself.",
+            "3":"I am worthy of my dream job and am creating the career of my dreams."
+
+}
+
+}
+
+ const getAffirmation= (clicked_id) => {
+  let specialNum=Math.floor(Math.random() * (3)+1)
+  console.log(clicked_id)
+  let category= document.getElementById("affirm").innerText=affirmations[clicked_id][specialNum]
+  console.log(category)
+  // let specialNum=Math.floor(Math.random() * (3)+1)
+  // console.log(clicked_id)
+  // document.getElementById("affirm").innerText=affirmations.clicked_id[specialNum] 
+  // console.log ('affirmation ')
+  }
+
+  
+  document.getElementById("affirm").addEventListener("click", getAffirmation)
+
+</script>
 
 
 <%- include('partials/footer') -%>

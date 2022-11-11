@@ -4,41 +4,6 @@ const Gratitude= require("../models/Gratitude")
 const path = require("path")
 
 
-const affirmations ={
-    'money':{
-            "1":"I attract money to me easily and effortlessly.",
-            "2":"Money is energy, and it flows into my life constantly.",
-            "3":"Money falls into my lap in miraculous ways."
-},
-    'love':{
-            "1":"I am a good human being and deserve love.",
-            "2":"The more I love myself, the more love I have to give others.",
-            "3":"My heart is open."
-},
-    'friendship':{
-            "1":"My friends make me laugh, and that gives me joy.",
-            "2":"I can make friends naturally and without effort.",
-            "3":"Loving myself lets me love my friends genuinely."
-},
-    'self love': {
-            "1":"I accept myself exactly as I am now.",
-            "2":"I am constantly growing, evolving and becoming my best self..",
-            "3":"My imperfections are what make me unique."
-            },
-    'health': {
-            "1":"I deserve to feel healthy and vibrant.",
-            "2":"It feels good to take care of myself.",
-            "3":"My body is sacred and I will take care of it."
-        },
-    'success':{
-            "1":"I am worthy enough to follow my dreams and manifest my desires.",
-            "2":"I believe in myself.",
-            "3":"I am worthy of my dream job and am creating the career of my dreams."
-
-}
-
-}
-
 module.exports = {
   getProfile: async (req, res) => {
     try {
@@ -186,15 +151,37 @@ getAffirmationsPage: async (req, res) => {
     }
   },
 
+clickAffirmations: async(req,res)=>{
+  try{
+  let randomNumber = Math.floor(Math.random() * (3))
+  }
+  catch (err){
+  console.log(err)
+
+    }},
 
 
 getAffirmation:('/api/',(request,response)=>{
 
     const affirmationCategory= request.params.affirmationCategory
-        response.json(affirmations)
+    if(affirmations[affirmationCategory]){
+        response.json(affirmations[affirmationCategory])
+    }
 }),
 
+
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

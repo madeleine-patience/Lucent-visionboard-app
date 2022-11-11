@@ -19,3 +19,5 @@ router.get("/affirmations", ensureAuth, postsController.getAffirmationsPage);
 router.get("/api/", ensureAuth,postsController.getAffirmation);
 
 module.exports = router;
+
+
