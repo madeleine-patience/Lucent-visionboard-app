@@ -1,7 +1,8 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
-const path = require("path")
 const Gratitude= require('../models/Gratitude')
+const path = require("path")
+
 
 module.exports = {
 
