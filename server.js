@@ -65,10 +65,7 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use("/post", postRoutes);
 app.use("/gratitude", gratitudeRoutes)
-<<<<<<< HEAD
-app.use("/addDescription", postRoutes);
-=======
->>>>>>> 63d1aefd7e640414b49f3f9115c6c9c12258e50e
+app.use("/description", postRoutes);
 
 
 
