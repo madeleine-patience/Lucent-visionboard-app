@@ -22,6 +22,7 @@ module.exports = {
       console.log(err);
     }
   },
+
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
@@ -30,8 +31,6 @@ module.exports = {
       console.log(err);
     }
   },
-
-
 
   createPost: async (req, res) => {
     try {
@@ -46,15 +45,20 @@ module.exports = {
         likes: 0,
         user: req.user.id,
       });
-      console.log("Post has been added!");
-      res.redirect("/visionBoard");
+      res.redirect("/addDescription");
     } catch (err) {
       console.log(err);
     }
   },
 
-
-
+  getEditDescription: async (req, res) => {
+    try {
+      const post = await Post.findById(req.params.id);
+      res.render("post.ejs", { post: post, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
 
 
 
@@ -66,6 +70,8 @@ getCreatePostPage: async (req,res) => {
       console.log(err)
   }
 },
+
+
   likePost: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
@@ -125,8 +131,6 @@ getAffirmation:('/api/',(request,response)=>{
 
 
 }
-
-
 
 
 

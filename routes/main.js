@@ -10,6 +10,8 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 router.get("/", homeController.getIndex);
 router.get("/profile", ensureAuth, postsController.getProfile);
 router.get("/visionBoard", ensureAuth, postsController.getFeed);
+// router.get("/description", ensureAuth, postsController.getVisionBoardDescription);
+
 router.get("/gratitude", ensureAuth, gratitudeController.getGratitude);
 
 router.get("/login", authController.getLogin);
@@ -19,6 +21,7 @@ router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
 router.get("/affirmations", ensureAuth, postsController.getAffirmationsPage);
 router.get("/api/", ensureAuth,postsController.getAffirmation);
+// router.get("/description/", ensureAuth,postsController.getVisionBoardDescription);
 
 module.exports = router;
 
