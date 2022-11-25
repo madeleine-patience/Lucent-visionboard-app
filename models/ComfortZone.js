@@ -20,4 +20,4 @@ const ComfortZone = new mongoose.Schema({
   
 
 module.exports = mongoose.model("AskTheUniverse", AskTheUniverseSchema);
-
+ 
