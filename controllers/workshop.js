@@ -18,22 +18,24 @@ module.exports = {
     }
   },
 
-//   createGratitude: async (req, res) => {
-//     try{
-//         await Gratitude.create({
-//           gratitudeItem1: req.body.item,
-//           userId: req.user.id,
-//           date: new Date(),   
+  createGratitude: async (req, res) => {
+    try{
+        await Manifesation.create({
+          whatToManifest: req.body.whatToManifest,
+          manifestationObstacles: req.body.manifestationObstacles,
+          manifestationAction: req.body.manifestationAction,
+          userId: req.user.id,
+          date: new Date(),   
 
-//         });
-//         console.log('Your gratitude for today has been logged!')
-//         res.redirect('/gratitude')
-//         console.log(req.body.item)
-//         console.log(req.user.id)
-//     }catch(err){
-//         console.log(err)
-//     }
-// },
+        });
+        console.log('Your manifesation has been logged!')
+        res.redirect('/profile')
+        console.log(req.body.item)
+        console.log(req.user.id)
+    }catch(err){
+        console.log(err)
+    }
+},
 
 
 //   deleteGratitude: async (req, res)=>{
