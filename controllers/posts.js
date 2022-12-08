@@ -46,11 +46,48 @@ module.exports = {
         user: req.user.id,
       });
       console.log(newPost._id)
-      res.redirect(`/addDescription/${newPost._id}`);
+      res.redirect(`/post/addDescription/${newPost._id}`);
     } catch (err) {
       console.log(err);
     }
   },
+
+
+
+  editPost: async (req, res) => {
+    try {
+      // Upload image to cloudinary
+      const post = await Post.findById(req.params.id)
+
+      post.title= req.body.title,
+      post.caption=req.body.caption,
+
+      console.log(newPost._id)
+      res.redirect('/visionBoard');
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+
+  createImageDescription: async (req, res)=>{
+    try{
+        await Gratitude.create({
+          gratitudeItem1: req.body.item,
+          userId: req.user.id,
+          date: new Date(),   
+
+        });
+        console.log('Your gratitude for today has been logged!')
+        res.redirect('/visionBoard')
+        console.log(req.body.item)
+        console.log(req.user.id)
+    }catch(err){
+        console.log(err)
+    }
+},
+
+
 
   getEditDescription: async (req, res) => {
     try {
