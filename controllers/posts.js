@@ -55,19 +55,31 @@ module.exports = {
 
 
   editPost: async (req, res) => {
-    try {
       // Upload image to cloudinary
-      const post = await Post.findById(req.params.id)
 
-      post.title= req.body.title,
-      post.caption=req.body.caption,
-
-      console.log(newPost._id)
-      res.redirect('/visionBoard');
-    } catch (err) {
-      console.log(err);
+      console.log(req)
+      //needs a FindOneAndUpdate call - changing the post title and caption will only update the 'post' object, won't write back to the db
+      //see DevDays editBlogPost
+      try{
+        await Post.findOneAndUpdate({_id: req.params.id}, {
+            title: req.body.title,
+            caption: req.body.caption})
+        console.log(`post ${req.params.id} has been updated!`)
+        res.redirect('/visionBoard')
+      }catch(err){
+        console.log(err)
     }
   },
+    //   const post = await Post.findById(req.params.id)
+
+    //   post.title= req.body.title,
+    //   post.caption=req.body.caption,
+
+    //   console.log(post._id)
+    //   res.redirect('/visionBoard');
+    // } catch (err) {
+    //   console.log(err);
+    // }
 
 
   createImageDescription: async (req, res)=>{

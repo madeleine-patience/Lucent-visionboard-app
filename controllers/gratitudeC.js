@@ -17,7 +17,7 @@ module.exports = {
     }
   },
 
-  createGratitude: async (req, res)=>{
+  createGratitude: async (req, res) => {
     try{
         await Gratitude.create({
           gratitudeItem1: req.body.item,
