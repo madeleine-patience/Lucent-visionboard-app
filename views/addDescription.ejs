@@ -1,20 +1,24 @@
 
 <%- include('partials/header') -%>
-<div class="p-6 w-11/12	 mx-auto bg-white rounded-xl shadow-lg flex-col	 space-x-4">  <div class="row justify-content-center mt-5">
+<div class="p-6 w-11/12	 mx-auto bg-white rounded-xl shadow-lg flex-col	space-x-4">  <div class="row justify-content-center mt-5 ">
 
 
-    <div class="row justify-content-between">
+
+
+    <div class="flex flex-row  justify-center">
       <h2><%= post.title %></h2>
-          <img class="mx-auto" src="<%= post.image%>" />
+          <img class="rounded-2xl" src="<%= post.image%>" />
 
-            <form  action="/post/editPost" method="PUT">
+<!-- Form Description -->
+            <form action="/post/editPost/<%=post.id%>?_method=PUT" method="POST">
                  <div class="flex flex-col  w-10/12 mx-auto	">
                     
-                 <label  for="title" class="form-label text-center text-xl font-serif text-center my-6	  ">Describe Vision</label>
-                 <input type="title" class="form-control bg-gray-300 rounded-lg	mt-2.5" id="item" name="item">
+                 <label  for="title" class="form-label text-center text-xl font-serif text-center my-6	  "></label>
+                <input type="title" class="form-control bg-gray-300 rounded-lg mt-2.5" id="title" name="title">
 
                  <label for="description" class="form-label"></label>
-                 <input type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5" id="item" name="item">
+                <input type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5 h-96	" id="caption" name="caption">
+                 <input type="hidden" name="id" value="<%=post.id%>">
 
      
             <button type="submit" class="my-6 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" value="Upload" >Submit</button>
@@ -27,23 +31,38 @@
                     action="/post/likePost/<%= post.id %>?_method=PUT"
                     method="POST"
                >
-               <button class="btn btn-primary fa fa-heart text-center" type="submit"></button>
-               </form>
-               <%if(post.user == user.id){ %>
-               <form
-                    action="/post/deletePost/<%= post.id %>?_method=DELETE"
-                    method="POST"
-                    class="#"
+          <!-- <button class="btn btn-primary fa fa-heart text-center" type="submit">Like</button>
+               </form> -->
+
+<!-- Form Description -->
+
+
+<!-- Cancel Button-->
+
+
+
+          <%if(post.user == user.id){ %>
+          <form
+            action="/post/deletePost/<%= post.id %>?_method=DELETE"
+            method="POST"
+            class="#"
                >
           <div class="flex justify-center" >
-               <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" type="submit">Delete Vision Board Item</button>
+               <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" type="submit">Cancel</button>
           </div>
                 </form>
+
+
+
         <%}%>
+</div>
+
+  <!-- Cancel Button-->
+
       </div>
     </div>
     <div class="col-3 mt-5">
-      <p><%= post.caption %></p>
+      <!-- <p><%= post.caption %></p> -->
     </div>
     <div class="col-6 mt-5">
       <a class="btn btn-primary" href="/profile">Return to Profile</a>
