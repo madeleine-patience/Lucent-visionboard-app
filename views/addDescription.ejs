@@ -9,6 +9,7 @@
       <h2><%= post.title %></h2>
           <img class="rounded-2xl" src="<%= post.image%>" />
 
+<<<<<<< HEAD
 <!-- Form Description -->
             <form action="/post/editPost/<%=post.id%>?_method=PUT" method="POST">
                  <div class="flex flex-col  w-10/12 mx-auto	">
@@ -18,6 +19,20 @@
 
                  <label for="description" class="form-label"></label>
                 <input type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5 h-96	" id="caption" name="caption">
+=======
+            <!-- <form  action="/post/editPost" method="PUT"> -->
+              <!-- Changed this form action to include the post id, lets us use it in the controller as req.params.id.
+              Since we're using methodOverride, set the method with ?_method=PUT. See the like/delete forms below as an example. -->
+              <form action="/post/editPost/<%=post.id%>?_method=PUT" method="POST">
+                 <div class="flex flex-col  w-10/12 mx-auto	">
+                    
+                 <label  for="title" class="form-label text-center text-xl font-serif text-center my-6	  ">Describe Vision</label>
+                <!-- changed name and id to 'title' - this gets passed to the controller as req.body.title -->
+                 <input type="title" class="form-control bg-gray-300 rounded-lg	mt-2.5" id="title" name="title">
+                 <label for="description" class="form-label"></label>
+                 <!-- changed name and id to 'caption' - this gets passed to the controller as req.body.caption -->
+                 <input type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5" id="caption" name="caption">
+>>>>>>> c693c2605e3ebc4bbf0b2fbeed43bc2efef528a2
                  <input type="hidden" name="id" value="<%=post.id%>">
 
      
@@ -31,6 +46,7 @@
                     action="/post/likePost/<%= post.id %>?_method=PUT"
                     method="POST"
                >
+<<<<<<< HEAD
           <!-- <button class="btn btn-primary fa fa-heart text-center" type="submit">Like</button>
                </form> -->
 
@@ -46,6 +62,15 @@
             action="/post/deletePost/<%= post.id %>?_method=DELETE"
             method="POST"
             class="#"
+=======
+               <button class="btn btn-primary fa fa-heart text-center" type="submit">Like</button>
+               </form>
+               <%if(post.user == user.id){ %>
+               <form
+                    action="/post/deletePost/<%= post.id %>?_method=DELETE"
+                    method="POST"
+                    class="#"
+>>>>>>> c693c2605e3ebc4bbf0b2fbeed43bc2efef528a2
                >
           <div class="flex justify-center" >
                <button class="my-6	 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" type="submit">Cancel</button>

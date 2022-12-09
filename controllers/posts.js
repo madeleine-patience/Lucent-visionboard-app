@@ -57,6 +57,7 @@ module.exports = {
   },
 
   editPost: async (req, res) => {
+<<<<<<< HEAD
     console.log(req);
     try {
       await Post.findOneAndUpdate(
@@ -70,8 +71,33 @@ module.exports = {
       res.redirect("/visionBoard");
     } catch (err) {
       console.log(err);
+=======
+      // Upload image to cloudinary
+
+      console.log(req)
+      //needs a FindOneAndUpdate call - changing the post title and caption will only update the 'post' object, won't write back to the db
+      //see DevDays editBlogPost
+      try{
+        await Post.findOneAndUpdate({_id: req.params.id}, {
+            title: req.body.title,
+            caption: req.body.caption})
+        console.log(`post ${req.params.id} has been updated!`)
+        res.redirect('/visionBoard')
+      }catch(err){
+        console.log(err)
+>>>>>>> c693c2605e3ebc4bbf0b2fbeed43bc2efef528a2
     }
   },
+    //   const post = await Post.findById(req.params.id)
+
+    //   post.title= req.body.title,
+    //   post.caption=req.body.caption,
+
+    //   console.log(post._id)
+    //   res.redirect('/visionBoard');
+    // } catch (err) {
+    //   console.log(err);
+    // }
 
   createImageDescription: async (req, res) => {
     try {
