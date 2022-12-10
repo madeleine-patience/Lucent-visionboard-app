@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-const manifestationSchema = new mongoose.Schema({
+const ManifestationSchema = new mongoose.Schema({
   whatToManifest: {
-    type: string,
+    type: String,
     required: true,
   },
   manifestationObstacles: {
@@ -10,7 +10,7 @@ const manifestationSchema = new mongoose.Schema({
     required: true
   },
   manifestationAction: {
-    type: string,
+    type: String,
     required: true,
   },
   

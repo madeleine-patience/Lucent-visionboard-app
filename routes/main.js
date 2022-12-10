@@ -4,6 +4,7 @@ const authController = require("../controllers/auth");
 const homeController = require("../controllers/home");
 const postsController = require("../controllers/posts");
 const gratitudeController = require("../controllers/gratitudeC");
+const workshopController= require("../controllers/workshop");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Main Routes - simplified for now
@@ -13,6 +14,7 @@ router.get("/visionBoard", ensureAuth, postsController.getFeed);
 // router.get("/description", ensureAuth, postsController.getVisionBoardDescription);
 
 router.get("/gratitude", ensureAuth, gratitudeController.getGratitude);
+router.get("/workshop", ensureAuth, workshopController.getManifestation);
 
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);
