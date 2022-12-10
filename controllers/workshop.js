@@ -18,7 +18,7 @@ module.exports = {
     }
   },
 
-  createGratitude: async (req, res) => {
+  createManifestation: async (req, res) => {
     try{
         await Manifesation.create({
           whatToManifest: req.body.whatToManifest,
