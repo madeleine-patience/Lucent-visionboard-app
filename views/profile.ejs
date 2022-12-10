@@ -4,7 +4,7 @@
   <div class="#">
     <div class="max-w-screen-lg mx-auto">
       <div
-        class="p-6 w-11/12 mx-auto bg-white rounded-xl shadow-lg flex-col space-x-4 max-w-screen-lg"
+        class="p-6 w-11/12 mx-auto bg-white rounded-xl flex-col space-x-4 max-w-screen-lg"
       >
         <% if(posts.length==0) {%>
         <h2 class="text-5xl font-serif py-2 text-center">
@@ -42,18 +42,6 @@
               >
             </div>
           </div>
-
-          <script type="text/javascript">
-            const api_url = "https://zenquotes.io/api/quotes/";
-
-            async function getapi(url) {
-              const response = await fetch(url);
-              var data = await response.json();
-              console.log(data);
-            }
-
-            getapi(api_url);
-          </script>
 
           <% } else{ %>
           <div class="w-1/2 mx-auto">

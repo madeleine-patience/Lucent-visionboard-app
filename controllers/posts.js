@@ -57,7 +57,6 @@ module.exports = {
   },
 
   editPost: async (req, res) => {
-<<<<<<< HEAD
     console.log(req);
     try {
       await Post.findOneAndUpdate(
@@ -71,7 +70,6 @@ module.exports = {
       res.redirect("/visionBoard");
     } catch (err) {
       console.log(err);
-=======
       // Upload image to cloudinary
 
       console.log(req)
@@ -85,8 +83,7 @@ module.exports = {
         res.redirect('/visionBoard')
       }catch(err){
         console.log(err)
->>>>>>> c693c2605e3ebc4bbf0b2fbeed43bc2efef528a2
-    }
+    }}
   },
     //   const post = await Post.findById(req.params.id)
 
