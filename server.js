@@ -15,6 +15,7 @@ const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const gratitudeRoutes = require("./routes/gratitude");
+const workshopRoutes= require("./routes/workshop")
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -66,7 +67,7 @@ app.use("/", mainRoutes);
 app.use("/post", postRoutes);
 app.use("/gratitude", gratitudeRoutes)
 app.use("/description", postRoutes);
-
+app.use("/workshop", workshopRoutes)
 
 
 

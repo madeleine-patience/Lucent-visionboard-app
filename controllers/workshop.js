@@ -1,6 +1,5 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
-const Gratitude= require('../models/Gratitude')
 const Manifestation= require('../models/Manifestation')
 const path = require("path")
 
@@ -10,7 +9,7 @@ module.exports = {
   getManifestation: async (req, res) => {
     try {
       const manifestation = await Manifestation.find({ userId: req.user.id });
-      res.render("workshop1.ejs", { manifestation: manifestation, user: req.user });
+      res.render("workshop.ejs", { manifestation: manifestation, user: req.user });
       console.log(manifestation) 
 
     } catch (err) {
@@ -20,18 +19,19 @@ module.exports = {
 
   createManifestation: async (req, res) => {
     try{
-        await Manifesation.create({
+        await Manifestation.create({
           whatToManifest: req.body.whatToManifest,
           manifestationObstacles: req.body.manifestationObstacles,
           manifestationAction: req.body.manifestationAction,
-          userId: req.user.id,
-          date: new Date(),   
+ 
 
         });
         console.log('Your manifesation has been logged!')
         res.redirect('/profile')
-        console.log(req.body.item)
-        console.log(req.user.id)
+        console.log(req.body.whatToManifest)
+        console.log(req.body.manifestationObstacles)
+        console.log(req.body.manifestationAction)
+
     }catch(err){
         console.log(err)
     }

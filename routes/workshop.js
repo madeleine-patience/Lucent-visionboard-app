@@ -7,8 +7,8 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Post Routes - simplified for now
 
-router.get("/", ensureAuth, workshopController.getManifestation)
-
+router.get("/", ensureAuth, workshopController.getManifestation),
+router.post("/createManifestation", ensureAuth, workshopController.createManifestation)        
 
 
 module.exports = router;
