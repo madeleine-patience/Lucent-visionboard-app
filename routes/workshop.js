@@ -9,6 +9,7 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 router.get("/", ensureAuth, workshopController.getManifestation),
 router.get("/getWorkshopOne", ensureAuth, workshopController.getWorkshopOne),
+router.get("/getWorkshopTwo", ensureAuth, workshopController.getWorkshopTwo),
 
 
 

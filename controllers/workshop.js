@@ -54,6 +54,19 @@ module.exports = {
   },
 
 
+  getWorkshopTwo: async (req, res) => {
+    try {
+
+      const manifestation = await Manifestation.find({ userId: req.user.id });
+      res.render("workshopTwo.ejs", { manifestation: manifestation, user: req.user })
+      console.log(manifestation) 
+      // res.redirect('/profile');
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+
 
 
 //   deleteGratitude: async (req, res)=>{
