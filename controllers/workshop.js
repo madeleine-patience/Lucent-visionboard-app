@@ -2,6 +2,7 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Manifestation= require('../models/Manifestation')
 const path = require("path")
+const AskTheUniverse= require('../models/AskTheUniverse')
 
 
 module.exports = {
@@ -54,19 +55,34 @@ module.exports = {
   },
 
 
-  getWorkshopTwo: async (req, res) => {
+  getLetterToTheUniverse: async (req, res) => {
     try {
-
-      const manifestation = await Manifestation.find({ userId: req.user.id });
-      res.render("workshopTwo.ejs", { manifestation: manifestation, user: req.user })
-      console.log(manifestation) 
+      const letter = await AskTheUniverse.find({ userId: req.user.id });
+      res.render("workshopTwo.ejs",{letter:letter, user:req.user})
       // res.redirect('/profile');
     } catch (err) {
       console.log(err);
     }
   },
 
+   createLetter: async (req, res) => {
+    try{
+        await AskTheUniverse.create({
+          letterToTheUniverse: req.body.letterToTheUniverse,
+          userId: req.user.id,
 
+
+
+        });
+        console.log('Your letter has been sent to the universe!')
+        res.redirect('/workshop')
+        console.log(req.body.letterToTheUniverse)
+
+
+    }catch(err){
+        console.log(err)
+    }
+},
 
 
 //   deleteGratitude: async (req, res)=>{

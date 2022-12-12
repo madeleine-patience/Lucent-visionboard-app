@@ -9,13 +9,13 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 router.get("/", ensureAuth, workshopController.getManifestation),
 router.get("/getWorkshopOne", ensureAuth, workshopController.getWorkshopOne),
-router.get("/getWorkshopTwo", ensureAuth, workshopController.getWorkshopTwo),
+router.get("/getLetterToTheUniverse", ensureAuth, workshopController.getLetterToTheUniverse),
 
 
 
 
 router.post("/createManifestation", ensureAuth, workshopController.createManifestation)        
-
+router.post("/createLetter", ensureAuth, workshopController.createLetter)
 
 module.exports = router;
 

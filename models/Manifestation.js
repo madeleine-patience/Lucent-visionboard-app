@@ -17,10 +17,10 @@ const ManifestationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  date: {
-    type: Date,
-    required: true,
-  },
+  // date: {
+  //   type: Date,
+  //   required: true,
+  // },
   
 
 });
