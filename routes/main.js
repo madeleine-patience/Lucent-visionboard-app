@@ -15,6 +15,10 @@ router.get("/visionBoard", ensureAuth, postsController.getFeed);
 
 router.get("/gratitude", ensureAuth, gratitudeController.getGratitude);
 router.get("/workshop", ensureAuth, workshopController.getManifestation);
+router.get("/workshop", ensureAuth, workshopController.getWorkshopOne);
+
+
+
 
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);

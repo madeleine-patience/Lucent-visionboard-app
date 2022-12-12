@@ -8,6 +8,11 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 //Post Routes - simplified for now
 
 router.get("/", ensureAuth, workshopController.getManifestation),
+router.get("/getWorkshopOne", ensureAuth, workshopController.getWorkshopOne),
+
+
+
+
 router.post("/createManifestation", ensureAuth, workshopController.createManifestation)        
 
 

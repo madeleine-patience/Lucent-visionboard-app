@@ -8,14 +8,15 @@ module.exports = {
 
   getManifestation: async (req, res) => {
     try {
-      const manifestation = await Manifestation.find({ userId: req.user.id });
-      res.render("workshop.ejs", { manifestation: manifestation, user: req.user });
-      console.log(manifestation) 
+      res.render("workshop.ejs");
+     
 
     } catch (err) {
       console.log(err);
     }
   },
+
+
 
   createManifestation: async (req, res) => {
     try{
@@ -23,11 +24,13 @@ module.exports = {
           whatToManifest: req.body.whatToManifest,
           manifestationObstacles: req.body.manifestationObstacles,
           manifestationAction: req.body.manifestationAction,
+          userId: req.user.id,
+
  
 
         });
         console.log('Your manifesation has been logged!')
-        res.redirect('/profile')
+        res.redirect('/workshop/getWorkshopOne')
         console.log(req.body.whatToManifest)
         console.log(req.body.manifestationObstacles)
         console.log(req.body.manifestationAction)
@@ -36,6 +39,21 @@ module.exports = {
         console.log(err)
     }
 },
+
+
+  getWorkshopOne: async (req, res) => {
+    try {
+
+      const manifestation = await Manifestation.find({ userId: req.user.id });
+      res.render("workshopOne.ejs", { manifestation: manifestation, user: req.user })
+      console.log(manifestation) 
+      // res.redirect('/profile');
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+
 
 
 //   deleteGratitude: async (req, res)=>{

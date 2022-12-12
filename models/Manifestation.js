@@ -13,6 +13,14 @@ const ManifestationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+    userId: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
   
 
 });
