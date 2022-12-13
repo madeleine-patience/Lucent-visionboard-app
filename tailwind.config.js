@@ -1,5 +1,9 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
+
+
 module.exports = {
-  content: ["./views/**/*ejs"],
+  content: ["./views/**/*.ejs"],
   theme: {
     extend: {
       colors: {
@@ -7,9 +11,9 @@ module.exports = {
         brown:'#854d0e'
       },
       fontFamily: {
-        "mainText": ["Fredoka", "sans-serif"],
-        "logoText": ["Montserrat", "sans-serif"]
-      },
+        'sans': ['Graphik', ...defaultTheme.fontFamily.sans],
+        serif: ['Merriweather', 'serif'],
+    },
     },
   },
   plugins: [require("@tailwindcss/forms")],
