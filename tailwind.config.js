@@ -5,11 +5,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#32a852',
-        secondary: '#ff0015'
+        main: '#b3aea4',
+        fontLight: '#ffffff'
       },
       fontFamily: {
-        'press-start': ['"Press Start 2P"', 'cursive'],
+        'Playfair-Display': ['"Playfair-Display"', 'serif'],
+      },
+      backgroundImage: {
+        'hero': "url('https://i.ibb.co/TMX3vGQ/Untitled-8-5-3-in-20-3-in-1.png')",
       },
     },
 
