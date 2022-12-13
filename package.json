@@ -4,8 +4,8 @@
   "description": "100Devs Social Network",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "build:css": "npx tailwindcss-cli build -i src/styles.css -o public/styles.css -w"
+    "start": "npm run tailwind:css && nodemon server.js",
+    "tailwind:css": "postcss ./src/styles.css -o ./public/css/styles.css"
   },
   "author": "",
   "license": "MIT",
@@ -32,7 +32,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.12",
-    "postcss": "^8.4.16",
+    "postcss": "^8.4.20",
+    "postcss-cli": "^10.1.0",
     "tailwindcss": "^3.2.4"
   },
   "repository": {
