@@ -10,12 +10,16 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 router.get("/", ensureAuth, workshopController.getManifestation),
 router.get("/getWorkshopOne", ensureAuth, workshopController.getWorkshopOne),
 router.get("/getLetterToTheUniverse", ensureAuth, workshopController.getLetterToTheUniverse),
+router.get("/getRedirection", ensureAuth, workshopController.getRedirection),
+router.get("/getComfortZone", ensureAuth, workshopController.getComfortZone),
 
 
 
 
 router.post("/createManifestation", ensureAuth, workshopController.createManifestation)        
 router.post("/createLetter", ensureAuth, workshopController.createLetter)
+router.post("/createRedirection", ensureAuth, workshopController.createRedirection)
+router.post("/createComfortZone", ensureAuth, workshopController.createComfortZone)
 
 module.exports = router;
 

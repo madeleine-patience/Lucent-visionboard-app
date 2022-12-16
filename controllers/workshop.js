@@ -3,6 +3,8 @@ const Post = require("../models/Post");
 const Manifestation= require('../models/Manifestation')
 const path = require("path")
 const AskTheUniverse= require('../models/AskTheUniverse')
+const ComfortZone= require('../models/ComfortZone')
+const Rejection= require('../models/Rejection')
 
 
 module.exports = {
@@ -85,23 +87,77 @@ module.exports = {
 },
 
 
-//   deleteGratitude: async (req, res)=>{
-//     const gratitudeLog = await Gratitude.findById({ _id: req.params.id });
 
-//     try {
-//       gratitudeLog.remove()
-//       res.redirect("/gratitude");
+      //  await Manifestation.create({
+      //     whatToManifest: req.body.whatToManifest,
+      //     manifestationObstacles: req.body.manifestationObstacles,
+      //     manifestationAction: req.body.manifestationAction,
+      //     userId: req.user.id,
+
+
+  getRedirection: async (req, res) => {
+    try {
+      const rejection = await Rejection.find({ userId: req.user.id });
+      res.render("workshopThree.ejs",{rejection:rejection, user:req.user})
+      // res.redirect('/profile');
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+   createRedirection: async (req, res) => {
+    try{
+        await Rejection.create({
+          redirection: req.body.redirection,
+          whatYouLearned: req.body.whatYouLearned,
+          reDirection: req.body.reDirection,
 
 
 
-//     } catch (err) {
-//       res.redirect("/gratitude");
-//     }
-//   },
+        });
+        console.log('You reflected well! Good job.')
+        res.redirect('/workshop')
+        console.log(req.body.redirection)
 
+
+    }catch(err){
+        console.log(err)
+    }
+},
+
+  getComfortZone: async (req, res) => {
+    try {
+      const comfortZone = await ComfortZone.find({ userId: req.user.id });
+      res.render("workshopFour.ejs",{comfortZone:comfortZone, user:req.user})
+      // res.redirect('/profile');
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+   createComfortZone: async (req, res) => {
+    try{
+        await ComfortZone.create({
+          thingsYouWantToChallenge: req.body.thingsYouWantToChallenge,
+          stepsToGetThere: req.body.stepsToGetThere,
+          whatWouldHappenIf: req.body.whatWouldHappenIf,
+
+
+
+        });
+        console.log('You reflected well! Good job.')
+        res.redirect('/workshop')
+        console.log(req.body.thingsYouWantToChallenge)
+
+
+    }catch(err){
+        console.log(err)
+    }
+},
 
 
 }
+
 
 
 

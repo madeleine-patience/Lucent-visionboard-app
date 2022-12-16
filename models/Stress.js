@@ -19,4 +19,4 @@ const Stress = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model("AskTheUniverse", AskTheUniverseSchema);
+module.exports = mongoose.model("Stress", StressSchema);

@@ -1,24 +1,24 @@
 const mongoose = require("mongoose");
 
-const ComfortZone = new mongoose.Schema({
-  letterToTheUniverse: {
+const ComfortZoneSchema = new mongoose.Schema({
+  thingsYouWantToChallenge: {
     type: String,
     required: true,
   },
-    userId: {
+    stepsToGetThere: {
     type: String,
     required: true
   },
-  // date: { 
-  //   type: Date,
-  //   required: true, 
-  // },
+  whatWouldHappenIf: { 
+    type: String,
+    required: true, 
+  },
      
       
 });   
     
        
 
-module.exports = mongoose.model("AskTheUniverse", AskTheUniverseSchema);
+module.exports = mongoose.model("ComfortZone", ComfortZoneSchema);
 
  

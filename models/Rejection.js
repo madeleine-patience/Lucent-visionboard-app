@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const Rejection = new mongoose.Schema({
-    rejection: {
+const RejectionSchema = new mongoose.Schema({
+    redirection: {
     type: String,
     required: true,
   },
@@ -10,7 +10,7 @@ const Rejection = new mongoose.Schema({
     required: true
   },
   reDirection: {
-    type: string,
+    type: String,
     required: true,
   },
   
@@ -19,4 +19,5 @@ const Rejection = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model("AskTheUniverse", AskTheUniverseSchema);
+module.exports = mongoose.model("Rejection", RejectionSchema);
+
