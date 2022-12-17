@@ -5,6 +5,8 @@ const path = require("path")
 const AskTheUniverse= require('../models/AskTheUniverse')
 const ComfortZone= require('../models/ComfortZone')
 const Rejection= require('../models/Rejection')
+const Stress= require('../models/Stress')
+const Forgiveness= require('../models/Forgiveness')
 
 
 module.exports = {
@@ -154,6 +156,64 @@ module.exports = {
         console.log(err)
     }
 },
+
+  getStress: async (req, res) => {
+    try {
+      const stress = await Stress.find({ userId: req.user.id });
+      res.render("workshopFive.ejs",{stress:stress, user:req.user})
+      // res.redirect('/profile');
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+   createStress: async (req, res) => {
+    try{
+        await Stress.create({
+          yourStressors: req.body.yourStressors,
+          waysToChange: req.body.waysToChange,
+          thingstoMakeEasier: req.body.thingstoMakeEasier,
+
+        });
+        console.log('You are on the path to find less stress in your life! ')
+        res.redirect('/workshop')
+        console.log(req.body.yourStressors)
+
+
+    }catch(err){
+        console.log(err)
+    }
+},
+
+
+  getForgiveness: async (req, res) => {
+    try {
+      const forgive = await Stress.find({ userId: req.user.id });
+      res.render("workshopSix.ejs",{forgive:forgive, user:req.user})
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+   createForgivness: async (req, res) => {
+    try{
+        await Forgiveness.create({
+          personToForgive: req.body.personToForgive,
+          howTheyMadeYouFeel: req.body.howTheyMadeYouFeel,
+          howTheyWereFeeling: req.body.howTheyWereFeeling,
+          stepsToForgivness: req.body.stepsToForgivness,
+
+        });
+        console.log('You are on the path to find less stress in your life! ')
+        res.redirect('/workshop')
+        console.log(req.body.yourStressors)
+
+
+    }catch(err){
+        console.log(err)
+    }
+},
+
 
 
 }

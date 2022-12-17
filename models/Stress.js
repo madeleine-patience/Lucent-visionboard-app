@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Stress = new mongoose.Schema({
+const StressSchema = new mongoose.Schema({
   yourStressors: {
     type: String,
     required: true,
@@ -10,7 +10,7 @@ const Stress = new mongoose.Schema({
     required: true
   },
     thingstoMakeEasier: {
-    type: string,
+    type: String,
     required: true,
   },
   

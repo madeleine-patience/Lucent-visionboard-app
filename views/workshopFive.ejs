@@ -1,0 +1,60 @@
+<%- include('partials/header') -%>
+<div class="flex-wrap">
+
+
+  <div class="flex flex-col	 p-6 flex justify-start ">
+       <div class="p-6 w-9/12 mx-auto flex-col space-x-4 max-w-screen-md	">
+            <h5 class="text-center">Sometimes we have stressors in our lives that we can't identify without a little reflection. In this excercise you can find the things in your life that are stressing you out and hopefully elminate them.</h5>
+      </div>
+</div>s
+
+
+
+<!-- Main Page Content -->
+
+<div class="flex flex-wrap max-w-screen-md mx-auto items-center">
+
+<!-- Form -->
+<div class="w-96">
+            <form  action="/workshop/createStress" method="POST">
+                 <div class="flex flex-col  w-10/12 mx-auto ">
+
+                 <label for="yourStressors" class="form-label 	text-1xl font-serif">Whats the first thing that comes to your mind when you hear the word "Stress". Write down what it is that stresses you out.</label>
+                
+                 <textarea type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5 h-52 mb-10	 "  id="yourStressors" name="yourStressors"></textarea>
+
+                 <label for="waysToChange" class="form-label 	text-1xl font-serif">
+                Can you think of one or two things to reduce, change or eliminate completely the stressor in your life?</label>
+
+                 <textarea type="text" class="form-control bg-gray-300 rounded-lg mt-2.5 h-52 mb-10" id="waysToChange" name="waysToChange"></textarea>
+
+                 <label for="thingstoMakeEasier" class="form-label text-1xl font-serif">What are some things you can actively do to make these stressors easier? </label>
+                 <textarea type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5 h-52 mb-10" id="thingstoMakeEasier" name="thingstoMakeEasier"></textarea>
+                        
+
+                <button type="submit" href= "loc"class="my-6 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" value="Upload" >Submit Excercise</button>
+               </form>        
+                </div>
+</div>
+<!-- End Form -->
+
+
+<!-- Image -->
+
+<div class="w-96">
+<img src="https://i.ibb.co/0QQZ66C/Screen-Shot-2022-12-11-at-3-58-09-PM.png" alt="Screen-Shot-2022-12-11-at-3-58-09-PM" border="0">
+</div>
+
+<!-- image stop -->
+
+</div>
+
+
+
+<!-- Previous  Manifestation -->
+
+
+
+<%- include('partials/footer') -%>
+
+ 
