@@ -4,13 +4,15 @@
   <div class="#">
     <div class="max-w-screen-lg mx-auto">
       <div
-        class="p-6 w-11/12 mx-auto bg-white rounded-xl flex-col space-x-4 max-w-screen-lg"
+        class="p-6 w-11/12 mx-auto bg-main rounded-xl flex-col space-x-4 max-w-screen-lg"
       >
         <% if(posts.length==0) {%>
         <h2 class="text-5xl font-serif py-2 text-center">
           Welcome, <%= user.userName %>
         </h2>
         <% } %>
+
+
 
         <!-- Vision Board Display -->
         <% const randomNumber = Math.floor(Math.random()*posts.length) %> <%
@@ -43,26 +45,73 @@
             </div>
           </div>
 
+
+
+
           <% } else{ %>
-          <div class="w-1/2 mx-auto">
+
+<!-- Random Photo from vision board -->
+          <div class="flex flex-wrap justify-center">
             <a href="/post/<%= posts[randomNumber]._id%>">
               <img
-                class="h-80 w-full object-cover p-1 rounded-2xl"
+                class="max-h-50  object-cover p-16 border-2 border-black"
                 src="<%= posts[randomNumber].image%>"
               />
             </a>
             <% } %>
+           </div>
+          </div>
+         </div>
+<!-- Vision Board Display End -->
 
-            <!-- Vision Board Display End -->
+<!-- Graitutde Item Display -->
 
-            <!-- Graitutde Item Display -->
 
+
+  <!-- Suggested excercises -->
+
+
+<div class="h-36 border-t-2 border-black flex	">
+  <h3 class="font-Playfair-Display flex items-center justify-center m-auto text-4xl " >Suggested Daily Challenges </h3>
+</div>
+  <div class="w-1/2-"></div><div class="h-16 border-r-2 border-black w-1/2"></div></div>
+  <div class= "flex flex-wrap justify-center border-2	border-black"> 
+
+          <div class="border-r-2 border-l-2 border-black max-w-xs	w-60 p-8 bg-grey">
+                      <a href="/workshop/getWorkshopOne">
+
+          <h4 class="text-4xl font-Playfair-Display"> Basic affirmations </h5>
+          </h5> A good daily practice to manifest what you want. </h5></a>
+          </div>
+          
+
+          <div class="border-r-2 border-black max-w-xs	w-60 p-8 bg-grey	">
+          <h4 class="text-4xl font-Playfair-Display"> Letter to the Universe </h5>
+          </h5> Like a letter to santa, but grownup.</h5>
+          </div>
+
+          <div class="border-r-2 border-black max-w-xs	w-60	p-8 bg-grey">
+          <h4 class="text-4xl font-Playfair-Display"> Identify Your Stressors </h5>
+          </h5> Your first step to a stress free environment </h5>
+          </div>
+
+          <div class="border-r-2 border-r-2 border-black w-60 p-8 bg-grey">
+          <h4 class="text-4xl font-Playfair-Display"> Challenge Your Comfort Zone </h5>
+          </h5> This is how we grow.  </h5>
+          </div>
+
+
+  </div>
+<div class=" flex	">
+ <div class="flex items-center justify-center m-auto ">
             <% if(gratitudeLog.length ==0 ){ %>
             <a href="#"> </a>
             <% } else{ %>
             <h5><% gratitudeLog.length %></h5>
             <% const arrayNum= Math.floor(Math.random()*5) %> <% const
             gratitudeLogEntry= Math.floor(Math.random()* gratitudeLog.length) %>
+            
+
             <h5 class="text-3xl font-serif text-center pt-3.5">
               I was once grateful for...
             </h5>
@@ -82,46 +131,10 @@
           </div>
         </div>
 
-        <!-- Gratitude Item Display
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- <% for(let i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="w-60 p-2" src="<%= posts[i].image%>">
-            </a>
-          </li>
-        <% } %>
-
-
-
-        </ul>
-        <div class="row justify-content-center mt-5"> -->
-
-        <!-- <a class="btn btn-primary" href="/feed">Return to Feed</a>
-        </div>  
-
-      </div>  
-    </div>
-  </div>-->
-
         <div class="mt-3 w-11/12 mx-auto flex-col space-x-4">
           <a
             href="/logout"
-            class="my-6 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+            class="border-2	border-black py-2 px-8 rounded-md "
             >Logout</a
           >
         </div>

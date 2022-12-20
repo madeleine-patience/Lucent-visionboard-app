@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-<div class="p-6 w-11/12	 mx-auto bg-white rounded-xl flex-col max-w-screen-lg	bg-main	">
+<div class="p-6 w-11/12	 mx-auto bg-main rounded-xl flex-col max-w-screen-lg	bg-main	">
 
   <div class="flex flex-col	 p-6 flex justify-start">
        <h4 class="text-4xl font-serif text-center ">Affirmation Workshops</h4>
@@ -11,72 +11,91 @@
 <!-- Excercises Start -->
 
 
-<div class="flex flex-wrap  justify-center bg-main "> 
+<div class=""> 
 
-          <div class="text-center border border-sky-500 mx-4 mt-4 h-56 w-60">
+          <div class="border-2 border-black py-2 px-8 rounded-md my-2 flex justify-between ">
 
-
+               <div>
                <a href="/workshop/getWorkshopOne"><h5 class="text-2xl font-serif ">Basic Affirmation </h5> </a>
                <p> A simple three question affirmation. </p>
+               </div>
+               <div class="py-2">
+               <h6 class="text-right italic  "> Completed </h6>
+               <p class="text-right italic "> <%-manifesationLog.length %> times </p>
+               </div>
 
           </div>
 
-          <div class="text-center border border-sky-500 mx-4 mt-4 h-56 w-60">
+          <div class="border-2 border-black py-2 px-8 rounded-md my-2 flex justify-between ">
 
+               <div>
                <a href="/workshop/getLetterToTheUniverse"><h5 class="text-2xl font-serif ">Write a letter to the universe </h5> </a>
                <p> Ask the universe for what you'd like. </p>
+               </div>
+               <div class="py-2">
+               <h6 class="text-right italic  "> Completed </h6>
+               <p class="text-right italic "> <%-letterLog.length %> times </p>
+               </div>
 
           </div>
 
-          <div class="text-center border border-sky-500 mx-4 mt-4 h-56 w-60">
+     <div class="border-2 border-black py-2 px-8 rounded-md my-2 flex justify-between ">
 
+               <div>
                <a href="/workshop/getRedirection"><h5 class="text-2xl font-serif ">Rejection to Redirection </h5> </a>
                <p> Turn the bad into the good.</p>
+               </div>
+               <div class="py-2">
+               <h6 class="text-right italic  "> Completed </h6>
+               <p class="text-right italic "> <%-rejectionLog.length %> times </p>
+               </div>
 
           </div>
 
-          <div class="text-center border border-sky-500 mx-4 mt-4 h-56 w-60">
+     <div class="border-2 border-black py-2 px-8 rounded-md my-2 flex justify-between ">
 
-
+               <div>
                <a href="/workshop/getComfortZone"><h5 class="text-2xl font-serif ">Challenge Your ComfortZone </h5> </a>
                <p> To grow we have to get out of our comfort zone. </p>
+               </div>
+               <div class="py-2">
+               <h6 class="text-right italic  "> Completed </h6>
+               <p class="text-right italic "> <%-comfortZoneLog.length %> times </p>
+               </div>
 
           </div>
 
-          <div class="text-center border border-sky-500 mx-4 mt-4 h-56 w-60">
+     <div class="border-2 border-black py-2 px-8 rounded-md my-2 flex justify-between ">
 
-               <a href="/workshop/getStress"><h5 class="text-2xl font-serif ">Identify Your Stressors</h5> </a>
-               <p> Find the stuff thats stressing you out, and get rid of them. </p>
-
+               <div>
+               <a href="/workshop/getStress"><h5 class="text-2xl font-serif ">De-Stress </h5> </a>
+               <p> Identify your stressors and eliminate them. </p>
+               </div>
+               <div class="py-2">
+               <h6 class="text-right italic  "> Completed </h6>
+               <p class="text-right italic "> <%-stressLog.length %> times </p>
+               </div>
+               </div>
           </div>
 
-          <div class="text-center border border-sky-500 mx-4 mt-4 h-56 w-60">
 
-               <a href="/workshop/getWorkshopOne"><h5 class="text-2xl font-serif ">Basic Affirmation </h5> </a>
-               <p> A simple three question affirmation. </p>
+     <div class="border-2 border-black py-2 px-8 rounded-md my-2 flex justify-between " >
 
-          </div>
-          <div class="text-center border border-sky-500 mx-4 mt-4 h-56 w-60">
-
-
-               <a href="/workshop/getWorkshopOne"><h5 class="text-2xl font-serif ">Basic Affirmation </h5> </a>
-               <p> A simple three question affirmation. </p>
-
-          </div>
-
-          <div class="text-center border border-sky-500 mx-4 mt-4 h-56 w-60">
-
-               <a href="/workshop/getWorkshopOne"><h5 class="text-2xl font-serif ">Basic Affirmation </h5> </a>
-               <p> A simple three question affirmation. </p>
-
+               <div>
+               <a href="/workshop/getForgiveness"><h5 class="text-2xl font-serif ">Forgive </h5> </a>
+               <p> Use this excercise to let go. </p>
+               </div>
+               <div class="py-2">
+               <h6 class="text-right italic  "> Completed </h6>
+               <p class="text-right italic "> <%-forgivenessLog.length %> times </p>
+               </div>
+               </div>
           </div>
 
-          <div class="text-center border border-sky-500 mx-4 mt-4 h-56 w-60">
 
-               <a href="/workshop/getWorkshopOne"><h5 class="text-2xl font-serif ">Basic Affirmation </h5> </a>
-               <p> A simple three question affirmation. </p>
 
-          </div>
+
+
 </div>
 
 

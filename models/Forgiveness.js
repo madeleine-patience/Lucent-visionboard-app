@@ -9,11 +9,18 @@ const ForgivenessSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  whatWouldHappenIf: { 
+  howTheyWereFeeling: { 
     type: String,
     required: true, 
   },
-     
+  stepsToForgivness: { 
+    type: String,
+    required: true, 
+  },
+    userId: {
+    type: String,
+    required: true
+  },
       
 });   
     

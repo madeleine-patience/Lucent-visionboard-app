@@ -1,6 +1,6 @@
 <%- include('partials/header') -%>
 
-<div class="p-6 w-11/12	 mx-auto bg-white rounded-xl shadow-lg flex-col	 space-x-4">
+<div class="p-6 w-11/12	 mx-auto bg-main rounded-xl shadow-lg flex-col	 space-x-4">
 
   <div class="flex flex-col	 p-6 flex justify-start">
        <h4 class="text-4xl font-serif text-center ">Create Your Vision Board</h4>
@@ -24,7 +24,7 @@
                 <label for="imgUpload" class="#"></label>
                 <input type="file" class="form-control bg-gray-300 rounded-lg	mt-2.5" id="imageUpload" name="file">
             
-              <button type="submit" class=" py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" value="Upload"  >Submit</button>
+              <button type="submit" class="border-2	border-black py-1 px-8 rounded-md "value="Upload"  >Submit</button>
             </form>
             </div>
 <!-- Form End -->
@@ -36,7 +36,7 @@
         <ul class="flex flex-wrap justify-center ">
         <% for(let i=0; i<posts.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
+            <a href="post/addDescription/<%=posts[i]._id%>">
               <img class="h-80 w-full object-cover p-1 rounded-2xl	" src="<%= posts[i].image%>">
             </a>
           </li>

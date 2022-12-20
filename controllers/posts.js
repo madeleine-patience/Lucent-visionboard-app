@@ -57,7 +57,7 @@ module.exports = {
   },
 
   editPost: async (req, res) => {
-    console.log(req);
+    // console.log(req);
     try {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
@@ -66,7 +66,9 @@ module.exports = {
           caption: req.body.caption,
         }
       );
-      console.log(`post ${req.params.id} has been updated!`);
+      // console.log(`post ${req.params.id} has been updated!`);
+      console.log(`post ${caption} has been updated!`);
+
       res.redirect("/visionBoard");
     } catch (err) {
       console.log(err);

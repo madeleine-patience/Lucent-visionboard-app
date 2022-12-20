@@ -17,10 +17,7 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  likes: {
-    type: Number,
-    required: true,
-  },
+
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -29,6 +26,11 @@ const PostSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  favorite:{
+    type:"boolean",
+    required: false,
+
+  }
 });
 
 module.exports = mongoose.model("Post", PostSchema);

@@ -13,14 +13,31 @@ module.exports = {
 
   getManifestation: async (req, res) => {
     try {
-      res.render("workshop.ejs");
-     
+      const manifesationLog = await Manifestation.find({ userId: req.user.id });
+      const letterLog = await AskTheUniverse.find({ userId: req.user.id });
+      const rejectionLog = await Rejection.find({ userId: req.user.id });
+      const comfortZoneLog = await ComfortZone.find({ userId: req.user.id });
+      const stressLog = await Stress.find({ userId: req.user.id });
+      const forgivenessLog = await Forgiveness.find({ userId: req.user.id });
+
+
+
+      res.render("workshop.ejs",{ 
+      manifesationLog: manifesationLog,
+      user: req.user, 
+      letterLog:letterLog,
+      rejectionLog:rejectionLog,
+      comfortZoneLog:comfortZoneLog,
+      stressLog:stressLog,
+      forgivenessLog:forgivenessLog
+
+    });
+      console.log(comfortZone.length) 
 
     } catch (err) {
       console.log(err);
     }
   },
-
 
 
   createManifestation: async (req, res) => {
@@ -31,7 +48,6 @@ module.exports = {
           manifestationAction: req.body.manifestationAction,
           userId: req.user.id,
 
- 
 
         });
         console.log('Your manifesation has been logged!')
@@ -113,6 +129,7 @@ module.exports = {
           redirection: req.body.redirection,
           whatYouLearned: req.body.whatYouLearned,
           reDirection: req.body.reDirection,
+          userId: req.user.id,
 
 
 
@@ -143,6 +160,7 @@ module.exports = {
           thingsYouWantToChallenge: req.body.thingsYouWantToChallenge,
           stepsToGetThere: req.body.stepsToGetThere,
           whatWouldHappenIf: req.body.whatWouldHappenIf,
+          userId: req.user.id,
 
 
 
@@ -173,6 +191,7 @@ module.exports = {
           yourStressors: req.body.yourStressors,
           waysToChange: req.body.waysToChange,
           thingstoMakeEasier: req.body.thingstoMakeEasier,
+          userId: req.user.id,
 
         });
         console.log('You are on the path to find less stress in your life! ')
@@ -188,7 +207,7 @@ module.exports = {
 
   getForgiveness: async (req, res) => {
     try {
-      const forgive = await Stress.find({ userId: req.user.id });
+      const forgive = await Forgiveness.find({ userId: req.user.id });
       res.render("workshopSix.ejs",{forgive:forgive, user:req.user})
     } catch (err) {
       console.log(err);
@@ -202,11 +221,12 @@ module.exports = {
           howTheyMadeYouFeel: req.body.howTheyMadeYouFeel,
           howTheyWereFeeling: req.body.howTheyWereFeeling,
           stepsToForgivness: req.body.stepsToForgivness,
+          whatYouGain: req.body.whatYouGain,
+          userId: req.user.id,
 
         });
         console.log('You are on the path to find less stress in your life! ')
         res.redirect('/workshop')
-        console.log(req.body.yourStressors)
 
 
     }catch(err){

@@ -5,16 +5,23 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        main: '#b3aea4',
-        fontLight: '#ffffff'
+        main: '#F0DFD1',
+        fontLight: '#FFFFFF',
+        grey: '#C6BBB7'
+
       },
       fontFamily: {
         'Playfair-Display': ['"Playfair-Display"', 'serif'],
+        'Playfair': ['"Helvetica"', 'serif'],
+
       },
       backgroundImage: {
-        'hero': "url('https://i.ibb.co/TMX3vGQ/Untitled-8-5-3-in-20-3-in-1.png')",
+        'hero': "url('https://ibb.co/kgdYz5W')",
       },
+
     },
+
+
 
     fontSize: {
       xs: '0.75rem',
@@ -26,7 +33,12 @@ module.exports = {
       '3xl': '1.875rem',
       '4xl': '2.25rem',
       '5xl': '3rem',
-      '6xl': '4rem'
+      '6xl': '4rem',
+      '7xl': '5rem',
+      '8xl': '6rem',
+      '9xl': '7rem',
+      '10xl': '8rem',
+
     }
   },
   variants: {
