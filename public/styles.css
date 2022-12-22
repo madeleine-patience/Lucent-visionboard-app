@@ -22180,6 +22180,22 @@ video {
   font-family: "Helvetica", serif;
 }
 
+.font-jSans {
+  font-family: Josefin Sans, sans-serif;
+}
+
+.font-jSlab {
+  font-family: Josefin Slab, sans-serif;
+}
+
+.font-corm {
+  font-family: Cormorant, serif;
+}
+
+.font-raleway {
+  font-family: Raleway, sans-serif;
+}
+
 .text-xs {
   font-size: 0.75rem;
 }
@@ -52864,6 +52880,22 @@ video {
     font-family: "Helvetica", serif;
   }
 
+  .sm\:font-jSans {
+    font-family: Josefin Sans, sans-serif;
+  }
+
+  .sm\:font-jSlab {
+    font-family: Josefin Slab, sans-serif;
+  }
+
+  .sm\:font-corm {
+    font-family: Cormorant, serif;
+  }
+
+  .sm\:font-raleway {
+    font-family: Raleway, sans-serif;
+  }
+
   .sm\:text-xs {
     font-size: 0.75rem;
   }
@@ -83180,6 +83212,22 @@ video {
 
   .md\:font-Playfair {
     font-family: "Helvetica", serif;
+  }
+
+  .md\:font-jSans {
+    font-family: Josefin Sans, sans-serif;
+  }
+
+  .md\:font-jSlab {
+    font-family: Josefin Slab, sans-serif;
+  }
+
+  .md\:font-corm {
+    font-family: Cormorant, serif;
+  }
+
+  .md\:font-raleway {
+    font-family: Raleway, sans-serif;
   }
 
   .md\:text-xs {
@@ -113500,6 +113548,22 @@ video {
     font-family: "Helvetica", serif;
   }
 
+  .lg\:font-jSans {
+    font-family: Josefin Sans, sans-serif;
+  }
+
+  .lg\:font-jSlab {
+    font-family: Josefin Slab, sans-serif;
+  }
+
+  .lg\:font-corm {
+    font-family: Cormorant, serif;
+  }
+
+  .lg\:font-raleway {
+    font-family: Raleway, sans-serif;
+  }
+
   .lg\:text-xs {
     font-size: 0.75rem;
   }
@@ -143818,6 +143882,22 @@ video {
     font-family: "Helvetica", serif;
   }
 
+  .xl\:font-jSans {
+    font-family: Josefin Sans, sans-serif;
+  }
+
+  .xl\:font-jSlab {
+    font-family: Josefin Slab, sans-serif;
+  }
+
+  .xl\:font-corm {
+    font-family: Cormorant, serif;
+  }
+
+  .xl\:font-raleway {
+    font-family: Raleway, sans-serif;
+  }
+
   .xl\:text-xs {
     font-size: 0.75rem;
   }
@@ -174134,6 +174214,22 @@ video {
 
   .\32xl\:font-Playfair {
     font-family: "Helvetica", serif;
+  }
+
+  .\32xl\:font-jSans {
+    font-family: Josefin Sans, sans-serif;
+  }
+
+  .\32xl\:font-jSlab {
+    font-family: Josefin Slab, sans-serif;
+  }
+
+  .\32xl\:font-corm {
+    font-family: Cormorant, serif;
+  }
+
+  .\32xl\:font-raleway {
+    font-family: Raleway, sans-serif;
   }
 
   .\32xl\:text-xs {

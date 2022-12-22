@@ -13,6 +13,11 @@ module.exports = {
       fontFamily: {
         'Playfair-Display': ['"Playfair-Display"', 'serif'],
         'Playfair': ['"Helvetica"', 'serif'],
+        'jSans':['Josefin Sans', 'sans-serif'],
+        'jSlab':['Josefin Slab', 'sans-serif'],
+        'corm':['Cormorant', 'serif'],
+        'raleway':['Raleway', 'sans-serif'],
+
 
       },
       backgroundImage: {

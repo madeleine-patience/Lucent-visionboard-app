@@ -1,0 +1,96 @@
+<%- include('partials/header') -%>
+
+<a href="/moodBoard"><i id='backButton' class="fa fa-arrow-left"></i></a>
+<body>
+    <section>
+    <h1 class ="text-4xl font-corm border-b-2 border-black ">  Log Daily Mood for <%= new Date().toLocaleString('en-us',{ 
+                                                        weekday:"long", 
+                                                        year:"numeric", 
+                                                        month:"short", 
+                                                        day:"numeric"}) %></h1>
+    <form action="/moodBoard/createMood" method="POST">
+
+            <!-- <label for="gitHub">GitHub Link</label><input id="gitHub" name="gitHub" placeholder="GitHub Link">
+            <label for="dueDate">Due Date</label><input id="dueDate" type='date' name="dueDate" placeholder="Due Date"> -->
+    <h3 class ="text-2xl font-corm border-b-2 border-black"> Select the main emotions you felt during this day. </h3>
+        <div class="py-8 border-b-2 border-black">
+            <input
+            type="checkbox"
+            id="mood"
+            name="mood"value="happy" />
+            <label class="font-raleway p-5" for="moodTrack">Happy</label>
+
+            <input
+            type="checkbox"
+            id="mood"
+            name="mood"
+            value="sad" />
+            <label class="font-raleway p-5" for="moodTrack">Sad</label>
+
+            <input
+            type="checkbox"
+            id="mood"
+            name="mood"
+            value="bored" />
+            <label class="font-raleway p-5" for="moodTrack">Bored</label>
+
+            <input
+            type="checkbox"
+            id="mood"
+            name="mood"
+            value="angry" />
+            <label class="font-raleway p-5" for="moodTrack">Angry</label>
+
+            <input
+            type="checkbox"
+            id="mood"
+            name="mood"
+            value="anxious" />
+            <label class="font-raleway p-5" for="moodTrack">Anxious</label>
+
+            <input
+            type="checkbox"
+            id="mood"
+            name="mood"
+            value="interest" />
+            <label class="font-raleway p-5" for="moodTrack">Interested</label>
+
+            <input
+            type="checkbox"
+            id="mood"
+            name="mood"
+            value="fear" />
+            <label class="font-raleway p-5" for="moodTrack">Fearful</label>
+
+            <input
+            type="checkbox"
+            id="mood"
+            name="mood"
+            value="calm" />
+            <label class="font-raleway p-5" for="moodTrack">Calm</label>
+        </div>
+            </select>
+        <div class="m-4">
+        <div id="mainInput">
+        <h3 class ="text-2xl font-corm  "> Take any notes on todays mood. Is there any reason you think you felt a certain way? </h3>  </div> 
+
+           <label for="area"></label>
+            <textarea class= "h-30 w-200" id="postBody" name="postBody" rows="20" cols="50" ></textarea>
+      
+        <div>
+        </div>
+
+        
+        <div id="">
+        <input type="reset" id="clear" class="border-2 border-black py-2 px-8 rounded-md bg-main font-raleway" value="Clear">
+        <!-- <button id="saveDraft">Save as Draft</button> -->
+        <input type="submit" name="Post" class="border-2 border-black py-2 px-8 rounded-md bg-main font-raleway " value="Post">
+        </div>
+        </div>
+    </form>
+    </section>
+
+
+
+    <script src="/js/main.js"></script>
+</body>
