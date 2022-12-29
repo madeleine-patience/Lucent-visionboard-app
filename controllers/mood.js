@@ -5,25 +5,20 @@ const path = require("path")
 const Mood = require('../models/Mood')
 
 module.exports = {
+
     getMoodBoard: async (req,res)=>{
         try{
-            // const postItems = await BlogPost.find({userId:req.user.id}).sort({date: -1})
-            // const numberOfPosts = await BlogPost.countDocuments({userId:req.user.id})
-            res.render('moodBoard.ejs')
-            //  {BlogPost: postItems, postCount: numberOfPosts, user: req.user})
+            const moodLog= await Mood.find({ userId: req.user.id });
+            res.render('moodBoard.ejs', {moodLog: moodLog,user: req.user});
+
         }catch(err){
             console.log(err)
         }
     },
-    // getEditPostPage: async (req,res)=>{
-    //     console.log(req.params.id)
-    //     try{
-    //         const postToEdit = await BlogPost.findById(req.params.id)
-    //         res.render('editPost.ejs', {blogPost: postToEdit, postId:req.params.id, user: req.user})
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // },
+
+
+
+
     getCreateMoodBoard: async (req,res) => {
         try {
             res.render('moodBoardCreate.ejs')
