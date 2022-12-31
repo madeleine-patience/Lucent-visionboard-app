@@ -9,9 +9,6 @@ const flash = require("express-flash");
 const logger = require("morgan");
 const connectDB = require("./config/database");
 
-
-
-
 const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const gratitudeRoutes = require("./routes/gratitude");

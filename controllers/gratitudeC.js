@@ -9,7 +9,9 @@ module.exports = {
   getGratitude: async (req, res) => {
     try {
       const gratitudeLog = await Gratitude.find({ userId: req.user.id });
-      res.render("gratitude.ejs", { gratitudeLog: gratitudeLog, user: req.user });
+    
+
+      res.render("gratitude.ejs", { gratitudeLog: gratitudeLog, user: req.user});
       console.log(gratitudeLog) 
 
     } catch (err) {
@@ -28,7 +30,7 @@ module.exports = {
         console.log('Your gratitude for today has been logged!')
         res.redirect('/gratitude')
         console.log(req.body.item)
-        console.log(req.user.id)
+        // console.log(req.user.id)
     }catch(err){
         console.log(err)
     }

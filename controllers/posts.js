@@ -3,21 +3,64 @@ const Post = require("../models/Post");
 const path = require("path");
 const Gratitude = require("../models/Gratitude");
 
-module.exports = {
+function generateWeeklyActivity(entryLog){
+  let week=[null,null,null,null,null,null,null]
+  const currentDate = new Date()
+
+  for (let i=entryLog.length-1; i>=0 ; i--){
+    const diffTime = Math.abs(currentDate - entryLog[i].date);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+     console.log(diffDays)
+
+    if( diffDays>=7){
+      break
+    }
+
+    week[diffDays] = entryLog[i]._id
+
+    
+  }
+
+
+
+  
+  return week
+}
+
+
+module.exports = { 
+  
   getProfile: async (req, res) => {
     try {
+      const daysOfWeek=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
       const posts = await Post.find({ user: req.user.id });
       const gratitudeLog = await Gratitude.find({ userId: req.user.id });
+      let lastEntry = null
+      let hasGratitude = false
+      
+
+      if(gratitudeLog.length>0) {
+        const lastEntryDate = gratitudeLog[gratitudeLog.length-1].date.toDateString()
+        const currentDate = new Date().toDateString()
+        lastEntry = gratitudeLog[gratitudeLog.length-1]
+        hasGratitude = lastEntryDate === currentDate
+      }
 
       res.render("profile.ejs", {
         posts: posts,
         user: req.user,
         gratitudeLog: gratitudeLog,
+        hasGratitude: hasGratitude,
+        lastEntry: lastEntry,
+        daysOfWeek: daysOfWeek,
+        weeklyActivity: generateWeeklyActivity(gratitudeLog).reverse(),
       });
     } catch (err) {
       console.log(err);
     }
   },
+
+
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id });
