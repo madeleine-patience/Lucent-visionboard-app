@@ -2,21 +2,10 @@ const cloudinary = require('../middleware/cloudinary')
 const Post = require('../models/Post')
 const path = require('path')
 const Gratitude = require('../models/Gratitude')
+const dailyActivity= require('../helpers/dailyActivity')
 
-function generateWeeklyActivity(entryLog) {
-  let week = [null, null, null, null, null, null, null]
-  const currentDate = new Date()
-  for (let i = entryLog.length - 1; i >= 0; i--) {
-    const diffTime = Math.abs(currentDate - entryLog[i].date)
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
 
-    if (diffDays >= 7) {
-      break
-    }
-    week[diffDays] = entryLog[i]._id
-  }
-  return week.reverse()
-}
+
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -36,8 +25,8 @@ module.exports = {
       let hasGratitude = false
 
       // concatenated ID array //
-      let weeklyPost = generateWeeklyActivity(posts)
-      let weeklyGratitude = generateWeeklyActivity(posts)
+      let weeklyPost = dailyActivity.generateWeeklyActivity(posts)
+      let weeklyGratitude = dailyActivity.generateWeeklyActivity(posts)
       let totalActivity = weeklyPost.concat(weeklyGratitude)
 
       if (gratitudeLog.length > 0) {
@@ -57,8 +46,8 @@ module.exports = {
         hasGratitude: hasGratitude,
         lastEntry: lastEntry,
         daysOfWeek: daysOfWeek,
-        weeklyActivity: generateWeeklyActivity(gratitudeLog),
-        weeklyPostActivity: generateWeeklyActivity(posts),
+        weeklyActivity: dailyActivity.generateWeeklyActivity(gratitudeLog),
+        weeklyPostActivity: dailyActivity.generateWeeklyActivity(posts),
       })
     } catch (err) {
       console.log(err)

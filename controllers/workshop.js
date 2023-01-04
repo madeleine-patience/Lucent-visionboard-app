@@ -7,6 +7,7 @@ const ComfortZone= require('../models/ComfortZone')
 const Rejection= require('../models/Rejection')
 const Stress= require('../models/Stress')
 const Forgiveness= require('../models/Forgiveness')
+const dailyActivity= require('../helpers/dailyActivity')
 
 
 module.exports = {
@@ -20,6 +21,7 @@ module.exports = {
       const stressLog = await Stress.find({ userId: req.user.id });
       const forgivenessLog = await Forgiveness.find({ userId: req.user.id });
 
+      const weeklyManifestations= dailyActivity.generateWeeklyActivity(manifesationLog)
 
 
       res.render("workshop.ejs",{ 
@@ -32,8 +34,6 @@ module.exports = {
       forgivenessLog:forgivenessLog
 
     });
-      console.log(comfortZone.length) 
-
     } catch (err) {
       console.log(err);
     }
