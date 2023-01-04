@@ -29,8 +29,15 @@ const PostSchema = new mongoose.Schema({
   favorite:{
     type:"boolean",
     required: false,
-
-  }
+  },
+  userId: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Post", PostSchema);

@@ -16,7 +16,10 @@ router.put("/likePost/:id", postsController.likePost);
 
 router.delete("/deletePost/:id", postsController.deletePost);
 
-router.get("/addDescription/:id", postsController.getEditDescription)
+router.get("/addDescription/:id", postsController.getEditDescription);
+
+router.get("/getSummary/:id", postsController.getSummary)
+
 
 // router.get("/api", ensureAuth,postsController.getAffirmation);
 

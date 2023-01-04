@@ -3,28 +3,22 @@ const Post = require("../models/Post");
 const path = require("path");
 const Gratitude = require("../models/Gratitude");
 
+
+
+
 function generateWeeklyActivity(entryLog){
   let week=[null,null,null,null,null,null,null]
   const currentDate = new Date()
-
   for (let i=entryLog.length-1; i>=0 ; i--){
     const diffTime = Math.abs(currentDate - entryLog[i].date);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-     console.log(diffDays)
 
     if( diffDays>=7){
       break
     }
-
     week[diffDays] = entryLog[i]._id
-
-    
   }
-
-
-
-  
-  return week
+  return week.reverse()
 }
 
 
@@ -37,14 +31,20 @@ module.exports = {
       const gratitudeLog = await Gratitude.find({ userId: req.user.id });
       let lastEntry = null
       let hasGratitude = false
-      
+
+      // concatenated ID array //
+      let weeklyPost= generateWeeklyActivity(posts)
+      let weeklyGratitude= generateWeeklyActivity(posts)
+      let totalActivity= weeklyPost.concat(weeklyGratitude)
 
       if(gratitudeLog.length>0) {
         const lastEntryDate = gratitudeLog[gratitudeLog.length-1].date.toDateString()
+        
         const currentDate = new Date().toDateString()
         lastEntry = gratitudeLog[gratitudeLog.length-1]
         hasGratitude = lastEntryDate === currentDate
       }
+      console.log(lastEntry)
 
       res.render("profile.ejs", {
         posts: posts,
@@ -53,7 +53,9 @@ module.exports = {
         hasGratitude: hasGratitude,
         lastEntry: lastEntry,
         daysOfWeek: daysOfWeek,
-        weeklyActivity: generateWeeklyActivity(gratitudeLog).reverse(),
+        weeklyActivity: generateWeeklyActivity(gratitudeLog),
+        weeklyPostActivity: generateWeeklyActivity(posts)
+
       });
     } catch (err) {
       console.log(err);
@@ -69,6 +71,7 @@ module.exports = {
       console.log(err);
     }
   },
+
 
   getPost: async (req, res) => {
     try {
@@ -91,8 +94,10 @@ module.exports = {
         caption: req.body.caption,
         likes: 0,
         user: req.user.id,
+        userId: req.user.id,
+        date: new Date(),   
+
       });
-      console.log(newPost._id);
       res.redirect(`/post/addDescription/${newPost._id}`);
     } catch (err) {
       console.log(err);
@@ -130,16 +135,25 @@ module.exports = {
         console.log(err)
     }}
   },
-    //   const post = await Post.findById(req.params.id)
 
-    //   post.title= req.body.title,
-    //   post.caption=req.body.caption,
+  
+  getSummary: async(req,res)=>{
 
-    //   console.log(post._id)
-    //   res.redirect('/visionBoard');
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      // const post = await Post.findById(req.params.id);
+
+      const posts = await Post.find({ user: req.params.id });
+      const gratitudeLog = await Gratitude.find({ user: req.params.id });
+      console.log(gratitudeLog)
+      // const gratitudeLog = await Gratitude.find({ userId: req.user.id });
+      res.render("summary.ejs", { gratitudeLog: gratitudeLog, user: req.user 
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
+
+  },
 
   createImageDescription: async (req, res) => {
     try {

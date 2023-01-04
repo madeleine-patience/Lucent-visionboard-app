@@ -1,7 +1,4 @@
 <%- include('partials/header') -%>
-<h1> hello! </h1>
-
-
 <div class="#">
   <div class="#">
     <div class="max-w-screen-lg mx-auto">
@@ -103,105 +100,85 @@
   </div>
 
 <!-- If Gratitude  -->
+<div class="border-t-1 border-black flex justify-center inline-block align-middle	 "> 
+    <div class="w-1/2 h-72 border-r-2 border-black  flex-col max-w-lg ">
+       <% if(!hasGratitude) {%>
+            <h2 class="text-4xl font-corm border-black "> You haven't expressed gratitude yet today!</h2>
+            <div class="mt-3  mx-auto flex-col space-x-4">
+            <a
+            href="/gratitude"
+            class="border-2	border-black py-2 px-8 rounded-md "
+            >Log Now</a>
+            </div>
 
-<div class=" h-96	 border-t-1 border-black flex justify-center	 "> 
-    <div class="w-1/2 h-72 border-r-2 border-black flex items-center justify-center flex-col max-w-lg ">
-   
+        <% } else {%>
+            <h3 class="text-4xl font-corm pt-6"> Great job showing gratitude today! </h3>
+            <h4 class="text-3xl font-corm "> Here is what you logged: </h3>
 
-              <% if(!hasGratitude) {%>
-                <h2 class="text-4xl font-corm border-black "> You haven't expressed gratitude yet today!</h2>
-                <div class="mt-3  mx-auto flex-col space-x-4">
-                  <a
-                    href="/gratitude"
-                    class="border-2	border-black py-2 px-8 rounded-md "
-                    >Log Now</a>
+            <ul class="flex flex-wrap  ">
 
-                </div>
-                <% } else {%>
-                  <h3 class="text-4xl font-corm "> Great job showing gratitude today! </h3>
-                  <h3 class="text-4xl font-corm "> Here is what you logged. </h3>
+              <% for(let i=0; i<5; i++) {%>
+                <li class="col-6 justify-content-between">
+                  <h4 class="font-raleway "~><%= lastEntry.gratitudeItem1[i] %> </h4>
 
-                  
-                  <h4 class="font-raleway pt-6"~><%= lastEntry.gratitudeItem1 %> </h4>
-                  <% } %>
+                </li>
+              <% } %>
+      
+              </ul>
+
+
+
+
+        <% } %>
+
+    </div>
+
+    <div class="w-1/2 h-72 border-black flex items-center justify-center flex-col  max-w-lg ">
 
    </div>
-
-       <div class="w-1/2 h-72 border-black flex items-center justify-center flex-col  max-w-lg ">
-
-   </div>
 </div>
 </div>
 </div>
 </div>
 
+<a href="post/getSummary/<%=posts[0]._id%>">  
+  <div class="flex flex-row" > 
+    <h3> Day </h3> 
+    <div class="rounded-full h-28 w-28 border-2 border-black bg-grey m-2" src=""></div>
+  </div>
+  </a>
+ 
 
 
 <!-- Weekly Progress Track  -->
+<h3 class="text-3xl font-corm flex justify-center border-b-2 border-t-2 border-black"> Weekly Progress </h3>
 
 <div class=" h-96	 border-t-1 border-black flex justify-center  flex-row 	">
   
-
-
-
     <% for(day of weeklyActivity){ %> 
       <%if(day){ %>
-      <div > 
-      <h3> Day </h3> 
-      <div class="rounded-full h-28 w-28 border-2 border-black bg-grey m-2" src=""></div>
-      <!-- <li><%=day  %> </li> -->
+      <%let indexNum= weeklyActivity.indexOf(day) %>
+      <a href="post/getSummary/<%=posts[indexNum]._id%>">  
+      <div class="flex flex-row" > 
+        <h3> Day </h3> 
+        <% day %>
+        <div class="rounded-full h-28 w-28 border-2 border-black bg-grey m-2" src=""></div>
       </div>
+      </a>
+
       <% } else{ %>
-        <div > 
+        <a href="">  
+      <div class="flex flex-row"  > 
         <h3> Day </h3> 
         <div class="rounded-full h-28 w-28 border-2 border-black m-2 " src=""></div>
       </div>
+      </a>
+      <% } -%>
+
     <% } -%>
-
-
-
-    <% } -%>
-  
-
-
-
-
 </div>
-
-
-
-
-
 <!--Progress Track End  -->
 
-<div class=" flex	">
- <!-- <div class="flex items-center justify-center m-auto ">
-            <% if(gratitudeLog.length ==0 ){ %>
-            <a href="#"> </a>
-            <% } else{ %>
-            <h5><% gratitudeLog.length %></h5>
-            <% const arrayNum= Math.floor(Math.random()*5) %> <% const
-            gratitudeLogEntry= Math.floor(Math.random()* gratitudeLog.length) %>
-            
-
-            <h5 class="text-3xl font-serif text-center pt-3.5">
-              I was once grateful for...
-            </h5>
-            <h5>
-              <% const sortedArr=
-              gratitudeLog[gratitudeLogEntry].gratitudeItem1.filter(items=>
-              items.length>0) %>
-            </h5>
-            <h5>
-              <% const arrNum= Math.floor(Math.random() *sortedArr.length) %>
-            </h5>
-            <h5 class="text-xl text-center italic pt-3.5">
-              <%=sortedArr[arrNum] %>
-            </h5>
-
-            <% } %>
-          </div> -->
-        </div>
 
 <!-- <div class=" flex	">
  <div class="flex items-center justify-center m-auto ">

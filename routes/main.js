@@ -32,7 +32,7 @@ router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
 router.get("/affirmations", ensureAuth, postsController.getAffirmationsPage);
 router.get("/api/", ensureAuth,postsController.getAffirmation);
-// router.get("/description/", ensureAuth,postsController.getVisionBoardDescription);
+// router.get("/description/", ensureAuth,postsController.oBoardDescription);
 
 module.exports = router;
 
