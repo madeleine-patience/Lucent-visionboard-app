@@ -1,31 +1,31 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const ForgivenessSchema = new mongoose.Schema({
-    personToForgive: {
+  personToForgive: {
     type: String,
     required: true,
   },
-    howTheyMadeYouFeel: {
+  howTheyMadeYouFeel: {
     type: String,
-    required: true
+    required: true,
   },
-  howTheyWereFeeling: { 
+  howTheyWereFeeling: {
     type: String,
-    required: true, 
+    required: true,
   },
-  stepsToForgivness: { 
+  stepsToForgivness: {
     type: String,
-    required: true, 
+    required: true,
   },
-    userId: {
+  userId: {
     type: String,
-    required: true
+    required: true,
   },
-      
-});   
-    
-       
+  date: {
+    type: Date,
+    default: Date.now,
+    required: true,
+  },
+})
 
-module.exports = mongoose.model("Forgiveness", ForgivenessSchema);
-
- 
+module.exports = mongoose.model('Forgiveness', ForgivenessSchema)

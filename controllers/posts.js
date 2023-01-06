@@ -2,10 +2,15 @@ const cloudinary = require('../middleware/cloudinary')
 const Post = require('../models/Post')
 const path = require('path')
 const Gratitude = require('../models/Gratitude')
-const dailyActivity= require('../helpers/dailyActivity')
+const Manifestation = require('../models/Manifestation')
+const AskTheUniverse = require('../models/AskTheUniverse')
+const ComfortZone = require('../models/ComfortZone')
+const Rejection = require('../models/Rejection')
+const Stress = require('../models/Stress')
+const Forgiveness = require('../models/Forgiveness')
 
-
-
+const dailyActivity = require('../helpers/dailyActivity')
+const totalLogOfActivity = require('../helpers/totalLogOfActivity')
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -21,13 +26,30 @@ module.exports = {
       ]
       const posts = await Post.find({ user: req.user.id })
       const gratitudeLog = await Gratitude.find({ userId: req.user.id })
+      const manifesationLog = await Manifestation.find({ userId: req.user.id })
+      const letterLog = await AskTheUniverse.find({ userId: req.user.id })
+      const rejectionLog = await Rejection.find({ userId: req.user.id })
+      const comfortZoneLog = await ComfortZone.find({ userId: req.user.id })
+      const stressLog = await Stress.find({ userId: req.user.id })
+      const forgivenessLog = await Forgiveness.find({ userId: req.user.id })
       let lastEntry = null
       let hasGratitude = false
 
       // concatenated ID array //
-      let weeklyPost = dailyActivity.generateWeeklyActivity(posts)
-      let weeklyGratitude = dailyActivity.generateWeeklyActivity(posts)
-      let totalActivity = weeklyPost.concat(weeklyGratitude)
+
+      let activityArray = [
+        dailyActivity.generateWeeklyActivity(posts),
+        dailyActivity.generateWeeklyActivity(gratitudeLog),
+        dailyActivity.generateWeeklyActivity(manifesationLog),
+        dailyActivity.generateWeeklyActivity(letterLog),
+        dailyActivity.generateWeeklyActivity(rejectionLog),
+        dailyActivity.generateWeeklyActivity(comfortZoneLog),
+        dailyActivity.generateWeeklyActivity(stressLog),
+        // dailyActivity.generateWeeklyActivity(forgivenessLog),
+      ]
+
+      let totalActivityLog = totalLogOfActivity.totalWeeklyLog(activityArray)
+      // let weeklyPost = dailyActivity.generateWeeklyActivity(posts)
 
       if (gratitudeLog.length > 0) {
         const lastEntryDate = gratitudeLog[
@@ -37,7 +59,20 @@ module.exports = {
         lastEntry = gratitudeLog[gratitudeLog.length - 1]
         hasGratitude = lastEntryDate === currentDate
       }
-      console.log(lastEntry)
+
+      // day of the week array //
+      let sevenPreviousDays = []
+      for (let i = 0; i < 7; i++) {
+        dateOnly = false
+        let d = new Date()
+        d.setDate(d.getDate() - i)
+        sevenPreviousDays.push(
+          dateOnly
+            ? new Date(d).toString().slice(0, 13)
+            : d.toString().slice(0, 10),
+        )
+      }
+      sevenPreviousDays = sevenPreviousDays.reverse()
 
       res.render('profile.ejs', {
         posts: posts,
@@ -48,6 +83,8 @@ module.exports = {
         daysOfWeek: daysOfWeek,
         weeklyActivity: dailyActivity.generateWeeklyActivity(gratitudeLog),
         weeklyPostActivity: dailyActivity.generateWeeklyActivity(posts),
+        totalActivityLog: totalActivityLog,
+        sevenPreviousDays: sevenPreviousDays,
       })
     } catch (err) {
       console.log(err)

@@ -1,22 +1,19 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const AskTheUniverseSchema = new mongoose.Schema({
   letterToTheUniverse: {
     type: String,
     required: true,
   },
-    userId: {
+  userId: {
     type: String,
-    required: true
+    required: true,
   },
-  // date: {
-  //   type: Date,
-  //   required: true,
-  // },
-  
+  date: {
+    type: Date,
+    default: Date.now,
+    required: true,
+  },
+})
 
-});
-
-
-
-module.exports = mongoose.model("AskTheUniverse", AskTheUniverseSchema);
+module.exports = mongoose.model('AskTheUniverse', AskTheUniverseSchema)

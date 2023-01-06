@@ -1,27 +1,27 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const ComfortZoneSchema = new mongoose.Schema({
   thingsYouWantToChallenge: {
     type: String,
     required: true,
   },
-    stepsToGetThere: {
+  stepsToGetThere: {
     type: String,
-    required: true
+    required: true,
   },
-  whatWouldHappenIf: { 
+  whatWouldHappenIf: {
     type: String,
-    required: true, 
+    required: true,
   },
-    userId: {
+  userId: {
     type: String,
-    required: true
+    required: true,
   },
-      
-});   
-    
-       
+  date: {
+    type: Date,
+    default: Date.now,
+    required: true,
+  },
+})
 
-module.exports = mongoose.model("ComfortZone", ComfortZoneSchema);
-
- 
+module.exports = mongoose.model('ComfortZone', ComfortZoneSchema)

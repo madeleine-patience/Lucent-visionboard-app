@@ -1,32 +1,26 @@
 // tailwind.config.js
 
 module.exports = {
-  content: ["./views/**/*.ejs"],
+  content: ['./views/**/*.ejs'],
   theme: {
     extend: {
       colors: {
-        main: '#F0DFD1',
+        main: '#ead2be',
         fontLight: '#FFFFFF',
-        grey: '#C6BBB7'
-
+        grey: '#C6BBB7',
       },
       fontFamily: {
         'Playfair-Display': ['"Playfair-Display"', 'serif'],
-        'Playfair': ['"Helvetica"', 'serif'],
-        'jSans':['Josefin Sans', 'sans-serif'],
-        'jSlab':['Josefin Slab', 'sans-serif'],
-        'corm':['Cormorant', 'serif'],
-        'raleway':['Raleway', 'sans-serif'],
-
-
+        Playfair: ['"Helvetica"', 'serif'],
+        jSans: ['Josefin Sans', 'sans-serif'],
+        jSlab: ['Josefin Slab', 'sans-serif'],
+        corm: ['Cormorant', 'serif'],
+        raleway: ['Raleway', 'sans-serif'],
       },
       backgroundImage: {
-        'hero': "url('https://ibb.co/kgdYz5W')",
+        hero: "url('https://ibb.co/kgdYz5W')",
       },
-
     },
-
-
 
     fontSize: {
       xs: '0.75rem',
@@ -43,10 +37,9 @@ module.exports = {
       '8xl': '6rem',
       '9xl': '7rem',
       '10xl': '8rem',
-
-    }
+    },
   },
   variants: {
-    backgroundColor: ['responsive', 'hover', 'focus', 'active']
-  }
+    backgroundColor: ['responsive', 'hover', 'focus', 'active'],
+  },
 }

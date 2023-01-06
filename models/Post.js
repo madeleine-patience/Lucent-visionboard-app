@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const PostSchema = new mongoose.Schema({
   title: {
@@ -20,24 +20,25 @@ const PostSchema = new mongoose.Schema({
 
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
-  favorite:{
-    type:"boolean",
+  favorite: {
+    type: 'boolean',
     required: false,
   },
   userId: {
     type: String,
-    required: true
+    required: true,
   },
   date: {
     type: Date,
+    default: Date.now,
     required: true,
   },
-});
+})
 
-module.exports = mongoose.model("Post", PostSchema);
+module.exports = mongoose.model('Post', PostSchema)

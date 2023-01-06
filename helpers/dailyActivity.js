@@ -1,20 +1,18 @@
 function generateWeeklyActivity(entryLog) {
-    let week = [null, null, null, null, null, null, null]
-    const currentDate = new Date()
-    for (let i = entryLog.length - 1; i >= 0; i--) {
-      const diffTime = Math.abs(currentDate - entryLog[i].date)
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+  let week = [null, null, null, null, null, null, null]
+  const currentDate = new Date()
+  console.log(currentDate)
+  for (let i = entryLog.length - 1; i >= 0; i--) {
+    const diffTime = Math.abs(currentDate - entryLog[i].date)
+    console.log(diffTime)
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) - 1
 
-      if (diffDays >= 7) {
-        break
-      }
-      week[diffDays] = entryLog[i]._id
+    if (diffDays >= 7) {
+      break
     }
-    console.log(week)
-    return week.reverse()
-    
+    week[diffDays] = entryLog[i]._id
   }
-  
+  return week.reverse()
+}
 
 module.exports = { generateWeeklyActivity }
-

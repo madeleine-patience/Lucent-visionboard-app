@@ -1,26 +1,27 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const RejectionSchema = new mongoose.Schema({
-    redirection: {
+  redirection: {
     type: String,
     required: true,
   },
-    whatYouLearned: {
+  whatYouLearned: {
     type: String,
-    required: true
+    required: true,
   },
   reDirection: {
     type: String,
     required: true,
   },
-      userId: {
+  userId: {
     type: String,
-    required: true
+    required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+    required: true,
+  },
+})
 
-});
-
-
-
-module.exports = mongoose.model("Rejection", RejectionSchema);
-
+module.exports = mongoose.model('Rejection', RejectionSchema)
