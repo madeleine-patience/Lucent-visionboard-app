@@ -57,10 +57,6 @@
          </div>
 <!-- Random Photo  -->
 
-
-
-
-
   <!-- Suggested excercises -->
 <div class="h-36 border-t-2 border-black flex	">
   <h3 class="font-corm flex items-center justify-center m-auto text-5xl " >Suggested Journal Prompts </h3>
@@ -126,41 +122,15 @@
 </div>
 </div>
 
-
- 
-<!-- Weekly Progress Track  -->
-<!-- <h3 class="text-3xl font-corm flex justify-center border-b-2 border-t-2 border-black"> Weekly Progress </h3>
-<div class=" h-96	 border-t-1 border-black flex justify-center  flex-row 	">
-  
-    <% for(day of totalActivityLog){ %> 
-      <%if(day){ %>
-      <%let indexNum= totalActivityLog.indexOf(day) %>
-
-      <a href="">  
-      <div class="flex flex-row" > 
-      <h3> <%= day %> </h3> 
-
-
-      <div class="rounded-full h-28 w-28 border-2 border-black bg-grey m-2" src=""></div>
-      </div>
-      </a>
-      <% } else{ %>
-        <a href="">  
-      <div class="flex flex-row"  > 
-      <h3> <% sevenPreviousDays[0] %> </h3> 
-        <div class="rounded-full h-28 w-28 border-2 border-black m-2 " src=""></div>
-      </div>
-      </a>
-      <% } -%>
-    <% } -%>
-</div> -->
+<!-- weekly progress track  -->
 
 <h3 class="text-3xl font-corm flex justify-center border-b-2 border-t-2 border-black"> Weekly Progress </h3>
 <div class=" h-96	 border-t-1 border-black flex justify-center  flex-row  mt-6	">
   
     <% for(let i=0; i<sevenPreviousDays.length;i++){ %> 
       <%if(totalActivityLog[i]){ %>
-      <a href=""> 
+
+      <a href="gratitude/getSummary/post">
       <div class="flex flex-col items-center " > 
       <h3 class=""> <%= sevenPreviousDays[i] %> </h3> 
       <div class="rounded-full h-32 w-32 border-2 border-black bg-grey m-4" src=""></div>

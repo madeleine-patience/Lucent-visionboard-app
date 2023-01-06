@@ -21,10 +21,10 @@ module.exports = {
   getSummary: async (req, res) => {
     try {
       // const post = await Post.findById(req.params.id);
-
       const posts = await Post.find({ user: req.params.id })
       const gratitudeLog = await Gratitude.find({ user: req.params.id })
       console.log(gratitudeLog)
+
       // const gratitudeLog = await Gratitude.find({ userId: req.user.id });
       res.render('summary.ejs', { gratitudeLog: gratitudeLog, user: req.user })
     } catch (err) {
