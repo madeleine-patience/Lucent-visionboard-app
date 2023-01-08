@@ -8,6 +8,8 @@ const Rejection = require('../models/Rejection')
 const Stress = require('../models/Stress')
 const Forgiveness = require('../models/Forgiveness')
 const dailyActivity = require('../helpers/dailyActivity')
+const dateConversion = require('../helpers/dateConversion')
+
 
 module.exports = {
   getManifestation: async (req, res) => {
@@ -58,11 +60,14 @@ module.exports = {
   getWorkshopOne: async (req, res) => {
     try {
       const manifestation = await Manifestation.find({ userId: req.user.id })
+      console.log(manifestation)
+      const day= dateConversion.convertDate(manifestation)
+      console.log(day)
       res.render('workshopOne.ejs', {
         manifestation: manifestation,
         user: req.user,
+        day:day
       })
-      console.log(manifestation)
       // res.redirect('/profile');
     } catch (err) {
       console.log(err)
@@ -189,7 +194,7 @@ module.exports = {
     }
   },
 
-  createForgivness: async (req, res) => {
+  createForgiveness: async (req, res) => {
     try {
       await Forgiveness.create({
         personToForgive: req.body.personToForgive,

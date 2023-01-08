@@ -23,7 +23,7 @@ router.post("/createLetter", ensureAuth, workshopController.createLetter)
 router.post("/createRedirection", ensureAuth, workshopController.createRedirection)
 router.post("/createComfortZone", ensureAuth, workshopController.createComfortZone)
 router.post("/createStress", ensureAuth, workshopController.createStress)
-router.post("/createForgivness", ensureAuth, workshopController.createForgivness)
+router.post("/createForgiveness", ensureAuth, workshopController.createForgiveness)
 
 module.exports = router;
 

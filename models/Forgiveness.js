@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-
 const ForgivenessSchema = new mongoose.Schema({
   personToForgive: {
     type: String,

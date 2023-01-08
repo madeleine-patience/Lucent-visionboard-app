@@ -15,15 +15,7 @@ const totalLogOfActivity = require('../helpers/totalLogOfActivity')
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const daysOfWeek = [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-      ]
+
       const posts = await Post.find({ user: req.user.id })
       const gratitudeLog = await Gratitude.find({ userId: req.user.id })
       const manifesationLog = await Manifestation.find({ userId: req.user.id })
@@ -62,10 +54,14 @@ module.exports = {
 
       // day of the week array //
       let sevenPreviousDays = []
+      let isoFormattedDates=[]
       for (let i = 0; i < 7; i++) {
+        
         dateOnly = false
         let d = new Date()
         d.setDate(d.getDate() - i)
+        isoFormattedDates.push(new Date(d).toISOString().split('T')[0])
+      
         sevenPreviousDays.push(
           dateOnly
             ? new Date(d).toString().slice(0, 13)
@@ -73,23 +69,53 @@ module.exports = {
         )
       }
       sevenPreviousDays = sevenPreviousDays.reverse()
-
+      isoFormattedDates= isoFormattedDates.reverse()
       res.render('profile.ejs', {
         posts: posts,
         user: req.user,
         gratitudeLog: gratitudeLog,
         hasGratitude: hasGratitude,
         lastEntry: lastEntry,
-        daysOfWeek: daysOfWeek,
         weeklyActivity: dailyActivity.generateWeeklyActivity(gratitudeLog),
         weeklyPostActivity: dailyActivity.generateWeeklyActivity(posts),
         totalActivityLog: totalActivityLog,
         sevenPreviousDays: sevenPreviousDays,
+        isoFormattedDates: isoFormattedDates,
       })
     } catch (err) {
       console.log(err)
     }
   },
+
+
+  getSummary: async (req, res) => {
+    try {
+      // const post = await Post.findById(req.params.id);
+      let day=req.params.date
+      let nextDay=new Date(req.params.date)
+      nextDay.setDate(nextDay.getDate() + 1) 
+      const posts = await Post.find({ user:  req.user.id, date: {  $gte:day, $lte:nextDay } }) 
+      const gratitudeLog = await Gratitude.find({ user: req.params.id, date: {  $gte:day, $lte:nextDay } })
+      const manifestation = await Manifestation.find({ userId: req.user.id, date: {  $gte:day, $lte:nextDay } })
+      const letter = await AskTheUniverse.find({ userId: req.user.id ,  date: {  $gte:day, $lte:nextDay }})
+      const rejectionLog = await Rejection.find({ userId: req.user.id, date: {  $gte:day, $lte:nextDay }})
+
+      // const gratitudeLog = await Gratitude.find({ userId: req.user.id });`
+      res.render('summary.ejs',{
+        date:req.params.date,
+        posts:posts,
+        gratitudeLog:gratitudeLog,
+        manifestation:manifestation,
+        letterLog:letter,
+        rejectionLog:rejectionLog
+        
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
+
 
 
   getFeed: async (req, res) => {
@@ -124,6 +150,7 @@ module.exports = {
         user: req.user.id,
         userId: req.user.id,
         date: new Date(),
+
       })
       res.redirect(`/post/addDescription/${newPost._id}`)
     } catch (err) {
@@ -132,7 +159,6 @@ module.exports = {
   },
 
   editPost: async (req, res) => {
-    // console.log(req);
     try {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
@@ -141,17 +167,12 @@ module.exports = {
           caption: req.body.caption,
         },
       )
-      // console.log(`post ${req.params.id} has been updated!`);
       console.log(`post ${caption} has been updated!`)
 
       res.redirect('/visionBoard')
     } catch (err) {
       console.log(err)
-      // Upload image to cloudinary
-
       console.log(req)
-      //needs a FindOneAndUpdate call - changing the post title and caption will only update the 'post' object, won't write back to the db
-      //see DevDays editBlogPost
       try {
         await Post.findOneAndUpdate(
           { _id: req.params.id },
@@ -218,12 +239,9 @@ module.exports = {
 
   deletePost: async (req, res) => {
     try {
-      // Find post by id
       let post = await Post.findById({ _id: req.params.id })
 
-      // Delete image from cloudinary
       await cloudinary.uploader.destroy(post.cloudinaryId)
-      // Delete post from db
       await Post.remove({ _id: req.params.id })
       console.log('Deleted Post')
       res.redirect('/visionBoard')

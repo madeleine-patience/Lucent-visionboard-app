@@ -6,6 +6,9 @@ const postsController = require('../controllers/posts')
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 //Post Routes - simplified for now
+
+router.get('/getSummary/:date', postsController.getSummary)
+
 router.get('/:id', ensureAuth, postsController.getPost)
 
 router.post('/createPost', upload.single('file'), postsController.createPost)
@@ -17,6 +20,7 @@ router.put('/likePost/:id', postsController.likePost)
 router.delete('/deletePost/:id', postsController.deletePost)
 
 router.get('/addDescription/:id', postsController.getEditDescription)
+
 
 // router.get("/api", ensureAuth,postsController.getAffirmation);
 

@@ -11,6 +11,5 @@ router.get('/', ensureAuth, gratitudeController.getGratitude)
 router.post('/createGratitude', ensureAuth, gratitudeController.createGratitude)
 router.delete('/deleteGratitude/:id', gratitudeController.deleteGratitude)
 
-router.get('/getSummary/:id', gratitudeController.getSummary)
 
 module.exports = router

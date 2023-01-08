@@ -5,23 +5,6 @@ const GratitudeSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
-  //Duplicate schema entries aren't required
-  // gratitudeItem1: {
-  //   type: Array,
-  //   required: false,
-  // },
-  // gratitudeItem1: {
-  //   type: Array,
-  //   required: false,
-  // },
-  // gratitudeItem1: {
-  //   type: Array,
-  //   required: false,
-  // },
-  // gratitudeItem1: {
-  //   type: Array,
-  //   required: false,
-  // },
   userId: {
     type: String,
     required: true

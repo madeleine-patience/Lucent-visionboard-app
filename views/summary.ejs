@@ -1,4 +1,141 @@
-<h1>HI</h1> 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<h2 class="text-5xl font-serif py-2 text-center">
-  </h2>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;500;700&family=Raleway:wght@100;200;300;400;600;700;900&display=swap" rel="stylesheet">
+
+
+    <title>Lucent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="bg-main pb-4">
+    <header class="">
+      <div class="#">
+        <h1 class="font-corm text-9xl	text-fontLight py-0 pb-0 text-center pt-0 text-primary mb-0		"><a href="/profile">LUCENT</a></h1>
+        <html data-theme=""></html>
+          <ul class="flex flex-wrap justify-center 	border-b-2	border-black font-raleway text-xl" >
+          <a class="px-1" href="/profile">Home •</a>
+          <a class="px-1" href="/gratitude">Gratitude •</a>
+          <!-- <a class="px-1" href="/moodBoard">Track Mood •</a> -->
+          <a class="px-1" href="/visionBoard">Vision Board •</a>
+          <!-- <a class="px-1" href="/affirmations">Affirmations •</a> -->
+          <a class="px-1" href="/workshop">Excercises • </a>
+          <% let dateTest= new Date() %>
+          <% let isoFormattedToday= new Date(dateTest).toISOString().split("T")[0] %>
+
+          <a class="px-1" href="<%=isoFormattedToday-%>">Todays Summary </a>
+
+
+          <!-- <a class="px-1" href="/gratitude">Gratitude •</a>
+          <a class="px-1" href="/gratitude">Gratitude •</a>
+          <a class="px-1" href="/gratitude">Gratitude</a> -->
+          </ul>
+      </div>
+    </header>
+
+<h2 class="font-corm  justify-center m-auto text-5xl p-6 border-b-2 border-black flex"  >Your Journal Entry from <%=date%></h2>
+
+
+<!-- Section one  -->
+<div class="flex flex-row m-2 justify-center mt-6 pb-6 border-b-2 border-black"">
+<!-- posts displays -->
+<% if(posts[0]) { %>
+    <img
+    class="max-h-50  object-cover p-16 bg-white"
+    src="<%= posts[0].image%>"
+    />
+<%} %> 
+<!-- posts display end -->
+
+<!-- Manifestation Logs of the day  -->
+<% if(manifestation.lenght>0) { %>
+
+  <div class="flex items-center p-16">
+  <% for(let i=0; i<1; i++) {%>
+
+      <div class="title text-left  font-raleway my-6 "> 
+          <div class="title font-corm text-3xl "> <h4> Today I manifested...  </h4> </div>
+          <div class="title pb-2"> <h4><%= manifestation[i].whatToManifest%> </h4> </div>
+          <div class="title pb-2"> <h4><%= manifestation[i].manifestationObstacles%> </h4> </div>
+          <div class="title pb-2"> <h4><%= manifestation[i].manifestationAction%> </h4> </div>
+      </div>
+
+  <%} %> 
+<%} %> 
+
+</div>
+</div>
+
+<!-- Section one end -->
+
+<!-- Gratitude Display  -->
+<h2 class="title font-corm text-3xl text-center pt-6" > I was grateful for... </h2>
+<ul>
+    <% for(let i=0; i< gratitudeLog.length; i++) { %>
+      <li class ='postItem' data-id="<%gratitudeLog[i]._id%>">
+      <div class="title text-center font-raleway pb-2"> <h4> <%= gratitudeLog[i].gratitudeItem1[0]%> </h4> </div>
+      <div class="title text-center font-raleway pb-2"> <h4> <%= gratitudeLog[i].gratitudeItem1[1]%> </h4> </div>
+      <div class="title text-center font-raleway pb-2"> <h4> <%= gratitudeLog[i].gratitudeItem1[2]%> </h4> </div>
+      <div class="title text-center font-raleway pb-2"> <h4> <%= gratitudeLog[i].gratitudeItem1[3]%> </h4> </div>
+      <div class="title text-center font-raleway pb-2"> <h4> <%= gratitudeLog[i].gratitudeItem1[4]%> </h4> </div>
+      <div id = "actionsContainer"></div>
+</ul>
+  <form
+    action="/gratitude/deleteGratitude/<%= gratitudeLog[i].id %>?_method=DELETE"
+    method="POST"
+    class="#"
+  >
+  <div class="flex justify-center" >
+    <button class="border-2	border-black py-2 px-8 rounded-md " type="submit">Delete Entry</button>
+  </div>
+  </form>
+<%} %> 
+
+  <%if(gratitudeLog){ %>
+<form
+action="/post/deleteGratitude/<%= gratitudeLog.id %>?_method=DELETE"
+method="POST"
+class="#"
+>
+
+</form>
+<%}%>
+
+
+
+<!-- Letter to the universe of the day  -->
+<% if(letterLog){%>
+
+<% for(let i=0; i<letterLog.length; i++) {%>
+    <li>
+    <div class="title text-center font-serif my-6	max-w-xl"> 
+    <div class="title font-corm text-3xl text-center pt-6"> <h4> On this day you wrote a letter to the universe... </h4> </div>
+    <div class="title text-center font-raleway pb-2"> <h4><%= letterLog[i].letterToTheUniverse%> </h4> </div>
+
+      </div>
+      </li>
+      <%} %> 
+    <%} %> 
+<!-- Rejection into redirection of the day  -->
+
+<% for(let i=0; i<rejectionLog.length; i++) {%>
+    <li>
+    <div class="title text-center  text-center text-xl font-serif text-center my-6	"> 
+<div class="title text-center"> <h4> On this day you reflected on a time when rejection turned to redirection </h4> </div>
+<div class="title text-center"> <h4><%= rejectionLog[i].redirection%> </h4> </div>
+<div class="title text-center"> <h4><%= rejectionLog[i].whatYouLearned%> </h4> </div>
+<div class="title text-center"> <h4><%= rejectionLog[i].reDirection%> </h4> </div>
+
+      </div>
+      </li>
+<%} %> 
+
+
+
+    </body>
+</html>
