@@ -15,7 +15,6 @@ const totalLogOfActivity = require('../helpers/totalLogOfActivity')
 module.exports = {
   getProfile: async (req, res) => {
     try {
-
       const posts = await Post.find({ user: req.user.id })
       const gratitudeLog = await Gratitude.find({ userId: req.user.id })
       const manifesationLog = await Manifestation.find({ userId: req.user.id })
@@ -54,14 +53,13 @@ module.exports = {
 
       // day of the week array //
       let sevenPreviousDays = []
-      let isoFormattedDates=[]
+      let isoFormattedDates = []
       for (let i = 0; i < 7; i++) {
-        
         dateOnly = false
         let d = new Date()
         d.setDate(d.getDate() - i)
         isoFormattedDates.push(new Date(d).toISOString().split('T')[0])
-      
+
         sevenPreviousDays.push(
           dateOnly
             ? new Date(d).toString().slice(0, 13)
@@ -69,7 +67,7 @@ module.exports = {
         )
       }
       sevenPreviousDays = sevenPreviousDays.reverse()
-      isoFormattedDates= isoFormattedDates.reverse()
+      isoFormattedDates = isoFormattedDates.reverse()
       res.render('profile.ejs', {
         posts: posts,
         user: req.user,
@@ -87,41 +85,60 @@ module.exports = {
     }
   },
 
-
   getSummary: async (req, res) => {
     try {
       // const post = await Post.findById(req.params.id);
-      let day=req.params.date
-      let nextDay=new Date(req.params.date)
-      nextDay.setDate(nextDay.getDate() + 1) 
-      const posts = await Post.find({ user:  req.user.id, date: {  $gte:day, $lte:nextDay } }) 
-      const gratitudeLog = await Gratitude.find({ user: req.params.id, date: {  $gte:day, $lte:nextDay } })
-      const manifestation = await Manifestation.find({ userId: req.user.id, date: {  $gte:day, $lte:nextDay } })
-      const letter = await AskTheUniverse.find({ userId: req.user.id ,  date: {  $gte:day, $lte:nextDay }})
-      const rejectionLog = await Rejection.find({ userId: req.user.id, date: {  $gte:day, $lte:nextDay }})
+      let day = req.params.date
+      let nextDay = new Date(req.params.date)
+      nextDay.setDate(nextDay.getDate() + 1)
+      const posts = await Post.find({
+        user: req.user.id,
+        date: { $gte: day, $lte: nextDay },
+      })
+      const gratitudeLog = await Gratitude.find({
+        user: req.params.id,
+        date: { $gte: day, $lte: nextDay },
+      })
+      const manifestation = await Manifestation.find({
+        userId: req.user.id,
+        date: { $gte: day, $lte: nextDay },
+      })
+      const letter = await AskTheUniverse.find({
+        userId: req.user.id,
+        date: { $gte: day, $lte: nextDay },
+      })
+      const rejectionLog = await Rejection.find({
+        userId: req.user.id,
+        date: { $gte: day, $lte: nextDay },
+      })
 
       // const gratitudeLog = await Gratitude.find({ userId: req.user.id });`
-      res.render('summary.ejs',{
-        date:req.params.date,
-        posts:posts,
-        gratitudeLog:gratitudeLog,
-        manifestation:manifestation,
-        letterLog:letter,
-        rejectionLog:rejectionLog
-        
+      res.render('summary.ejs', {
+        date: req.params.date,
+        posts: posts,
+        gratitudeLog: gratitudeLog,
+        manifestation: manifestation,
+        letterLog: letter,
+        rejectionLog: rejectionLog,
       })
     } catch (err) {
       console.log(err)
     }
   },
 
-
-
-
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id })
       res.render('visionBoard.ejs', { posts: posts })
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
+  getFeedback: async (req, res) => {
+    try {
+      const posts = await Post.find({ user: req.user.id })
+      res.render('feedback.ejs')
     } catch (err) {
       console.log(err)
     }
@@ -150,7 +167,6 @@ module.exports = {
         user: req.user.id,
         userId: req.user.id,
         date: new Date(),
-
       })
       res.redirect(`/post/addDescription/${newPost._id}`)
     } catch (err) {

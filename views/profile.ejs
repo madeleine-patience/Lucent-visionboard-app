@@ -35,13 +35,14 @@
             </div>
           <% } else{ %>
 <!-- Random Photo from vision board -->
-          <div class="flex flex-wrap justify-center">
-            <a href="post/addDescription/<%= posts[randomNumber]._id%>">
-              <img
-                class="max-h-50  object-cover p-16 border-2 border-black"
-                src="<%= posts[randomNumber].image%>"
-              />
+          <div class="flex flex-wrap justify-center relative">
+          <img  class ="absolute w-1/2 top-0" src="https://i.ibb.co/gJ0Cxz3/Untitled-Postcard-1-1-in-3-1-in.png" alt="Untitled-Postcard-1-1-in-3-1-in" border="0">
+          <a class= "" href="post/addDescription/<%= posts[randomNumber]._id%>">
+<!-- pl-8 pr-8 pt-8 pb-32 -->
+          <div class="h-16 bg-main"> </div>
+          <img class="max-h-50  object-cover p-8 pb-16 bg-white" src="<%= posts[randomNumber].image%>"/>
             </a>
+     </div>
             <% } %>
            </div>
           </div>
