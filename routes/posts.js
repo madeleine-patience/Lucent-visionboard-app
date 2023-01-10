@@ -15,6 +15,8 @@ router.get('/:id', ensureAuth, postsController.getPost)
 
 router.post('/createPost', upload.single('file'), postsController.createPost)
 
+router.post('/createFeedback', ensureAuth, postsController.createFeedback)
+
 router.put('/editPost/:id', postsController.editPost)
 
 router.put('/likePost/:id', postsController.likePost)

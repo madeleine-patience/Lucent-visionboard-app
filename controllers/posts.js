@@ -8,6 +8,8 @@ const ComfortZone = require('../models/ComfortZone')
 const Rejection = require('../models/Rejection')
 const Stress = require('../models/Stress')
 const Forgiveness = require('../models/Forgiveness')
+const Feedback = require('../models/Feedback')
+const request = require('request')
 
 const dailyActivity = require('../helpers/dailyActivity')
 const totalLogOfActivity = require('../helpers/totalLogOfActivity')
@@ -25,6 +27,24 @@ module.exports = {
       const forgivenessLog = await Forgiveness.find({ userId: req.user.id })
       let lastEntry = null
       let hasGratitude = false
+
+      // API request //
+      let affirmationApiCall
+      await new Promise((resolve, reject) => {
+        request.get(
+          'https://zenquotes.io/api/today',
+          (error, response, body) => {
+            if (!error && response.statusCode === 200) {
+              affirmationApiCall = body
+              resolve()
+            } else {
+              reject(error)
+            }
+          },
+        )
+      })
+      affirmation = JSON.parse(affirmationApiCall)[0]['q']
+      author = JSON.parse(affirmationApiCall)[0]['a']
 
       // concatenated ID array //
 
@@ -68,6 +88,8 @@ module.exports = {
       }
       sevenPreviousDays = sevenPreviousDays.reverse()
       isoFormattedDates = isoFormattedDates.reverse()
+
+      console.log(isoFormattedDates)
       res.render('profile.ejs', {
         posts: posts,
         user: req.user,
@@ -79,6 +101,8 @@ module.exports = {
         totalActivityLog: totalActivityLog,
         sevenPreviousDays: sevenPreviousDays,
         isoFormattedDates: isoFormattedDates,
+        affirmation: affirmation,
+        author: author,
       })
     } catch (err) {
       console.log(err)
@@ -139,6 +163,38 @@ module.exports = {
     try {
       const posts = await Post.find({ user: req.user.id })
       res.render('feedback.ejs')
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
+  // createManifestation: async (req, res) => {
+  //   try {
+  //     await Manifestation.create({
+  //       whatToManifest: req.body.whatToManifest,
+  //       manifestationObstacles: req.body.manifestationObstacles,
+  //       manifestationAction: req.body.manifestationAction,
+  //       userId: req.user.id,
+  //     })
+  //     console.log('Your manifesation has been logged!')
+  //     res.redirect('/workshop/getWorkshopOne')
+  //     console.log(req.body.whatToManifest)
+  //     console.log(req.body.manifestationObstacles)
+  //     console.log(req.body.manifestationAction)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // },
+
+  createFeedback: async (req, res) => {
+    try {
+      await Feedback.create({
+        title: req.body.title,
+        comment: req.body.comment,
+        likes: 0,
+        date: new Date(),
+      })
+      res.redirect(`/post/getFeedback`)
     } catch (err) {
       console.log(err)
     }

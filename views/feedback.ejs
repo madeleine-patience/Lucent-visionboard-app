@@ -1,37 +1,26 @@
 <%- include('partials/header') -%>
-<div class="">
-  <div class="">
-      <div class="">
-      <div class="max-w-screen-lg mx-auto bg-main">
-          <div class="p-6  mx-auto bg-main flex-col	 space-x-4">
-          <div class ="flex flex-col p-6  justify-start">
-          <h2 class="text-5xl font-corm text-center border-b-2 border-black ">Project Feedback!</h2>
-          <div class="p-6 mx-auto flex-col space-x-4	">
-          <h4 class ="text-center m-auto w-9/12 font-raleway	" >Hi Everyone! </h4>
-
-
-         
-      
-            <form  action="/gratitude/createGratitude" method="POST">
+ <div class="max-w-screen-lg mx-auto bg-main">
+    <div class="p-6  mx-auto bg-main flex-col	space-x-4">
+        <div class ="flex flex-col p-6  justify-start">
+          <h2 class="text-5xl font-corm text-center border-b-2 border-black ">Project Feedback</h2>
+            <div class="w-10/12 mx-auto"> 
+             <h2 class="font-raleway font-semibold pt-2 text-center"> Hi Everyone! </h2>
+             <h2 class="font-raleway font-semibold pt-2 text-center pb-2 border-b-2 border-black"> Please feel free to leave some feedback about my project. Constructive critism welcome, emphasis on the constructive. Keep in mind I'm looking for my first dev job and this will be going on my resume. </h2>
+            </div>
+                <div class="p-6 flex-col space-x-4	">
+                 <form  action="createFeedback" method="POST">
                  <div class="flex flex-col  w-10/12 mx-auto	">
-                 <label  for="gratitudeItem1" class="form-label text-center text-4xl font-corm my-6 m-auto border-b-2 border-black ">Log Gratitude</label>
-                 <textarea type="text" class="form-control font-raleway  mt-2.5	h-32 bg-fontLight border-2 border-black" id="item" name="item"> </textarea>
+                 <label  for="title" class="form-label text-center text-4xl font-corm my-6 m-auto border-b-2 border-black "></label>
+                 <h2 class="font-raleway font-semibold"> Title </h2>
+                 <textarea type="text" class="form-control font-raleway  mt-2.5	h-8 bg-fontLight border-2 border-black" id="title" name="title"> </textarea>
+                 <h2 class="font-raleway font-semibold pt-2"> Comment </h2>
+                 <label for="comment" class="form-label"></label>
+                 <textarea type="text" class="form-control  mt-2.5	h-32 bg-fontLight border-2 border-black" id="comment" name="comment"> </textarea>
+                <button type="submit" class="border-2	border-black py-2 px-8 rounded-md my-4"value="Upload" >Submit</button>
+                </form>
+</div>
+</div>
+</div>
 
-                 <label for="gratitudeItem2" class="form-label"></label>
-                 <textarea type="text" class="form-control  mt-2.5	h-32 bg-fontLight border-2 border-black" id="item" name="item"> </textarea>
-
-                 <label for="gratitudeItem3" class="form-label"></label>
-                 <textarea type="text" class="form-control  mt-2.5	h-32 bg-fontLight border-2 border-black" id="item" name="item"> </textarea>
-                  
-                 <label for="gratitudeItem4" class="form-label"></label>
-                 <textarea type="text" class="form-control  mt-2.5	h-32 bg-fontLight border-2 border-black"" id="item" name="item"></textarea>
-                 
-                 <label for="gratitudeItem5" class="form-label"></label>
-                 <textarea type="text" class="form-control  mt-2.5	h-32 bg-fontLight border-2 border-black"" id="item" name="item"></textarea>
-              
-     
-            <button type="submit" class="border-2	border-black py-2 px-8 rounded-md my-4"value="Upload" >Submit</button>
-            </form>
-     </div>
 
 <%- include('partials/footer') -%>

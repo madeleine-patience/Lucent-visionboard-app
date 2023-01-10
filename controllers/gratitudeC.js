@@ -25,6 +25,7 @@ module.exports = {
         userId: req.user.id,
         date: new Date(),
       })
+
       console.log('Your gratitude for today has been logged!')
       res.redirect('/gratitude')
       console.log(req.body.item)
