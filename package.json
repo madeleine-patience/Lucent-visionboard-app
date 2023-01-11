@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
   "build:css": "npx tailwindcss-cli build -i src/styles.css -o public/styles.css -w",
-  "build": "postcss ./src/styles.css -o ./public/css/style.css",
-  "start":  "node server.js"
+  "build": "postcss ./src/styles.css -o ./public/css/style.css"
   },
   "author": "",
   "license": "MIT",
