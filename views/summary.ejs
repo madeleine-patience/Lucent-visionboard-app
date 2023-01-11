@@ -27,7 +27,6 @@
           <a class="px-1" href="/workshop">Excercises • </a>
           <% let dateTest= new Date() %>
           <% let isoFormattedToday= new Date(dateTest).toISOString().split("T")[0] %>
-
           <a class="px-1" href="<%=isoFormattedToday-%>">Todays Summary </a>
 
 
@@ -38,22 +37,30 @@
       </div>
     </header>
 
-<h2 class="font-corm  justify-center m-auto text-5xl p-6 border-b-2 border-black flex"  >Your Journal Entry from <%=date%></h2>
+<h2 class="font-corm  justify-center m-auto text-5xl p-6 border-b-2 border-black flex font-light"  >Your Journal Entry from <%=date%></h2>
 
 
 <!-- Section one  -->
 <div class="flex flex-row m-2 justify-center mt-6 pb-6 border-b-2 border-black"">
 <!-- posts displays -->
-<% if(posts[0]) { %>
+<div class="flex flex-col justify-center sm:flex-row m-12">
+<% if(posts.length>0) { %>
+  <% for(let i=0; i<3; i++) {%>
+
     <img
-    class="max-h-50  object-cover p-16 bg-white"
-    src="<%= posts[0].image%>"
+    class="p-4 mb-6  bg-white sm:max-h-50 sm:w-1/3 sm:object-cover  sm:m-2  "
+    src="<%= posts[i].image%>"
     />
+
+  <%} %> 
 <%} %> 
+</div>
+</div>
+
 <!-- posts display end -->
 
 <!-- Manifestation Logs of the day  -->
-<% if(manifestation.lenght>0) { %>
+
 
   <div class="flex items-center p-16">
   <% for(let i=0; i<1; i++) {%>
@@ -66,7 +73,6 @@
       </div>
 
   <%} %> 
-<%} %> 
 
 </div>
 </div>
@@ -74,26 +80,19 @@
 <!-- Section one end -->
 
 <!-- Gratitude Display  -->
-<h2 class="title font-corm text-3xl text-center pt-6" > I was grateful for... </h2>
+<h2 class="font-corm  justify-center m-auto text-4xl p-6 border-b-2 border-black flex font-light" > On this day I was grateful for... </h2>
 <ul>
     <% for(let i=0; i< gratitudeLog.length; i++) { %>
-      <li class ='postItem' data-id="<%gratitudeLog[i]._id%>">
+      <li class ='postItem italic mt-8 w-10/12 mx-auto list-none' data-id="<%gratitudeLog[i]._id%>">
       <div class="title text-center font-raleway pb-2"> <h4> <%= gratitudeLog[i].gratitudeItem1[0]%> </h4> </div>
       <div class="title text-center font-raleway pb-2"> <h4> <%= gratitudeLog[i].gratitudeItem1[1]%> </h4> </div>
       <div class="title text-center font-raleway pb-2"> <h4> <%= gratitudeLog[i].gratitudeItem1[2]%> </h4> </div>
       <div class="title text-center font-raleway pb-2"> <h4> <%= gratitudeLog[i].gratitudeItem1[3]%> </h4> </div>
       <div class="title text-center font-raleway pb-2"> <h4> <%= gratitudeLog[i].gratitudeItem1[4]%> </h4> </div>
+      </li>
       <div id = "actionsContainer"></div>
 </ul>
-  <form
-    action="/gratitude/deleteGratitude/<%= gratitudeLog[i].id %>?_method=DELETE"
-    method="POST"
-    class="#"
-  >
-  <div class="flex justify-center" >
-    <button class="border-2	border-black py-2 px-8 rounded-md " type="submit">Delete Entry</button>
-  </div>
-  </form>
+
 <%} %> 
 
   <%if(gratitudeLog){ %>
@@ -106,34 +105,92 @@ class="#"
 </form>
 <%}%>
 
-
+</div>
 
 <!-- Letter to the universe of the day  -->
-<% if(letterLog){%>
 
-<% for(let i=0; i<letterLog.length; i++) {%>
-    <li>
-    <div class="title text-center font-serif my-6	max-w-xl"> 
-    <div class="title font-corm text-3xl text-center pt-6"> <h4> On this day you wrote a letter to the universe... </h4> </div>
+<% if(letterLog.length>1){%>
+<h2 class="font-corm  text-center justify-center m-auto text-4xl p-6 mt-12 border-b-2 border-black flex font-light border-t-2" > On this day you asked the universe for what you wanted: </h2>
+
+<% for(let i=0; i<1; i++) {%>
+    <li class='postItem italic mt-8 w-10/12 mx-auto list-none' >
+    <div class=""> 
     <div class="title text-center font-raleway pb-2"> <h4><%= letterLog[i].letterToTheUniverse%> </h4> </div>
-
-      </div>
+    </div>
       </li>
       <%} %> 
     <%} %> 
 <!-- Rejection into redirection of the day  -->
 
-<% for(let i=0; i<rejectionLog.length; i++) {%>
-    <li>
-    <div class="title text-center  text-center text-xl font-serif text-center my-6	"> 
-<div class="title text-center"> <h4> On this day you reflected on a time when rejection turned to redirection </h4> </div>
-<div class="title text-center"> <h4><%= rejectionLog[i].redirection%> </h4> </div>
-<div class="title text-center"> <h4><%= rejectionLog[i].whatYouLearned%> </h4> </div>
-<div class="title text-center"> <h4><%= rejectionLog[i].reDirection%> </h4> </div>
+<% if(rejectionLog.length>0){%>
+
+<% for(let i=0; i<1; i++) {%>
+<h2 class="font-corm  text-center justify-center m-auto text-4xl p-6 mt-12 border-b-2 border-black flex font-light border-t-2" >On this day you turned rejection into redirection. </h2>
+
+    <li class="list-none">
+    <div class="title text-center  font-serif my-6	italic"> 
+<div class="title text-center font-raleway pb-2"> <h4><%= rejectionLog[i].redirection%> </h4> </div>
+<div class="title text-center font-raleway pb-2"> <h4><%= rejectionLog[i].whatYouLearned%> </h4> </div>
+<div class="title text-center font-raleway pb-2"> <h4><%= rejectionLog[i].reDirection%> </h4> </div>
 
       </div>
       </li>
 <%} %> 
+
+<%} %> 
+
+<% if(comfort.length>0){%>
+
+<% for(let i=0; i<1; i++) {%>
+<h2 class="font-corm  text-center justify-center m-auto text-4xl p-6 mt-12 border-b-2 border-black flex font-light border-t-2" >On this day I made a promise to step outside my comfort zone. </h2>
+
+    <li class="list-none">
+    <div class="title text-center  font-serif my-6	italic"> 
+<div class="title text-center font-raleway pb-2"> <h4><%= comfort[i].thingsYouWantToChallenge%> </h4> </div>
+<div class="title text-center font-raleway pb-2"> <h4><%= comfort[i].stepsToGetThere%> </h4> </div>
+<div class="title text-center font-raleway pb-2"> <h4><%= comfort[i].whatWouldHappenIf%> </h4> </div>
+
+      </div>
+      </li>
+<%} %> 
+
+<%} %> 
+
+<% if(stress.length>0){%>
+
+<% for(let i=0; i<1; i++) {%>
+<h2 class="font-corm  text-center justify-center m-auto text-4xl p-6 mt-12 border-b-2 border-black flex font-light border-t-2" >On this day, I made a commitment to reduce the stress in my life.</h2>
+
+    <li class="list-none">
+    <div class="title text-center  font-serif my-6	italic"> 
+<div class="title text-center font-raleway pb-2"> <h4><%= stress[i].yourStressors%> </h4> </div>
+<div class="title text-center font-raleway pb-2"> <h4><%= stress[i].waysToChange%> </h4> </div>
+<div class="title text-center font-raleway pb-2"> <h4><%= stress[i].thingstoMakeEasier%> </h4> </div>
+
+      </div>
+      </li>
+<%} %> 
+<%} %> 
+
+<% if(forgive.length>0){%>
+
+<% for(let i=0; i<1; i++) {%>
+<h2 class="font-corm  text-center justify-center m-auto text-4xl p-6 mt-12 border-b-2 border-black flex font-light border-t-2" >On this day, I chose to forgive. </h2>
+
+    <li class="list-none">
+    <div class="title text-center  font-serif my-6	italic"> 
+<div class="title text-center font-raleway pb-2"> <h4><%= forgive[i].personToForgive%> </h4> </div>
+<div class="title text-center font-raleway pb-2"> <h4><%= forgive[i].howTheyMadeYouFeel%> </h4> </div>
+<div class="title text-center font-raleway pb-2"> <h4><%= forgive[i].howTheyWereFeeling%> </h4> </div>
+<div class="title text-center font-raleway pb-2"> <h4><%= forgive[i].stepsToForgivness%> </h4> </div>
+
+      </div>
+      </li>
+<%} %> 
+
+<%} %> 
+
+
 
 
 

@@ -4,7 +4,8 @@
 
   <div class="flex flex-col	 p-6 flex justify-start ">
        <div class="p-6 w-9/12 mx-auto flex-col space-x-4 max-w-screen-md	">
-            <h5 class="text-center">Sometimes we have stressors in our lives that we can't identify without a little reflection. In this excercise you can find the things in your life that are stressing you out and hopefully elminate them.</h5>
+          <h2 class="text-4xl font-corm font-light  text-center border-b-2 border-black ">Identify Stressors</h2>
+            <h5 class="text-center ">Sometimes we have stressors in our lives that we can't identify without a little reflection. In this excercise you can find the things in your life that are stressing you out and hopefully elminate them.</h5>
       </div>
 </div>s
 
@@ -12,27 +13,27 @@
 
 <!-- Main Page Content -->
 
-<div class="flex flex-wrap max-w-screen-md mx-auto items-center">
+<div class=" max-w-screen-md mx-auto ">
 
 <!-- Form -->
-<div class="w-96">
+<div class="mx-auto pb-10">
             <form  action="/workshop/createStress" method="POST">
                  <div class="flex flex-col  w-10/12 mx-auto ">
 
-                 <label for="yourStressors" class="form-label 	text-1xl font-serif">Whats the first thing that comes to your mind when you hear the word "Stress". Write down what it is that stresses you out.</label>
+                 <label for="yourStressors" class="form-label font-raleway">Whats the first thing that comes to your mind when you hear the word "Stress". Write down what it is that stresses you out. </label>
                 
-                 <textarea type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5 h-52 mb-10	 "  id="yourStressors" name="yourStressors"></textarea>
+                 <textarea type="text"  class="form-control bg-fontLight mt-2.5 h-36 mb-6 border-2 border-black"   id="redirection" id="yourStressors" name="yourStressors" maxlength="400" required"></textarea>
 
-                 <label for="waysToChange" class="form-label 	text-1xl font-serif">
+                 <label for="waysToChange" class="form-label font-raleway">
                 Can you think of one or two things to reduce, change or eliminate completely the stressor in your life?</label>
 
-                 <textarea type="text" class="form-control bg-gray-300 rounded-lg mt-2.5 h-52 mb-10" id="waysToChange" name="waysToChange"></textarea>
+                 <textarea type="text"  class="form-control bg-fontLight mt-2.5 h-36 mb-6 border-2 border-black"   id="redirection"  id="waysToChange" name="waysToChange" maxlength="400" required"></textarea>
 
-                 <label for="thingstoMakeEasier" class="form-label text-1xl font-serif">What are some things you can actively do to make these stressors easier? </label>
-                 <textarea type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5 h-52 mb-10" id="thingstoMakeEasier" name="thingstoMakeEasier"></textarea>
+                 <label for="thingstoMakeEasier" class="form-label font-raleway">What are some things you can actively do to make these stressors easier? </label>
+                 <textarea type="text"  class="form-control bg-fontLight mt-2.5 h-36 mb-6 border-2 border-black"   id="redirection" id="thingstoMakeEasier" name="thingstoMakeEasier" maxlength="400" required"></textarea>
                         
 
-                <button type="submit" href= "loc"class="my-6 py-2 px-4 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-neutral-300	focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" value="Upload" >Submit Excercise</button>
+                <button type="submit" href= "loc" class="border-2	border-black py-1 px-8 rounded-md font-corm font-light text-xl " value="Upload" >Submit Excercise</button>
                </form>        
                 </div>
 </div>

@@ -1,29 +1,21 @@
 <%- include('partials/header') -%>
 
 
-<div class="p-6 w-11/12	 mx-auto bg-main rounded-xl shadow-lg flex-col	 space-x-4">
+<div class="p-6 w-11/12	 mx-auto bg-main rounded-xl flex-col	 space-x-4">
 
   <div class="flex flex-col	 p-6 flex justify-start">
-       <h4 class="text-4xl font-serif text-center ">Create Your Vision Board</h4>
-       <div class="p-6 w-9/12 mx-auto flex-col space-x-4	">
-            <h5 class="text-center">A vision board is a visual representation of your goals. Everytime you login you will see a spread of images representing what you are working towards. A simple reminder can help motivate and encourage; helping you get there faster. </h5>
+       <h4 class="text-5xl font-corm  font-light text-center border-b-2 border-black">Create your Vision Board</h4>
+       <div class="p-6 w-11/12 mx-auto flex-col space-x-4	">
+            <h5 class="text-center font-raleway">A vision board is a visual representation of your goals. Everytime you login you will see a spread of images representing what you are working towards. A simple reminder can help motivate and encourage; helping you get there faster. </h5>
       </div>
 </div>
 
 <!-- Form! -->
 
             <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-              <!-- <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
-              </div>
-              <div class="mb-3">
-                <label for="caption" class="form-label">Caption</label>
-                <textarea class="form-control" id="caption" name="caption"></textarea>
-              </div> -->
               <div class="text-center	">
                 <label for="imgUpload" class="#"></label>
-                <input type="file" class="form-control bg-gray-300 rounded-lg	mt-2.5" id="imageUpload" name="file">
+                <input type="file" class="form-control bg-gray-300 	mt-2.5" id="imageUpload" name="file">
             
               <button type="submit" class="border-2	border-black py-1 px-8 rounded-md "value="Upload"  >Submit</button>
             </form>
@@ -34,17 +26,26 @@
 
       <div class="#">
         <ul class="flex flex-wrap justify-center ">
+<div class="flex flex-col lg:inline-grid lg:grid-cols-2 gap-4"> 
+
         <% for(let i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="post/addDescription/<%=posts[i]._id%>">
-              <img class="h-80 w-full object-cover p-1 rounded-2xl	" src="<%= posts[i].image%>">
+
+   <div class="flex flex-wrap justify-center relative transform ">
+          <a class= "text-white hover:text-black" href="post/addDescription/<%= posts[i]._id%>">
+<!-- pl-8 pr-8 pt-8 pb-32 -->
+          <div class="h-8"> </div>
+          <div class=" flex justify-content flex-col">
+          <img class=" object-cover p-5 pb-20 margin-8 bg-white shadow-2xl rounded-md mt-6  " src="<%= posts[i].image%>"/>
+          <h2 class="h-8 italic font-raleway text-center text-xl -m-9"> <%= posts[i].title -%> </h2>
+          </div>
             </a>
-          </li>
+     </div>
+
         <% } %>
 
         </ul>
       </div>  
-
+</div>
 
 <!-- Vision Board End -->
 

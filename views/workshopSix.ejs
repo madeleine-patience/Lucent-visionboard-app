@@ -2,9 +2,10 @@
 <div class="flex-wrap">
 
 
-  <div class="flex flex-col	 p-6 flex justify-start ">
+  <div class="flex flex-col	 p-6  justify-start ">
        <div class="p-6 w-9/12 mx-auto flex-col space-x-4 max-w-screen-md	">
-            <h5 class="text-center">Forgivness is one of the most difficult things that we as humans are faced with. To forgive is to also free yourself. If there is someone in your life that you feel you could forgive use this excercise.</h5>
+         <h2 class="text-4xl font-corm font-light  text-center border-b-2 border-black "> Forgive</h2>
+            <h5 class="text-center font-raleway m-8 ">Forgivness is one of the most difficult things that we as humans are faced with. To forgive is to also free yourself. If there is someone in your life that you feel you could forgive use this excercise.</h5>
       </div>
 </div>
 
@@ -14,25 +15,25 @@
 <div class=" max-w-screen-md mx-auto ">
 
 <!-- Form -->
-<div class="w-fit	">
+<div class="mx-auto pb-10">
             <form  action="/workshop/createForgiveness" method="POST">
 
 
                <div class="flex flex-col  mx-auto ">
-               <label for="personToForgive" class="form-label text-1xl font-serif">Name the person or use a Psedynom to describe the person you want to forgive.</label>
-                 <textarea type="text" class="form-control bg-fontLight rounded-lg mt-2.5 h-52 mb-10 w-100	 "  id="personToForgive" name="personToForgive"></textarea>
+               <label for="personToForgive" class="form-label font-raleway ">Name or describe the person whom you are seeking to forgive.</label>
+                 <textarea type="text" class="form-control bg-fontLight mt-2.5 h-36 mb-6 border-2 border-black"  id="personToForgive" name="personToForgive" maxlength="400" required"></textarea>
 
-                 <label for="howTheyMadeYouFeel" class="form-label text-1xl font-serif">
+                 <label for="howTheyMadeYouFeel" class="form-label  font-raleway">
                 Describe how this person made you feel </label>
-                 <textarea type="text" class="form-control bg-fontLight rounded-lg mt-2.5 h-52 mb-10" id="howTheyMadeYouFeel" name="howTheyMadeYouFeel"></textarea>
+                 <textarea type="text"class="form-control bg-fontLight mt-2.5 h-36 mb-6 border-2 border-black"   id="howTheyMadeYouFeel" name="howTheyMadeYouFeel" maxlength="400" required"></textarea>
 
 
-                 <label for="howTheyWereFeeling" class="form-label text-1xl font-serif">How do you think the person was feeling</label>
-                 <textarea type="text" class="form-control bg-fontLight rounded-lg mt-2.5 h-52 mb-10" id="howTheyWereFeeling" name="howTheyWereFeeling"></textarea>
+                 <label for="howTheyWereFeeling" class="form-label font-raleway">How do you think the person was feeling</label>
+                 <textarea type="text" class="form-control bg-fontLight mt-2.5 h-36 mb-6 border-2 border-black"   id="howTheyWereFeeling" name="howTheyWereFeeling" maxlength="400" required"></textarea>
                         
 
                 <label for="stepsToForgivness" class="form-label text-1xl font-serif">Steps you need to take to forgive.</label>
-                 <textarea type="text" class="form-control bg-fontLight rounded-lg mt-2.5 h-52 mb-10" id="stepsToForgivness" name="stepsToForgivness"></textarea>
+                 <textarea type="text" class="form-control bg-fontLight mt-2.5 h-36 mb-6 border-2 border-black"  id="stepsToForgivness" name="stepsToForgivness" maxlength="400" required"></textarea>
                         
 
      

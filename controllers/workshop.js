@@ -10,7 +10,6 @@ const Forgiveness = require('../models/Forgiveness')
 const dailyActivity = require('../helpers/dailyActivity')
 const dateConversion = require('../helpers/dateConversion')
 
-
 module.exports = {
   getManifestation: async (req, res) => {
     try {
@@ -61,14 +60,44 @@ module.exports = {
     try {
       const manifestation = await Manifestation.find({ userId: req.user.id })
       console.log(manifestation)
-      const day= dateConversion.convertDate(manifestation)
-      console.log(day)
+      const day = dateConversion.convertDate(manifestation)
       res.render('workshopOne.ejs', {
         manifestation: manifestation,
         user: req.user,
-        day:day
+        day: day,
       })
       // res.redirect('/profile');
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
+  createPost: async (req, res) => {
+    try {
+      // Upload image to cloudinary
+      const result = await cloudinary.uploader.upload(req.file.path)
+
+      let newPost = await Post.create({
+        title: req.body.title,
+        image: result.secure_url,
+        cloudinaryId: result.public_id,
+        caption: req.body.caption,
+        likes: 0,
+        user: req.user.id,
+        userId: req.user.id,
+        date: new Date(),
+      })
+      res.redirect(`/post/addDescription/${newPost._id}`)
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
+  getViewWorkshopOne: async (req, res) => {
+    try {
+      const newPost = await Manifestation.find({ userId: req.user.id })
+      res.redirect(`/getViewWorkshopOne/${newPost._id}`)
+      console.log(newPost)
     } catch (err) {
       console.log(err)
     }

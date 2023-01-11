@@ -4,7 +4,8 @@
 
   <div class="flex flex-col p-6 justify-start ">
        <div class="p-6 w-10/12 mx-auto flex-col space-x-4 max-w-screen-md	">
-            <h5 class="text-center form-label text-1xl font-raleway font-semibold">The word "Manifestation" means to create something or turn something from an idea into a reality. Your thoughts, feelings, beliefs and wishes bring something into your life. A simple practice of daily manifestation can bring focus into the present and guide your day in a direction that will help you reach your goals.</h5>
+          <h2 class="text-4xl font-corm font-light  text-center border-b-2 border-black ">Manifestation</h2>
+            <h5 class="text-center form-label text-1xl pt-4 font-raleway font-semibold">The word "Manifestation" means to create something or turn something from an idea into a reality. Your thoughts, feelings, beliefs and wishes bring something into your life. A simple practice of daily manifestation can bring focus into the present and guide your day in a direction that will help you reach your goals.</h5>
       </div>
 </div>
 
@@ -14,23 +15,23 @@
 <div class=" max-w-screen-md mx-auto ">
 
 <!-- Form -->
-<div class="w-10/12 mx-auto">
+<div class="w-10/12 mx-auto pb-10">
             <form  action="/workshop/createManifestation" method="POST">
                  <div class="flex flex-col  mx-auto ">
 
-                 <label for="whatToManifest " class="form-label text-3xl font-corm ">What you want to manifest.</label>
-                 <textarea type="text" class="form-control bg-fontLight rounded-lg mt-2.5 h-52 mb-10 w-100 border-2 border-black"  id="whatToManifest" name="whatToManifest"></textarea>
+                 <label for="whatToManifest " class="form-label font-raleway">What you want to manifest.</label>
+                 <textarea type="text" class="form-control bg-fontLight mt-2.5 h-36 mb-6 w-100 border-2 border-black"  id="whatToManifest" name="whatToManifest" maxlength="400" required></textarea>
 
-                 <label for="manifestationObstacles" class="form-label text-3xl font-corm ">
+                 <label for="manifestationObstacles" class="form-label font-raleway">
                 Obstacles to the manifestation </label>
 
-                 <textarea type="text" class="form-control bg-fontLight rounded-lg mt-2.5 h-52 mb-10 border-2 border-black" id="manifestationObstacles" name="manifestationObstacles"></textarea>
+                 <textarea type="text" class="form-control bg-fontLight mt-2.5 h-36 mb-6 border-2 border-black" id="manifestationObstacles" name="manifestationObstacles"  maxlength="400" required"></textarea>
 
-                 <label for="manifestationAction" class="form-label text-3xl font-corm "">Actions you will take to get there</label>
-                 <textarea type="text" class="form-control bg-fontLight rounded-lg mt-2.5 h-52 mb-10 border-2 border-black" id="manifestationAction" name="manifestationAction"></textarea>
+                 <label for="manifestationAction" class="form-label font-raleway">Actions you will take to get there</label>
+                 <textarea type="text" class="form-control bg-fontLight mt-2.5 h-36 mb-6 border-2 border-black" id="manifestationAction" name="manifestationAction"  maxlength="400" required"></textarea>
                         
 
-                <button type="submit" href= "loc"class="border-2	border-black py-1 px-8 rounded-md font-corm text-2xl " value="Upload" >Log Manifestation</button>
+                <button type="submit" href= "loc"class="border-2	border-black py-1 px-8 rounded-md font-corm font-light text-xl " value="Upload" >Log Manifestation</button>
                </form>        
                 </div>
 </div>
@@ -49,17 +50,17 @@
 
 <!-- Previous  Manifestation -->
 <%if(manifestation.length>0){ %>
-     <div class="w-96 flex justify-center flex-col ">
+     <div class="w-96 flex justify-center flex-col mx-auto border-black border-2 ">
         <% for(let i=0; i<manifestation.length; i++) {%>
-                  <li>
+                  <li class="list-none">
                   <div class="title text-center  my-6 	"> 
      <div class="title text-center font-corm text-3xl border-b-2 border-black"> <h4> <%= day[i]%> </h4> </div>
-     <p class="form-label text-2xl font-corm ">What you want to manifest </p>
-     <div class="title text-center font-raleway font-semibold"> <h4><%= manifestation[i].whatToManifest%> </h4> </div>
-     <p class="form-label text-2xl font-corm ">Obstacles in your way</p>
-     <div class="title text-center font-raleway font-semibold"> <h4><%= manifestation[i].manifestationObstacles%> </h4> </div>
-     <p class="form-label text-2xl font-corm ">Actions I will take to get there. </p>
-     <div class="title text-center font-raleway font-semibold"> <h4><%= manifestation[i].manifestationAction%> </h4> </div>
+     <p class="form-label text-2xl font-raleway font-semibold">What you want to manifest </p>
+     <div class="title text-center font-raleway italic"> <h4><%= manifestation[i].whatToManifest%> </h4> </div>
+     <p class="form-label text-2xl font-raleway font-semibold ">Obstacles in your way</p>
+     <div class="title text-center font-raleway italic"> <h4><%= manifestation[i].manifestationObstacles%> </h4> </div>
+     <p class="form-label text-2xl font-raleway font-semibold ">Actions I will take to get there. </p>
+     <div class="title text-center font-raleway italic"> <h4><%= manifestation[i].manifestationAction%> </h4> </div>
                     </div>
                     </li>
                     <%}%>

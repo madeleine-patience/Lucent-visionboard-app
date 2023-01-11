@@ -20,19 +20,19 @@
 
     <header class="">
       <div class="#">
-        <h1 class="font-corm text-9xl	text-fontLight py-0 pb-0 text-center pt-0 text-primary mb-0		"><a href="/profile">LUCENT</a></h1>
+        <h1 class="font-corm font-light text-9xl	text-fontLight py-0 pb-0 text-center pt-0 text-primary mb-0	drop-shadow-2xl	"><a href="/profile">LUCENT</a></h1>
         <html data-theme=""></html>
-          <ul class="flex flex-wrap justify-center 	border-b-2	border-black font-raleway text-xl" >
-          <a class="px-1" href="/profile">Home •</a>
-          <a class="px-1" href="/gratitude">Gratitude •</a>
+          <ul class="flex flex-wrap justify-center 	border-b-2	border-black font-raleway text-lg " >
+          <a class="px-1" href="/profile">HOME •</a>
+          <a class="px-1" href="/gratitude">GRATITUDE •</a>
           <!-- <a class="px-1" href="/moodBoard">Track Mood •</a> -->
-          <a class="px-1" href="/visionBoard">Vision Board •</a>
-          <a class="px-1" href="/affirmations">Affirmations •</a>
-          <a class="px-1" href="/workshop">Excercises • </a>
+          <a class="px-1" href="/visionBoard">VISION BOARD •</a>
+          <a class="px-1" href="/workshop">JOURNALLING • </a>
           <% let dateTest= new Date() %>
           <% let isoFormattedToday= new Date(dateTest).toISOString().split("T")[0] %>
 
-          <a class="px-1" href="post/getSummary/<%=isoFormattedToday-%>">Todays Summary </a>
+          <a class="px-1" href="post/getSummary/<%=isoFormattedToday-%>">TODAYS LOG •</a>
+          <a class="px-1" href="logout">LOGOUT </a>
 
 
           <!-- <a class="px-1" href="/gratitude">Gratitude •</a>
