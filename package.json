@@ -4,7 +4,6 @@
   "description": "100Devs Social Network",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
     "build:css": "npx tailwindcss-cli build -i src/styles.css -o public/styles.css -w"
   },
   "author": "",
