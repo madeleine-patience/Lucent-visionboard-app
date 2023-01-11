@@ -24,10 +24,10 @@
           <!-- <a class="px-1" href="/moodBoard">Track Mood •</a> -->
           <a class="px-1" href="/visionBoard">Vision Board •</a>
           <!-- <a class="px-1" href="/affirmations">Affirmations •</a> -->
-          <a class="px-1" href="/workshop">Excercises • </a>
+          <a class="px-1" href="/workshop">Excercises  </a>
           <% let dateTest= new Date() %>
           <% let isoFormattedToday= new Date(dateTest).toISOString().split("T")[0] %>
-          <a class="px-1" href="<%=isoFormattedToday-%>">Todays Summary </a>
+       
 
 
           <!-- <a class="px-1" href="/gratitude">Gratitude •</a>
@@ -61,6 +61,7 @@
 
 <!-- Manifestation Logs of the day  -->
 
+  <%if(manifestation.length>0) {%>
 
   <div class="flex items-center p-16">
   <% for(let i=0; i<1; i++) {%>
@@ -72,6 +73,7 @@
           <div class="title pb-2"> <h4><%= manifestation[i].manifestationAction%> </h4> </div>
       </div>
 
+  <%} %> 
   <%} %> 
 
 </div>
