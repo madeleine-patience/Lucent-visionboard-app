@@ -4,7 +4,9 @@
   "description": "100Devs Social Network",
   "main": "server.js",
   "scripts": {
-    "build:css": "npx tailwindcss-cli build -i src/styles.css -o public/styles.css -w"
+
+    "build:css": "npx tailwindcss-cli build -i src/styles.css -o public/styles.css -w",
+    "start": "build:css && node server.js"
   },
   "author": "",
   "license": "MIT",
