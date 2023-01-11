@@ -4,7 +4,7 @@
   "description": "100Devs Social Network",
   "main": "server.js",
   "scripts": {
-  "build:css": "whatever was here",
+  "build:css": "npx tailwindcss-cli build -i src/styles.css -o public/styles.css -w",
   "build": "postcss ./src/styles.css -o ./public/css/style.css",
   "start":  "node server.js"
   },
