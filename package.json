@@ -6,7 +6,7 @@
   "scripts": {
 
   "build:css": "npx tailwindcss-cli build -i src/styles.css -o public/styles.css -w",
-  "start": "npm run build:css && node server.js"
+  "start": "npm run build:css && node ./server.js"
   },
   "author": "",
   "license": "MIT",
