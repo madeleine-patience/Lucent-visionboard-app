@@ -140,13 +140,16 @@ module.exports = {
         user: req.user.id,
         date: { $gte: day, $lte: nextDay },
       })
+      
       const gratitudeLog = await Gratitude.find({
-        user: req.user.id,
-        date: { $gte: day, $lte: nextDay },
-      })
-      const manifestation = await Manifestation.find({
         userId: req.user.id,
         date: { $gte: day, $lte: nextDay },
+      }) 
+      console.log(gratitudeLog)
+
+      const manifestation = await Manifestation.find({
+        userId: req.user.id,
+        // date: { $gte: day, $lte: nextDay },
       })
       const letter = await AskTheUniverse.find({
         userId: req.user.id,
@@ -168,6 +171,7 @@ module.exports = {
         userId: req.user.id,
         date: { $gte: day, $lte: nextDay },
       })
+      console.log(letter,manifestation,stress, forgive, comfort, rejectionLog)
       // const gratitudeLog = await Gratitude.find({ userId: req.user.id });`
       res.render('summary.ejs', {
         date: req.params.date,

@@ -50,6 +50,7 @@
 <%} %> 
 </div>
 </div>
+<div class="title pb-2"> <h4><%=gratitudeLog%> </h4> </div>
 
 <!-- posts display end -->
 
@@ -78,6 +79,8 @@
 <!-- Gratitude Display  -->
 <h2 class="font-corm  justify-center m-auto text-4xl p-6 border-b-2 border-black flex font-light" > On this day I was grateful for... </h2>
 <ul>
+  <h2 class="font-corm  justify-center m-auto text-4xl p-6 border-b-2 border-black flex font-light" ><%=gratitudeLog%> </h2>
+
   <% for(let i=0; i< gratitudeLog.length; i++) { %>
     <li class ='postItem italic mt-8 w-10/12 mx-auto list-none' data-id="<%gratitudeLog[i]._id%>">
         <div class="title text-center font-ralway"> <h4> <%= gratitudeLog[i].gratitudeItem1[0]%> </h4> </div>
