@@ -107,6 +107,8 @@
 
 <!-- Section one end -->
 <!-- Gratitude Display  -->
+if(<% if(gratitudeLog) { %>
+
 <h2 class="font-corm  justify-center m-auto text-4xl p-6 border-b-2 border-black flex font-light" > On this day I was grateful for... </h2>
 <ul>
   <% for(let entry of gratitudeLog) { %>
@@ -132,6 +134,7 @@
 <% } %>
 
 </div>
+<% } %>
 
 <!-- Letter to the universe of the day  -->
 

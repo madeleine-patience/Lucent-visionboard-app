@@ -129,7 +129,7 @@ module.exports = {
         isoFormattedDates: isoFormattedDates,
         affirmation: affirmation,
         author: author,
-        rotate: tailwindRotation,
+        tailwindRotation: tailwindRotation,
         randomNums: randomNums,
         photoLoopLength: photoLoopLength,
       })
