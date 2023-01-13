@@ -121,6 +121,7 @@ module.exports = {
         user: req.user,
         gratitudeLog: gratitudeLog,
         hasGratitude: hasGratitude,
+        activityArray: activityArray,
         lastEntry: lastEntry,
         weeklyActivity: dailyActivity.generateWeeklyActivity(gratitudeLog),
         weeklyPostActivity: dailyActivity.generateWeeklyActivity(posts),
