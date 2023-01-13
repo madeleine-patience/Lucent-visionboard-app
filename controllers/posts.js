@@ -142,7 +142,10 @@ module.exports = {
   getSummary: async (req, res) => {
     try {
       let [day, nextDay] = dateConversion.dayRange(req.params.date)
-      nextDay.setDate(nextDay.getDate() + 1)
+      day.setDate(nextDay.getDate() + 1)
+      nextDay.setDate(nextDay.getDate() + 2)
+      console.log(day)
+      console.log(nextDay)
 
       const posts = await Post.find({
         userId: req.user.id,
