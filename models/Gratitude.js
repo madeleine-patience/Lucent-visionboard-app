@@ -1,21 +1,19 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const GratitudeSchema = new mongoose.Schema({
   gratitudeItem1: {
     type: Array,
-    required: true,
+    required: false,
   },
   userId: {
     type: String,
-    required: true
+    required: true,
   },
   date: {
     type: Date,
     default: Date.now,
     required: true,
   },
-  
+})
 
-});
-
-module.exports = mongoose.model("Gratitude", GratitudeSchema);
+module.exports = mongoose.model('Gratitude', GratitudeSchema)

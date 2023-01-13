@@ -18,13 +18,15 @@
       <div class="#">
         <h1 class="font-corm text-9xl	text-fontLight py-0 pb-0 text-center pt-0 text-primary mb-0		"><a href="/profile">LUCENT</a></h1>
         <html data-theme=""></html>
-          <ul class="flex flex-wrap justify-center 	border-b-2	border-black font-raleway text-xl" >
-          <a class="px-1" href="/profile">Home •</a>
-          <a class="px-1" href="/gratitude">Gratitude •</a>
+          <ul class="flex flex-wrap justify-center 	border-b-2	border-black font-raleway text-lg" >
+          <a class="px-1" href="/profile">HOME •</a>
+          <a class="px-1" href="/gratitude">GRATITUDE •</a>
           <!-- <a class="px-1" href="/moodBoard">Track Mood •</a> -->
-          <a class="px-1" href="/visionBoard">Vision Board •</a>
+          <a class="px-1" href="/visionBoard">VISION BOARD •</a>
           <!-- <a class="px-1" href="/affirmations">Affirmations •</a> -->
-          <a class="px-1" href="/workshop">Excercises  </a>
+          <a class="px-1" href="/workshop">JOURNALLING </a>
+
+
           <% let dateTest= new Date() %>
           <% let isoFormattedToday= new Date(dateTest).toISOString().split("T")[0] %>
           </ul>
@@ -33,39 +35,68 @@
 
 <h2 class="font-corm  justify-center m-auto text-5xl p-6 border-b-2 border-black flex font-light"  >Your Journal Entry from <%=date%></h2>
 
+<!-- <div class="flex flex-col"> 
+<% for(let i=0; i<photoLoopLength; i++) {%>
+
+          <div class="flex p-6 flex-wrap justify-center relative %>">
+          <img  class ="absolute w-1/2 top-6 " src="https://i.ibb.co/gJ0Cxz3/Untitled-Postcard-1-1-in-3-1-in.png" alt="Untitled-Postcard-1-1-in-3-1-in" border="0">
+          <a class= "" href="post/addDescription/<%= posts[i]._id%>">
+          <div class="h-8"> </div>
+          <img class="max-h-50  object-cover p-3 pb-10 bg-white shadow-2xl rounded-md " src="<%= posts[randomNums[i]].image%>"/>
+            </a>
+     </div>
+              <% } %>
+           </div> -->
+<!-- second photo  -->
+  <%if(posts.length>0) {%>
+<h2 class="font-corm  justify-center m-auto text-4xl p-6 border-b-2 border-black flex font-light" > Today, these photos were important to me.</h2>
+<div class="flex flex-col md:inline-grid md:grid-cols-3 "> 
+  <% for(let i=0; i<3; i++) {%>
+
+            <div class="flex p-6 flex-wrap justify-center relative %>">
+            <img  class ="absolute w-1/2 top-6 " src="https://i.ibb.co/gJ0Cxz3/Untitled-Postcard-1-1-in-3-1-in.png" alt="Untitled-Postcard-1-1-in-3-1-in" border="0">
+            <a class= "" href="post/addDescription/<%= posts[randomNums[i]]._id%>">
+  <!-- pl-8 pr-8 pt-8 pb-32 -->
+            <div class="h-8"> </div>
+            <img class="max-h-50  object-cover p-3 pb-10 bg-white shadow-2xl rounded-md " src="<%= posts[randomNums[i]].image%>"/>
+              </a>
+      </div>
+                <% } %>
+            </div>
+  <!-- second photo  -->
+
+
+            </div>
+            </div>
+          </div>
+  </div>
+  <%} %> 
+
+
+
+
+
+
+
 
 <!-- Section one  -->
 <div class="flex flex-row m-2 justify-center mt-6 pb-6 border-b-2 border-black"">
-<!-- posts displays -->
-<div class="flex flex-col justify-center sm:flex-row m-12">
-<% if(posts.length>0) { %>
-  <% for(let i=0; i<3; i++) {%>
-
-    <img
-    class="p-4 mb-6  bg-white sm:max-h-50 sm:w-1/3 sm:object-cover  sm:m-2  "
-    src="<%= posts[i].image%>"
-    />
-
-  <%} %> 
-<%} %> 
 </div>
-</div>
-<div class="title pb-2"> <h4><%=gratitudeLog%> </h4> </div>
 
 <!-- posts display end -->
 
 <!-- Manifestation Logs of the day  -->
 
   <%if(manifestation.length>0) {%>
+<h2 class="font-corm  justify-center m-auto text-4xl p-6 border-b-2 border-black flex font-light" > Today I manifested </h2>
 
-  <div class="flex items-center p-16">
+  <div class ='postItem italic mt-8 w-10/12 mx-auto list-none'>
   <% for(let i=0; i<1; i++) {%>
 
       <div class="title text-left  font-raleway my-6 "> 
-          <div class="title font-corm text-3xl "> <h4> Today I manifested...  </h4> </div>
-          <div class="title pb-2"> <h4><%= manifestation[i].whatToManifest%> </h4> </div>
-          <div class="title pb-2"> <h4><%= manifestation[i].manifestationObstacles%> </h4> </div>
-          <div class="title pb-2"> <h4><%= manifestation[i].manifestationAction%> </h4> </div>
+<div class="title text-center font-ralway"> <h4><%= manifestation[i].whatToManifest%> </h4> </div>
+<div class="title text-center font-ralway"><h4><%= manifestation[i].manifestationObstacles%> </h4> </div>
+<div class="title text-center font-ralway"> <h4><%= manifestation[i].manifestationAction%> </h4> </div>
       </div>
 
   <%} %> 
@@ -75,34 +106,30 @@
 </div>
 
 <!-- Section one end -->
-
 <!-- Gratitude Display  -->
 <h2 class="font-corm  justify-center m-auto text-4xl p-6 border-b-2 border-black flex font-light" > On this day I was grateful for... </h2>
 <ul>
-  <h2 class="font-corm  justify-center m-auto text-4xl p-6 border-b-2 border-black flex font-light" ><%=gratitudeLog%> </h2>
-
-  <% for(let i=0; i< gratitudeLog.length; i++) { %>
-    <li class ='postItem italic mt-8 w-10/12 mx-auto list-none' data-id="<%gratitudeLog[i]._id%>">
-        <div class="title text-center font-ralway"> <h4> <%= gratitudeLog[i].gratitudeItem1[0]%> </h4> </div>
-        <div class="title text-center font-ralway"> <h4> <%= gratitudeLog[i].gratitudeItem1[1]%> </h4> </div>
-        <div class="title text-center font-ralway"> <h4> <%= gratitudeLog[i].gratitudeItem1[2]%> </h4> </div>
-        <div class="title text-center font-ralway"> <h4> <%= gratitudeLog[i].gratitudeItem1[3]%> </h4> </div>
-        <div class="title text-center font-ralway"> <h4> <%= gratitudeLog[i].gratitudeItem1[4]%> </h4> </div>
-      </li>
-      <div id = "actionsContainer"></div>
+  <% for(let entry of gratitudeLog) { %>
+    <li class ='postItem italic mt-8 w-10/12 mx-auto list-none' data-id="<% entry._id %>">
+      <% for(let item of entry.gratitudeItem1) {%>
+        <div class="title text-center font-ralway">
+          <h4><%= item %></h4>
+        </div>
+      <% } %>
+    </li>
+    <div id = "actionsContainer"></div>
 </ul>
 
-<%} %> 
+<% } %>
 
-  <%if(gratitudeLog){ %>
-<form
-action="/post/deleteGratitude/<%= gratitudeLog.id %>?_method=DELETE"
-method="POST"
-class="#"
->
+<% if(gratitudeLog) { %>
+  <form
+    action="/post/deleteGratitude/<%= gratitudeLog.id %>?_method=DELETE"
+    method="POST"
+    class="#">
 
-</form>
-<%}%>
+  </form>
+<% } %>
 
 </div>
 

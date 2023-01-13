@@ -1,13 +1,66 @@
-<%- include('partials/header') -%>
-    <div class="max-w-screen-lg mx-auto pt-20">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;500;700&family=Raleway:wght@100;200;300;400;600;700;900&display=swap" rel="stylesheet">
+
+
+    <title>Lucent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="bg-main pb-4">
+
+
+
+
+    <header class="">
+      <div class="#">
+        <h1 class="font-corm font-light text-9xl	text-fontLight py-0 pb-0 text-center pt-0 text-primary mb-0	drop-shadow-2xl	"><a href="/profile">LUCENT</a></h1>
+        <html data-theme=""></html>
+          <ul class="flex flex-wrap justify-center 	border-b-2	border-black font-raleway text-1xl " >
+          <a class="px-1" href="/profile">HOME •</a>
+          <a class="px-1" href="/gratitude">GRATITUDE •</a>
+          <!-- <a class="px-1" href="/moodBoard">Track Mood •</a> -->
+          <a class="px-1" href="/visionBoard">VISION BOARD •</a>
+          <a class="px-1" href="/workshop">JOURNALLING • </a>
+          <% let dateTest= new Date() %>
+          <% let isoFormattedToday= new Date(dateTest).toISOString().split("T")[0] %>
+
+          <!-- <a class="px-1" href="<%=isoFormattedToday-%>">TODAYS LOG •</a> -->
+          <a class="px-1" href="logout">LOGOUT </a>
+
+
+          <!-- <a class="px-1" href="/gratitude">Gratitude •</a>
+          <a class="px-1" href="/gratitude">Gratitude •</a>
+          <a class="px-1" href="/gratitude">Gratitude</a> -->
+          </ul>
+      </div>
+    </header>
+  </body>
+</html>
+
+
+    <div class="max-w-screen-lg mx-auto w-11/12 ">
 
       
-         <img class="p-14 bg-fontLight" src="<%= post.image%>" />
-          <h2 class="font-Playfair-Display text-5xl pt-6"><%= post.title %></h2>
-          <h2 class="italic text-1xl border-2"><%= post.caption %></h2>
+         <img class="p-2 mt-6 bg-fontLight w-11/12 sm:w-8/12" src="<%= post.image%>" />
+          <h2 class="font-corm text-4xl mt-4 w-11/12"><%= post.title %></h2>
+          <h2 class="italic text-1xl  pl-2 mb-10 w-10/12"><%= post.caption %></h2>
         
+          <%if(post.caption){ %>
+          <p class="text-4xl  font-corm font-light border-b-2 border-black pt-4 "> Update Caption</p>
+          <% } else{ %>
+          <p class="text-4xl  font-corm font-light border-b-2 border-black"> Add Caption</p>
+          <%} %> 
 
-          <p class="text-2xl pt-12"> Add Caption</p>
+
+
+
             <!-- <form  action="/post/editPost" method="PUT"> -->
               <!-- Changed this form action to include the post id, lets us use it in the controller as req.params.id.
               Since we're using methodOverride, set the method with ?_method=PUT. See the like/delete forms below as an example. -->
@@ -15,16 +68,16 @@
 
                  <div class="flex flex-col mx-auto	">
 
-                 <label  for="title" class="form-label my-2">Title Your Image</label>
+                 <label  for="title" class="form-label my-2 font-raleway text-xl">Title Your Image</label>
                 <!-- changed name and id to 'title' - this gets passed to the controller as req.body.title -->
-                <textarea type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5 bg-fontLight h-10"
+                <textarea type="text" class="form-control bg-white 	mt-2.5 h-10 border-black border-2 w-1/4" maxlength="45"
                 id="title" 
                 name="title"></textarea>
 
 
-                 <label for="caption" class="form-label   my-2"> Describe why you choose this image for your vision board.</label>
+                 <label for="caption" class="form-label   my-2 font-raleway text-xl"> Describe why you choose this image for your vision board.</label>
                  <!-- changed name and id to 'caption' - this gets passed to the controller as req.body.caption -->
-                 <textarea type="text" class="form-control bg-gray-300 rounded-lg	mt-2.5 h-20 bg-fontLight" 
+                 <textarea type="text" class="form-control 	mt-2.5 h-20 bg-fontLight border-black border-2 w-1/2" maxlength="75"
                  id="caption" 
                  name="caption"> </textarea>
 
@@ -33,7 +86,7 @@
             </form>
     <div class="flex flex-wrap my-6">
 
-      <button type="submit" class="border-2	border-black py-2 px-8 rounded-md  "value="Upload" >Submit</button>
+      <button type="submit" class="border-2	border-black py-2 px-8  hover:bg-yellow-100 "value="Upload" >Submit</button>
 
                <%if(post.user == user.id){ %>
                <form
@@ -44,7 +97,7 @@
 
 
 
-               <button class="border-2 border-black py-2 px-8 rounded-md mx-2"type="submit">Delete Vision Board Item</button>
+               <button class="border-2 border-black py-2 px-8  mx-2 "type="submit">Delete Vision Board Item</button>
           </div>
                 </form>
         <%}%>

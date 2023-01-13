@@ -10,7 +10,7 @@ const Stress = require('../models/Stress')
 const Forgiveness = require('../models/Forgiveness')
 const Feedback = require('../models/Feedback')
 const request = require('request')
-
+const dateConversion = require('../helpers/dateConversion')
 const dailyActivity = require('../helpers/dailyActivity')
 const totalLogOfActivity = require('../helpers/totalLogOfActivity')
 
@@ -90,6 +90,8 @@ module.exports = {
       }
       sevenPreviousDays = sevenPreviousDays.reverse()
       isoFormattedDates = isoFormattedDates.reverse()
+      console.log(sevenPreviousDays)
+      console.log(isoFormattedDates)
 
       let tailwindRotation = [
         'rotate-2',
@@ -109,6 +111,11 @@ module.exports = {
         }
       }
 
+      let photoLoopLength = 2
+      if (posts.length < 2) {
+        photoLoopLength = posts.length
+      }
+
       res.render('profile.ejs', {
         posts: posts,
         user: req.user,
@@ -124,6 +131,7 @@ module.exports = {
         author: author,
         rotate: tailwindRotation,
         randomNums: randomNums,
+        photoLoopLength: photoLoopLength,
       })
     } catch (err) {
       console.log(err)
@@ -132,19 +140,31 @@ module.exports = {
 
   getSummary: async (req, res) => {
     try {
-      // const post = await Post.findById(req.params.id);
-      let day = req.params.date
-      let nextDay = new Date(req.params.date)
+      let [day, nextDay] = dateConversion.dayRange(req.params.date)
       nextDay.setDate(nextDay.getDate() + 1)
+
       const posts = await Post.find({
-        user: req.user.id,
+        userId: req.user.id,
         date: { $gte: day, $lte: nextDay },
       })
-      
+
+      let photoLoopLength = 4
+      if (posts.length < 4) {
+        photoLoopLength = posts.length
+      }
+
+      let randomNums = []
+      while (randomNums.length < posts.length) {
+        let randomNum = Math.floor(Math.random() * posts.length)
+        if (!randomNums.includes(randomNum)) {
+          randomNums.push(randomNum)
+        }
+      }
+
       const gratitudeLog = await Gratitude.find({
         userId: req.user.id,
         date: { $gte: day, $lte: nextDay },
-      }) 
+      })
       console.log(gratitudeLog)
 
       const manifestation = await Manifestation.find({
@@ -171,7 +191,6 @@ module.exports = {
         userId: req.user.id,
         date: { $gte: day, $lte: nextDay },
       })
-      console.log(letter,manifestation,stress, forgive, comfort, rejectionLog)
       // const gratitudeLog = await Gratitude.find({ userId: req.user.id });`
       res.render('summary.ejs', {
         date: req.params.date,
@@ -183,6 +202,8 @@ module.exports = {
         comfort: comfort,
         stress: stress,
         forgive: forgive,
+        photoLoopLength: photoLoopLength,
+        randomNums: randomNums,
       })
     } catch (err) {
       console.log(err)
