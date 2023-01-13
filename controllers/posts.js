@@ -284,6 +284,7 @@ module.exports = {
         userId: req.user.id,
         date: new Date(),
       })
+
       res.redirect(`/post/addDescription/${newPost._id}`)
     } catch (err) {
       console.log(err)
