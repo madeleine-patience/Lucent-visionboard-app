@@ -1,30 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<%- include('partials/header') -%>
 
-
-
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;500;700&family=Raleway:wght@100;200;300;400;600;700;900&display=swap" rel="stylesheet">
-
-
-    <title>Lucent</title>
-    <link rel="stylesheet" href="/styles.css" />
-  </head>
-  <body class="bg-main pb-4">
-    <header class="">
-      <div class="#">
-        <h1 class="font-corm text-9xl	text-fontLight py-0 pb-0 text-center pt-0 text-primary mb-0		"><a href="/profile">LUCENT</a></h1>
-        <html data-theme=""></html>
-          <ul class="flex flex-wrap justify-center 	border-b-2	border-black font-raleway text-lg" >
-          <a class="px-1" href="/profile">HOME •</a>
-          <a class="px-1" href="/gratitude">GRATITUDE •</a>
-          <!-- <a class="px-1" href="/moodBoard">Track Mood •</a> -->
-          <a class="px-1" href="/visionBoard">VISION BOARD •</a>
-          <!-- <a class="px-1" href="/affirmations">Affirmations •</a> -->
-          <a class="px-1" href="/workshop">JOURNALLING </a>
 
 
           <% let dateTest= new Date() %>
@@ -107,7 +82,7 @@
 
 <!-- Section one end -->
 <!-- Gratitude Display  -->
-<% if(gratitudeLog) { %>
+<% if(gratitudeLog.lenght>0) { %>
 
 <h2 class="font-corm  justify-center m-auto text-4xl p-6 border-b-2 border-black flex font-light" > On this day I was grateful for... </h2>
 <ul>
