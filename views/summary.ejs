@@ -12,23 +12,11 @@
 <h2 class="font-corm  justify-center m-auto text-5xl p-6 border-b-2 border-black flex font-light"  >Your Journal Entry from <%=nextDay%></h2>
 <h2 class="font-corm  justify-center m-auto text-5xl p-6 border-b-2 border-black flex font-light"  >Your Journal Entry from <%=day%></h2>
 
-<!-- <div class="flex flex-col"> 
-<% for(let i=0; i<photoLoopLength; i++) {%>
 
-          <div class="flex p-6 flex-wrap justify-center relative %>">
-          <img  class ="absolute w-1/2 top-6 " src="https://i.ibb.co/gJ0Cxz3/Untitled-Postcard-1-1-in-3-1-in.png" alt="Untitled-Postcard-1-1-in-3-1-in" border="0">
-          <a class= "" href="post/addDescription/<%= posts[i]._id%>">
-          <div class="h-8"> </div>
-          <img class="max-h-50  object-cover p-3 pb-10 bg-white shadow-2xl rounded-md " src="<%= posts[randomNums[i]].image%>"/>
-            </a>
-     </div>
-              <% } %>
-           </div> -->
-<!-- second photo  -->
-  <%if(posts.length>0) {%>
+<%if(posts.length>0) {%>
 <h2 class="font-corm  justify-center m-auto text-4xl p-6 border-b-2 border-black flex font-light" > Today, these photos were important to me.</h2>
 <div class="flex flex-col md:inline-grid md:grid-cols-3 "> 
-  <% for(let i=0; i<3; i++) {%>
+  <% for(let i=0; i<photoLoopLength; i++) {%>
 
             <div class="flex p-6 flex-wrap justify-center relative %>">
             <img  class ="absolute w-1/2 top-6 " src="https://i.ibb.co/gJ0Cxz3/Untitled-Postcard-1-1-in-3-1-in.png" alt="Untitled-Postcard-1-1-in-3-1-in" border="0">

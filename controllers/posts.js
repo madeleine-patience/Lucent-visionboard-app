@@ -142,7 +142,8 @@ module.exports = {
   getSummary: async (req, res) => {
     try {
       let [day, nextDay] = dateConversion.dayRange(req.params.date)
-      nextDay.setDate(nextDay.getDate() + 1)
+      day.setDate(day.getDate() + 2)
+      nextDay.setDate(nextDay.getDate() + 3)
       console.log(day)
       console.log(nextDay)
 
