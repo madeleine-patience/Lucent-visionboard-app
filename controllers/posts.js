@@ -169,7 +169,7 @@ module.exports = {
 
       const manifestation = await Manifestation.find({
         userId: req.user.id,
-        // date: { $gte: day, $lte: nextDay },
+        date: { $gte: day, $lte: nextDay },
       })
       const letter = await AskTheUniverse.find({
         userId: req.user.id,
