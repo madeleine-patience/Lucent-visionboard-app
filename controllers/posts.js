@@ -152,8 +152,8 @@ module.exports = {
         date: { $gte: day, $lte: nextDay },
       })
 
-      let photoLoopLength = 4
-      if (posts.length < 4) {
+      let photoLoopLength = 3
+      if (posts.length < 3) {
         photoLoopLength = posts.length
       }
 
