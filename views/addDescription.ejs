@@ -2,80 +2,55 @@
 
 
 
-          <!-- <a class="px-1" href="/gratitude">Gratitude •</a>
+<!-- <a class="px-1" href="/gratitude">Gratitude •</a>
           <a class="px-1" href="/gratitude">Gratitude •</a>
           <a class="px-1" href="/gratitude">Gratitude</a> -->
-          </ul>
-      </div>
-    </header>
-  </body>
+</ul>
+</div>
+</header>
+</body>
+
 </html>
 
-    <div class="max-w-screen-lg mx-auto w-11/12 ">
+<div class="max-w-screen-lg mx-auto w-11/12 ">
 
-      
-         <img class="p-2 mt-6 bg-fontLight w-11/12 sm:w-8/12" src="<%= post.image%>" />
-          <h2 class="font-corm text-4xl mt-4 w-11/12"><%= post.title %></h2>
-          <h2 class="italic text-1xl  pl-2 mb-10 w-10/12"><%= post.caption %></h2>
-        
-          <%if(post.caption){ %>
-          <p class="text-4xl  font-corm font-light border-b-2 border-black pt-4 "> Update Caption</p>
-          <% } else{ %>
-          <p class="text-4xl  font-corm font-light border-b-2 border-black"> Add Caption</p>
-          <%} %> 
+  <img class="p-2 mt-6 bg-fontLight w-11/12 sm:w-8/12" src="<%= post.image%>" />
+  <h2 class="font-corm text-4xl mt-4 w-11/12"><%= post.title %></h2>
+  <h2 class="italic text-1xl  pl-2 mb-10 w-10/12"><%= post.caption %></h2>
 
+  <%if(post.caption){ %>
+  <p class="text-4xl  font-corm font-light border-b-2 border-black pt-4 "> Update Caption</p>
+  <% } else{ %>
+  <p class="text-4xl  font-corm font-light border-b-2 border-black"> Add Caption</p>
+  <%} %>
 
 
+  <form action="/post/editPost/<%=post.id%>?_method=PUT" method="POST">
 
-            <!-- <form  action="/post/editPost" method="PUT"> -->
-              <!-- Changed this form action to include the post id, lets us use it in the controller as req.params.id.
-              Since we're using methodOverride, set the method with ?_method=PUT. See the like/delete forms below as an example. -->
-              <form action="/post/editPost/<%=post.id%>?_method=PUT" method="POST">
+    <div class="flex flex-col mx-auto	">
 
-                 <div class="flex flex-col mx-auto	">
+      <label for="title" class="form-label my-2 font-raleway text-xl">Title Your Image</label>
+      <textarea type="text" class="form-control bg-white 	mt-2.5 h-10 border-black border-2 w-1/4" maxlength="45" id="title" name="title"></textarea>
+      <label for="caption" class="form-label   my-2 font-raleway text-xl"> Describe why you choose this image for your vision board.</label>
+      <textarea type="text" class="form-control 	mt-2.5 h-20 bg-fontLight border-black border-2 w-1/2" maxlength="75" id="caption" name="caption"> </textarea>
+      <input type="hidden" name="id" value="<%=post.id%>">
 
-                 <label  for="title" class="form-label my-2 font-raleway text-xl">Title Your Image</label>
-                <!-- changed name and id to 'title' - this gets passed to the controller as req.body.title -->
-                <textarea type="text" class="form-control bg-white 	mt-2.5 h-10 border-black border-2 w-1/4" maxlength="45"
-                id="title" 
-                name="title"></textarea>
+  </form>
+  <div class="flex flex-wrap my-6">
 
+    <button type="submit" class="border-2	border-black py-2 px-8  hover:bg-yellow-100 " value="Upload">Submit</button>
 
-                 <label for="caption" class="form-label   my-2 font-raleway text-xl"> Describe why you choose this image for your vision board.</label>
-                 <!-- changed name and id to 'caption' - this gets passed to the controller as req.body.caption -->
-                 <textarea type="text" class="form-control 	mt-2.5 h-20 bg-fontLight border-black border-2 w-1/2" maxlength="75"
-                 id="caption" 
-                 name="caption"> </textarea>
-
-                 <input type="hidden" name="id" value="<%=post.id%>">
-
-            </form>
-    <div class="flex flex-wrap my-6">
-
-      <button type="submit" class="border-2	border-black py-2 px-8  hover:bg-yellow-100 "value="Upload" >Submit</button>
-
-               <%if(post.user == user.id){ %>
-               <form
-                    action="/post/deletePost/<%= post.id %>?_method=DELETE"
-                    method="POST"
-                    class="#"
-               >
+    <%if(post.user == user.id){ %>
+    <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST" class="#">
 
 
 
-               <button class="border-2 border-black py-2 px-8  mx-2 "type="submit">Delete Vision Board Item</button>
-          </div>
-                </form>
-        <%}%>
+      <button class="border-2 border-black py-2 px-8  mx-2 " type="submit">Delete Vision Board Item</button>
+  </div>
+  </form>
+  <%}%>
       </div>
     </div>
-    <!-- <div class="col-3 mt-5">
-    </div>
-    <div class="col-6 mt-5">
-      <a class="border-2	border-black py-2 px-8 rounded-md " href="/profile">Return to Profile</a>
-      <a class="border-2	border-black py-2 px-8 rounded-md " href="/feed">Return to Feed</a>
-    </div>
-  </div>
-</div> -->
+
 
 <%- include('partials/footer') -%>
